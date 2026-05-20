@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clinic Dépannage — Dépannage & remorquage 24h/24 en Île-de-France</title>
+<title>Clinic Dépannage — Dépannage & remorquage 24h/24 en Gironde</title>
+<link rel="icon" type="image/svg+xml" href="favicon-dep.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -96,6 +97,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .nav-zone svg{color:var(--c-dep-rouge)}
 
 /* ─── HERO DÉPANNAGE ─── */
+
 .hero-dep{
   background:linear-gradient(148deg, #6B0C06 0%, var(--c-dep-rouge) 55%, #D44000 100%);
   color:#fff;
@@ -501,6 +503,29 @@ button{font-family:inherit; cursor:pointer; border:none}
 }
 .footer-legal{display:flex; gap:22px}
 
+/* ─── SECTION NAV ─── */
+.section-nav{
+  position:sticky; top:64px; z-index:90;
+  background:#fff;
+  border-bottom:1px solid var(--c-gris-200);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.section-nav .sn-inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; gap:0;
+  overflow-x:auto; scrollbar-width:none;
+}
+.section-nav .sn-inner::-webkit-scrollbar{display:none}
+.sn-link{
+  padding:14px 18px; font-size:13.5px; font-weight:500;
+  color:var(--c-gris-500); white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:all .15s ease; flex-shrink:0;
+}
+.sn-link:hover{color:var(--c-dep-rouge)}
+.sn-link.active{color:var(--c-dep-rouge); border-bottom-color:var(--c-dep-rouge)}
+.sn-sep{width:1px; height:18px; background:var(--c-gris-200); flex-shrink:0}
+
 /* ─── RESPONSIVE ─── */
 @media(max-width:980px){
   .hero-dep h1{font-size:42px}
@@ -567,14 +592,49 @@ function Nav(){
         <div className="nav-right">
           <div className="nav-zone">
             <Ico.Pin size={15} />
-            Zone d'intervention : Île-de-France
+            Zone d'intervention : Gironde &amp; Bordeaux Métropole
           </div>
-          <a className="btn btn-danger" href="tel:+33186932480">
+          <a className="btn btn-danger" href="tel:+33661788505">
             Appeler maintenant
           </a>
         </div>
       </div>
     </nav>
+  );
+}
+
+/* ─── SECTION NAV ─── */
+function SectionNav(){
+  const [active, setActive] = React.useState('');
+  React.useEffect(() => {
+    const sections = ['services','comment-ca-marche','zone','tarifs','avis','contact'];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin:'-30% 0px -60% 0px' });
+    sections.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+  const links = [
+    { id:'services', label:'Services' },
+    { id:'comment-ca-marche', label:'Comment ça marche' },
+    { id:'zone', label:'Zone' },
+    { id:'tarifs', label:'Tarifs' },
+    { id:'avis', label:'Avis clients' },
+    { id:'contact', label:'Contact' },
+  ];
+  return (
+    <div className="section-nav">
+      <div className="sn-inner">
+        {links.map((l, i) => (
+          <React.Fragment key={l.id}>
+            {i > 0 && <span className="sn-sep" />}
+            <a className={`sn-link${active === l.id ? ' active' : ''}`} href={`#${l.id}`}>
+              {l.label}
+            </a>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -598,17 +658,17 @@ function Hero(){
             </h1>
             <p className="lede">
               Remorquage, batterie, crevaison, accident — partout en
-              Île-de-France, jour et nuit. Devis transparent par téléphone
-              avant l'intervention.
+              Gironde et Bordeaux Métropole, jour et nuit. Devis transparent
+              par téléphone avant l'intervention.
             </p>
 
-            <a className="phone-card" href="tel:+33186932480">
+            <a className="phone-card" href="tel:+33661788505">
               <div className="phone-ico-wrap">
                 <Ico.Phone size={22} />
               </div>
               <div>
                 <div className="phone-label">Appel direct 24/7</div>
-                <div className="phone-num">01 86 93 24 80</div>
+                <div className="phone-num">06 61 78 85 05</div>
               </div>
             </a>
 
@@ -649,7 +709,7 @@ function TrustBar(){
   const items = [
     { ico:<Ico.Clock size={20}/>, t:"Sous 45 min", d:"Délai d'intervention garanti" },
     { ico:<Ico.Star size={20} fill/>, t:"4.8 / 5", d:"412 avis clients vérifiés" },
-    { ico:<Ico.Pin size={20}/>, t:"Tout l'Île-de-France", d:"75, 92, 93, 94, 77, 78, 91, 95" },
+    { ico:<Ico.Pin size={20}/>, t:"Gironde &amp; alentours", d:"33, 47, 24, 40 — Bordeaux Métropole" },
     { ico:<Ico.Card size={20}/>, t:"Paiement après", d:"Carte, CB, espèces, virement" },
   ];
   return (
@@ -717,9 +777,9 @@ function UrgencyBanner(){
           <h2>Ne restez pas au bord de la route.</h2>
           <p>Un dépanneur part vers vous dans les 5 minutes suivant votre appel.</p>
           <div className="ub-row">
-            <a className="btn btn-xl" href="tel:+33186932480"
+            <a className="btn btn-xl" href="tel:+33661788505"
               style={{background:'#fff', color:'var(--c-dep-rouge)', fontWeight:700}}>
-              <Ico.Phone size={18}/> 01 86 93 24 80
+              <Ico.Phone size={18}/> 06 61 78 85 05
             </a>
             <a className="btn btn-ghost btn-xl" href="#tarifs">Voir les tarifs</a>
           </div>
@@ -732,9 +792,9 @@ function UrgencyBanner(){
 /* ─── COMMENT ÇA MARCHE ─── */
 function HowItWorks(){
   const steps = [
-    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 01 86 93 24 80. Réponse en moins de 10 secondes, 24h/24, 365 jours par an." },
+    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 61 78 85 05. Réponse en moins de 10 secondes, 24h/24, 365 jours par an." },
     { ico:<Ico.Alert size={22}/>, t:"On évalue", d:"Localisation, type de panne, véhicule. Devis ferme communiqué avant toute intervention." },
-    { ico:<Ico.Truck size={22}/>, t:"On part", d:"Un dépanneur quitte notre base dans les 5 minutes. ETA par SMS en temps réel." },
+    { ico:<Ico.Truck size={22}/>, t:"On part", d:"Un dépanneur quitte notre base dans les 5 minutes." },
     { ico:<Ico.Check size={16}/>, t:"C'est réglé", d:"Intervention sur place ou remorquage. Paiement après la prestation, facture immédiate." },
   ];
   return (
@@ -772,26 +832,26 @@ function ZoneIntervention(){
         <div className="zone-grid">
           <div className="zone-info">
             <div className="lbl">Zone d'intervention</div>
-            <h3>Partout en<br/>Île-de-France.</h3>
+            <h3>Partout en<br/>Gironde &amp; autour.</h3>
             <p>
-              Nos dépanneurs sont basés à Saint-Denis (93) et couvrent l'ensemble
-              de la région parisienne. Paris intramuros, petite et grande couronne —
-              on vient chez vous.
+              Nos dépanneurs sont basés à Cénac (33) et couvrent Bordeaux
+              Métropole ainsi que la grande Gironde. Du Médoc au Bassin d'Arcachon,
+              du Libournais au Sud-Gironde — on vient chez vous.
             </p>
             <div className="zone-tags">
-              <span className="zone-tag primary">Paris (75)</span>
-              <span className="zone-tag">Hauts-de-Seine (92)</span>
-              <span className="zone-tag">Seine-Saint-Denis (93)</span>
-              <span className="zone-tag">Val-de-Marne (94)</span>
-              <span className="zone-tag">Val-d'Oise (95)</span>
-              <span className="zone-tag">Essonne (91)</span>
-              <span className="zone-tag">Seine-et-Marne (77)</span>
-              <span className="zone-tag">Yvelines (78)</span>
+              <span className="zone-tag primary">Bordeaux Métropole</span>
+              <span className="zone-tag">Gironde (33)</span>
+              <span className="zone-tag">Lot-et-Garonne (47)</span>
+              <span className="zone-tag">Dordogne (24)</span>
+              <span className="zone-tag">Landes (40)</span>
+              <span className="zone-tag">Bassin d'Arcachon</span>
+              <span className="zone-tag">Libournais</span>
+              <span className="zone-tag">Médoc</span>
             </div>
             <div style={{display:'flex', gap:24}}>
               <div>
                 <div style={{fontSize:26, fontWeight:800, color:'var(--c-dep-rouge)', letterSpacing:'-.02em'}}>38 min</div>
-                <div style={{fontSize:11.5, color:'var(--c-gris-400)', fontFamily:'var(--ff-mono)', textTransform:'uppercase', letterSpacing:'.08em', marginTop:4}}>Délai moyen IDF</div>
+                <div style={{fontSize:11.5, color:'var(--c-gris-400)', fontFamily:'var(--ff-mono)', textTransform:'uppercase', letterSpacing:'.08em', marginTop:4}}>Délai moyen Gironde</div>
               </div>
               <div style={{width:1, background:'var(--c-gris-200)'}}></div>
               <div>
@@ -809,8 +869,8 @@ function ZoneIntervention(){
             <div className="zone-map-inner">
               <div className="zone-map-pin"><Ico.Pin size={28}/></div>
               <div style={{fontSize:13, color:'rgba(255,255,255,.45)', marginBottom:4}}>Base principale</div>
-              <div style={{fontSize:22, fontWeight:700}}>Saint-Denis, 93200</div>
-              <div style={{fontSize:13, color:'rgba(255,255,255,.4)', marginTop:6}}>42 rue de la Liberté</div>
+              <div style={{fontSize:22, fontWeight:700}}>Cénac, 33360</div>
+              <div style={{fontSize:13, color:'rgba(255,255,255,.4)', marginTop:6}}>ZA Bel Air</div>
             </div>
           </div>
         </div>
@@ -935,7 +995,7 @@ function Stats(){
           <div className="stat-dep-block">
             <div className="num">38<small>min</small></div>
             <h5>Délai moyen</h5>
-            <p>Sur 412 interventions ce mois-ci en Île-de-France.</p>
+            <p>Sur 412 interventions ce mois-ci en Gironde.</p>
           </div>
           <div className="stat-dep-block">
             <div className="num">4 862<em>+</em></div>
@@ -966,7 +1026,7 @@ function Avis(){
     { init:"SR", n:"Sophia R.", d:"Il y a 2 semaines", t:"Accident sur la N3. L'équipe a géré la sécurisation, la déclaration et le remorquage. Aucune avance de frais, tout était pris en charge. Je recommande vraiment." },
   ];
   return (
-    <section className="section avis-section">
+    <section className="section avis-section" id="avis">
       <div className="container">
         <div className="section-head">
           <div>
@@ -1008,8 +1068,8 @@ function FinalCta(){
         <h2>Appelez.<br/>On <em>répond</em>.</h2>
         <p>Du lundi au dimanche, de minuit à minuit. Urgence dépannage toujours prioritaire.</p>
         <div className="cta-row">
-          <a className="btn btn-danger btn-xl" href="tel:+33186932480">
-            <Ico.Phone size={18}/> 01 86 93 24 80
+          <a className="btn btn-danger btn-xl" href="tel:+33661788505">
+            <Ico.Phone size={18}/> 06 61 78 85 05
           </a>
           <a className="btn btn-ghost-dark btn-lg" href="mailto:contact@clinicauto.fr">
             Envoyer un message
@@ -1037,8 +1097,8 @@ function Footer(){
             <p className="footer-tagline">Garage, vente B2B et carrosserie. Trois métiers, une équipe, depuis 2014.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
-              <span>42 rue de la Liberté, 93200 Saint-Denis</span>
-              <span>01 86 93 24 80 · contact@clinicauto.fr</span>
+              <span>ZA Bel Air, 33360 Cénac</span>
+              <span>06 61 78 85 05 · contact@clinicauto.fr</span>
             </div>
           </div>
           <div className="footer-col">
@@ -1085,6 +1145,7 @@ function App(){
       <Nav />
       <Hero />
       <TrustBar />
+      <SectionNav />
       <Services />
       <UrgencyBanner />
       <HowItWorks />
