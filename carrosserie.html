@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clinic Carrosserie — Tôlerie, peinture & débosselage · Toutes assurances</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --c-vert-nuit:#012A1A;
+  --c-vert-foret:#0D5C3A;
+  --c-vert-accent:#2ECC71;
+  --c-blanc-casse:#F5F5F0;
+  --c-noir-doux:#1A1A1A;
+  --c-gris-100:#EEEEE8;
+  --c-gris-200:#DDDDD5;
+  --c-gris-300:#BFBFB6;
+  --c-gris-400:#8C8C85;
+  --c-gris-500:#5A5A55;
+
+  --c-car-bleu:#1565A8;
+  --c-car-bleu-clair:#1976D2;
+  --c-car-bleu-dark:#0B3D6B;
+  --c-car-bleu-xdark:#061E38;
+  --c-car-bleu-pastel:#90CAF9;
+  --c-car-bleu-bg:#EBF3FB;
+  --c-car-bleu-light:#BBDEFB;
+
+  --ff-sans:"Inter", system-ui, -apple-system, sans-serif;
+  --ff-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--ff-sans);
+  color:var(--c-noir-doux);
+  background:#fff;
+  font-size:15px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit; text-decoration:none}
+button{font-family:inherit; cursor:pointer; border:none}
+
+/* ─── BUTTONS ─── */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--ff-sans); font-weight:600; font-size:14px;
+  padding:11px 20px; border-radius:10px;
+  border:1px solid transparent; cursor:pointer;
+  transition:all .15s ease; white-space:nowrap;
+}
+.btn-car{background:var(--c-car-bleu); color:#fff}
+.btn-car:hover{background:var(--c-car-bleu-dark)}
+.btn-ghost{background:transparent; color:var(--c-car-bleu); border-color:var(--c-car-bleu)}
+.btn-ghost:hover{background:var(--c-car-bleu-bg)}
+.btn-ghost-white{background:transparent; color:#fff; border-color:rgba(255,255,255,.4)}
+.btn-ghost-white:hover{background:rgba(255,255,255,.1)}
+.btn-ghost-dark{background:transparent; color:var(--c-noir-doux); border:1.5px solid var(--c-gris-200)}
+.btn-ghost-dark:hover{background:var(--c-gris-100)}
+.btn-lg{padding:14px 24px; font-size:15px; border-radius:12px}
+.btn-xl{padding:16px 28px; font-size:16px; border-radius:12px; font-weight:700}
+
+/* ─── NAVBAR ─── */
+.topnav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:#fff;
+  border-bottom:1px solid var(--c-gris-200);
+  padding:0;
+}
+.topnav .inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-brand{
+  display:inline-flex; align-items:center; gap:10px;
+  font-weight:700; font-size:18px; letter-spacing:-.015em;
+  color:var(--c-noir-doux);
+}
+.nav-brand .glyph{
+  width:34px; height:34px; border-radius:9px;
+  background:linear-gradient(135deg, var(--c-car-bleu-clair) 0%, var(--c-car-bleu-dark) 100%);
+  display:grid; place-items:center; color:#fff; font-weight:800; font-size:15px;
+  flex-shrink:0;
+}
+.nav-brand .brand-name span{color:var(--c-car-bleu-clair)}
+.nav-links{display:flex; gap:2px; align-items:center; margin-left:32px}
+.nav-link{
+  color:var(--c-gris-500); padding:7px 14px; border-radius:8px;
+  font-size:14px; font-weight:500; transition:all .15s ease;
+}
+.nav-link:hover{color:var(--c-car-bleu); background:var(--c-car-bleu-bg)}
+.nav-right{display:flex; align-items:center; gap:20px; margin-left:auto}
+
+/* ─── HERO ─── */
+.hero-car{
+  background:#fff;
+  padding:64px 0 0;
+  position:relative; overflow:hidden;
+  min-height:100vh;
+  display:flex; flex-direction:column;
+}
+.hero-car .container{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  position:relative; z-index:1;
+  flex:1;
+}
+.hero-grid{
+  display:grid; grid-template-columns:1fr 1.05fr;
+  gap:48px; align-items:center;
+  min-height:calc(100vh - 64px);
+  padding:56px 0 0;
+}
+
+/* Left — text */
+.hero-eyebrow{
+  font-family:var(--ff-mono); font-size:11.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--c-car-bleu);
+  margin-bottom:24px; display:flex; align-items:center; gap:12px;
+}
+.hero-eyebrow::before{content:""; width:28px; height:1px; background:var(--c-car-bleu)}
+.hero-car h1{
+  font-size:64px; line-height:1.02; letter-spacing:-.038em;
+  font-weight:800; margin:0 0 22px; color:var(--c-vert-nuit);
+}
+.hero-car h1 em{font-style:normal; color:var(--c-car-bleu-clair)}
+.hero-car .lede{
+  font-size:16.5px; color:var(--c-gris-500); line-height:1.6;
+  max-width:460px; margin:0 0 36px;
+}
+.hero-cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px}
+.hero-stats{
+  display:flex; gap:0;
+  border-top:1px solid var(--c-gris-200); padding-top:28px;
+}
+.hero-stats .hs{
+  padding:0 28px 0 0;
+  margin-right:28px;
+  border-right:1px solid var(--c-gris-200);
+}
+.hero-stats .hs:last-child{border-right:none; margin-right:0}
+.hero-stats .hs-label{
+  font-family:var(--ff-mono); font-size:9.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--c-gris-400); margin-bottom:5px;
+}
+.hero-stats .hs-val{
+  font-size:22px; font-weight:800; letter-spacing:-.025em; color:var(--c-vert-nuit);
+}
+
+/* Right — visual panel */
+.hero-visual-car{
+  background:linear-gradient(158deg, var(--c-car-bleu-xdark) 0%, var(--c-car-bleu) 52%, #29B6F6 100%);
+  border-radius:28px 28px 0 0;
+  padding:36px 36px 0;
+  align-self:stretch;
+  display:flex; flex-direction:column;
+  position:relative; overflow:hidden;
+}
+.hero-visual-car::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 15%, rgba(255,255,255,.07), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(25deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px, transparent 1px, transparent 80px);
+  pointer-events:none;
+}
+
+/* Before/after cards */
+.ba-cards{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+  flex:1; position:relative; z-index:1;
+}
+.ba-card{
+  border-radius:18px; overflow:hidden;
+  display:flex; flex-direction:column;
+  min-height:380px;
+  position:relative;
+}
+.ba-card.avant{
+  background:linear-gradient(160deg, #061829 0%, #0B3D6B 100%);
+}
+.ba-card.apres{
+  background:linear-gradient(160deg, #1976D2 0%, #4FC3F7 100%);
+}
+.ba-label{
+  font-family:var(--ff-mono); font-size:10px; letter-spacing:.22em;
+  text-transform:uppercase; color:rgba(255,255,255,.65);
+  padding:16px 18px 0; position:relative; z-index:1;
+}
+.ba-placeholder{
+  flex:1;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.ba-placeholder svg{opacity:.12}
+.avant .ba-placeholder{
+  background:repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px,
+    transparent 1px, transparent 14px
+  );
+}
+.apres .ba-placeholder{
+  background:linear-gradient(180deg, transparent 0%, rgba(255,255,255,.08) 100%);
+}
+.ba-caption{
+  padding:16px 18px;
+  border-top:1px solid rgba(255,255,255,.12);
+  position:relative; z-index:1;
+}
+.ba-caption .bc-main{
+  font-size:13px; font-weight:600; color:#fff; margin-bottom:2px;
+}
+.ba-caption .bc-sub{
+  font-size:11.5px; color:rgba(255,255,255,.55);
+}
+.ba-caption .bc-highlight{
+  font-size:20px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1.15;
+}
+.gallery-row{
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(8px);
+  border-radius:14px; padding:16px 20px;
+  margin-top:14px; position:relative; z-index:1;
+  cursor:pointer; transition:background .15s ease;
+}
+.gallery-row:hover{background:rgba(255,255,255,.18)}
+.gallery-row-left{}
+.gallery-row .gr-title{font-size:14px; font-weight:700; color:#fff; margin-bottom:3px}
+.gallery-row .gr-count{
+  font-family:var(--ff-mono); font-size:11px; color:rgba(255,255,255,.55); letter-spacing:.04em;
+}
+.gallery-row .gr-arrow{
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(255,255,255,.18); display:grid; place-items:center; color:#fff;
+  transition:all .2s ease; flex-shrink:0;
+}
+.gallery-row:hover .gr-arrow{background:rgba(255,255,255,.32); transform:translateX(4px)}
+
+/* ─── TRUST BAR ─── */
+.trust-bar{
+  background:var(--c-blanc-casse);
+  border-bottom:1px solid var(--c-gris-200);
+}
+.trust-bar .inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.trust-item{
+  display:flex; align-items:center; gap:14px;
+  padding:24px;
+  border-right:1px solid var(--c-gris-200);
+}
+.trust-item:first-child{padding-left:0}
+.trust-item:last-child{border-right:none}
+.trust-ico{
+  width:42px; height:42px; border-radius:11px;
+  background:var(--c-car-bleu-bg); color:var(--c-car-bleu);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.trust-item h5{margin:0 0 2px; font-size:14.5px; font-weight:700; color:var(--c-vert-nuit)}
+.trust-item p{margin:0; font-size:12.5px; color:var(--c-gris-400); line-height:1.35}
+
+/* ─── SECTIONS COMMUNES ─── */
+.section{padding:96px 0}
+.container{max-width:1280px; margin:0 auto; padding:0 32px}
+.section-head{
+  display:grid; grid-template-columns:1fr 1.2fr; gap:64px;
+  align-items:end; margin-bottom:56px;
+}
+.lbl{
+  font-family:var(--ff-mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--c-car-bleu);
+  margin-bottom:16px; display:flex; align-items:center; gap:12px;
+}
+.lbl::before{content:""; width:28px; height:1px; background:var(--c-car-bleu)}
+.section-head h2{
+  font-size:44px; line-height:1.06; letter-spacing:-.025em;
+  font-weight:700; margin:0; color:var(--c-vert-nuit);
+}
+.section-head .desc{
+  font-size:15.5px; color:var(--c-gris-500); line-height:1.65;
+}
+
+/* ─── PRESTATIONS ─── */
+.prestations-section{background:#fff; border-top:1px solid var(--c-gris-200)}
+.prestations-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.srv-card{
+  padding:26px 28px; border-radius:18px;
+  border:1px solid var(--c-gris-200);
+  background:var(--c-blanc-casse);
+  display:flex; flex-direction:column; gap:14px;
+  transition:all .2s ease;
+}
+.srv-card:hover{
+  border-color:rgba(21,101,168,.3);
+  box-shadow:0 6px 24px rgba(21,101,168,.08);
+  transform:translateY(-2px);
+}
+.srv-ico{
+  width:48px; height:48px; border-radius:12px;
+  background:var(--c-car-bleu-bg); color:var(--c-car-bleu);
+  display:grid; place-items:center;
+}
+.srv-card h4{margin:0; font-size:16px; font-weight:700; color:var(--c-vert-nuit)}
+.srv-card p{margin:0; font-size:13.5px; color:var(--c-gris-500); line-height:1.55}
+.srv-tag{
+  display:inline-flex; font-family:var(--ff-mono); font-size:10.5px;
+  letter-spacing:.06em; color:var(--c-car-bleu);
+  background:var(--c-car-bleu-bg); padding:4px 10px; border-radius:20px;
+  margin-top:auto; font-weight:600;
+}
+
+/* ─── GALLERY AVANT/APRÈS ─── */
+.gallery-section{background:var(--c-blanc-casse); border-top:1px solid var(--c-gris-200)}
+.gallery-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+}
+.gallery-pair{
+  border-radius:20px; overflow:hidden; border:1px solid var(--c-gris-200);
+  background:#fff;
+  transition:all .2s ease;
+  cursor:pointer;
+}
+.gallery-pair:hover{
+  box-shadow:0 10px 32px rgba(21,101,168,.12); transform:translateY(-3px);
+  border-color:rgba(21,101,168,.2);
+}
+.gp-images{display:grid; grid-template-columns:1fr 1fr; height:200px}
+.gp-avant{
+  background:linear-gradient(160deg, #0a1e30 0%, #0B3D6B 100%);
+  display:flex; flex-direction:column;
+  padding:12px;
+}
+.gp-apres{
+  background:linear-gradient(160deg, #1976D2 0%, #4FC3F7 100%);
+  display:flex; flex-direction:column;
+  padding:12px;
+}
+.gp-tag{
+  font-family:var(--ff-mono); font-size:9.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:rgba(255,255,255,.6);
+}
+.gp-meta{
+  margin-top:auto;
+  display:flex; gap:4px; flex-wrap:wrap;
+}
+.gp-chip{
+  background:rgba(255,255,255,.15); color:#fff;
+  font-size:11px; font-weight:600; padding:3px 8px; border-radius:6px;
+}
+.gp-info{padding:16px 18px}
+.gp-title{font-size:14px; font-weight:700; color:var(--c-vert-nuit); margin-bottom:4px}
+.gp-detail{font-size:12.5px; color:var(--c-gris-400)}
+
+/* ─── PROCESS ─── */
+.how-section{background:#fff; border-top:1px solid var(--c-gris-200)}
+.steps-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  position:relative;
+}
+.steps-grid::before{
+  content:""; position:absolute;
+  top:33px; left:calc(12.5% + 20px); right:calc(12.5% + 20px);
+  height:1px; background:var(--c-gris-200); z-index:0;
+}
+.step{display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 20px; position:relative; z-index:1}
+.step-num{
+  width:66px; height:66px; border-radius:50%;
+  background:#fff; border:2px solid var(--c-gris-200);
+  display:grid; place-items:center;
+  color:var(--c-car-bleu); margin-bottom:22px;
+  font-family:var(--ff-mono); font-size:18px; font-weight:700;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  transition:all .2s ease;
+}
+.step:hover .step-num{
+  background:var(--c-car-bleu); color:#fff; border-color:var(--c-car-bleu);
+}
+.step h4{margin:0 0 6px; font-size:16px; font-weight:700; color:var(--c-vert-nuit)}
+.step p{margin:0; font-size:13.5px; color:var(--c-gris-500); line-height:1.5}
+.step .step-ico-wrap{
+  width:66px; height:66px; border-radius:50%;
+  background:#fff; border:2px solid var(--c-gris-200);
+  display:grid; place-items:center;
+  color:var(--c-car-bleu); margin-bottom:22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  transition:all .2s ease;
+}
+.step:hover .step-ico-wrap{background:var(--c-car-bleu); color:#fff; border-color:var(--c-car-bleu)}
+
+/* ─── ASSURANCES ─── */
+.assurances-section{background:var(--c-blanc-casse); border-top:1px solid var(--c-gris-200)}
+.assurances-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center}
+.ass-info .lbl{margin-bottom:16px}
+.ass-info h3{
+  font-size:40px; font-weight:800; letter-spacing:-.025em;
+  color:var(--c-vert-nuit); margin:0 0 16px; line-height:1.1;
+}
+.ass-info p{font-size:15.5px; color:var(--c-gris-500); line-height:1.65; margin:0 0 28px}
+.ass-checklist{
+  list-style:none; padding:0; margin:0 0 32px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.ass-checklist li{
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:14.5px; color:var(--c-vert-nuit); font-weight:500;
+}
+.ass-check{
+  width:22px; height:22px; border-radius:50%;
+  background:var(--c-car-bleu-bg); color:var(--c-car-bleu);
+  display:grid; place-items:center; flex-shrink:0; margin-top:1px;
+}
+.insurers-panel{
+  background:linear-gradient(155deg, var(--c-car-bleu-dark) 0%, var(--c-car-bleu) 100%);
+  border-radius:24px; padding:36px;
+  position:relative; overflow:hidden;
+}
+.insurers-panel::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 60% at 80% 20%, rgba(255,255,255,.08), transparent 55%);
+  pointer-events:none;
+}
+.ip-label{
+  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:rgba(255,255,255,.5);
+  margin-bottom:20px; position:relative; z-index:1;
+}
+.ip-list{
+  display:grid; grid-template-columns:1fr 1fr; gap:10px;
+  position:relative; z-index:1; margin-bottom:28px;
+}
+.ip-item{
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:12px 16px;
+  font-size:13.5px; font-weight:600; color:#fff;
+}
+.ip-note{
+  background:rgba(255,255,255,.08); border-radius:12px;
+  padding:14px 18px; position:relative; z-index:1;
+  font-size:13px; color:rgba(255,255,255,.75); line-height:1.5;
+}
+.ip-note strong{color:#fff}
+
+/* ─── POURQUOI NOUS ─── */
+.why-car-section{background:var(--c-vert-nuit); color:#fff; padding:96px 0; position:relative; overflow:hidden}
+.why-car-section::before{
+  content:""; position:absolute; right:-150px; top:-150px;
+  width:420px; height:420px; border-radius:50%;
+  background:radial-gradient(circle, rgba(21,101,168,.15), transparent 65%);
+  pointer-events:none;
+}
+.why-car-section::after{
+  content:""; position:absolute; left:-100px; bottom:-100px;
+  width:350px; height:350px; border-radius:50%;
+  background:radial-gradient(circle, rgba(144,202,249,.07), transparent 65%);
+  pointer-events:none;
+}
+.why-car-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; position:relative; z-index:1}
+.why-car-card{
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.07);
+  border-radius:18px; padding:26px 28px;
+  display:flex; gap:18px; align-items:flex-start; transition:all .2s ease;
+}
+.why-car-card:hover{background:rgba(255,255,255,.08)}
+.wcc-ico{
+  width:46px; height:46px; border-radius:12px;
+  background:rgba(21,101,168,.3); color:var(--c-car-bleu-pastel);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.wcc-body h4{margin:0 0 5px; font-size:16px; font-weight:700}
+.wcc-body p{margin:0; font-size:13.5px; color:rgba(255,255,255,.55); line-height:1.5}
+
+/* ─── STATS ─── */
+.stats-car-section{
+  background:linear-gradient(135deg, var(--c-car-bleu-xdark) 0%, var(--c-car-bleu-dark) 50%, var(--c-car-bleu) 100%);
+  color:#fff; padding:96px 0; position:relative; overflow:hidden;
+}
+.stats-car-section::before{
+  content:""; position:absolute; inset:0;
+  background:repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 80px);
+  pointer-events:none;
+}
+.stats-car-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; z-index:1}
+.stat-car-block{border-left:1px solid rgba(255,255,255,.15); padding-left:28px}
+.stat-car-block:first-child{border-left:none; padding-left:0}
+.stat-car-block .num{font-size:56px; font-weight:800; line-height:1; letter-spacing:-.03em; margin-bottom:10px; display:flex; align-items:baseline; gap:6px}
+.stat-car-block .num small{font-size:20px; opacity:.65; font-weight:500}
+.stat-car-block .num em{font-style:normal; color:var(--c-car-bleu-pastel)}
+.stat-car-block h5{margin:0 0 5px; font-size:14px; font-weight:700}
+.stat-car-block p{margin:0; font-size:12.5px; color:rgba(255,255,255,.5); line-height:1.45}
+
+/* ─── AVIS ─── */
+.avis-section{background:#fff; border-top:1px solid var(--c-gris-200)}
+.avis-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.avis-card{
+  padding:26px 28px; border-radius:18px;
+  background:var(--c-blanc-casse); border:1px solid var(--c-gris-200);
+}
+.avis-stars{display:flex; gap:3px; margin-bottom:12px; color:#F59E0B}
+.avis-text{font-size:14px; color:var(--c-gris-500); line-height:1.6; margin:0 0 18px; font-style:italic}
+.avis-author{display:flex; align-items:center; gap:12px}
+.avis-avatar{
+  width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg, var(--c-car-bleu) 0%, var(--c-car-bleu-dark) 100%);
+  color:#fff; display:grid; place-items:center; font-weight:700; font-size:13px; flex-shrink:0;
+}
+.avis-name{font-size:13.5px; font-weight:700; color:var(--c-vert-nuit)}
+.avis-date{font-size:12px; color:var(--c-gris-400)}
+
+/* ─── BANNER DEVIS ─── */
+.devis-banner{
+  background:linear-gradient(135deg, var(--c-car-bleu-dark) 0%, var(--c-car-bleu) 60%, #29B6F6 100%);
+  padding:56px 0; text-align:center; color:#fff; position:relative; overflow:hidden;
+}
+.devis-banner::before{
+  content:""; position:absolute; inset:0;
+  background:repeating-linear-gradient(135deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 60px);
+  pointer-events:none;
+}
+.db-inner{position:relative; z-index:1}
+.db-label{
+  font-family:var(--ff-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--c-car-bleu-pastel); margin-bottom:14px;
+}
+.devis-banner h2{font-size:44px; font-weight:700; letter-spacing:-.03em; margin:0 0 12px}
+.devis-banner p{font-size:16px; color:rgba(255,255,255,.8); margin:0 auto 28px; max-width:520px}
+.db-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+/* ─── CTA FINAL ─── */
+.cta-car-section{padding:96px 0; background:var(--c-blanc-casse); text-align:center; border-top:1px solid var(--c-gris-200)}
+.cta-car-section h2{
+  font-size:48px; line-height:1.05; letter-spacing:-.03em; font-weight:800;
+  margin:0 0 14px; color:var(--c-vert-nuit);
+}
+.cta-car-section h2 em{font-style:normal; color:var(--c-car-bleu)}
+.cta-car-section > .container > p{font-size:16.5px; color:var(--c-gris-500); margin:0 auto 32px; max-width:520px}
+.cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--c-vert-nuit); color:rgba(255,255,255,.65); padding:72px 0 28px}
+.footer-grid{
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px;
+  padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.09);
+}
+.footer-brand{display:inline-flex; align-items:center; gap:10px; margin-bottom:16px}
+.footer-brand .glyph{
+  width:30px; height:30px; border-radius:8px;
+  background:linear-gradient(135deg, var(--c-car-bleu-clair) 0%, var(--c-car-bleu-dark) 100%);
+  display:grid; place-items:center; color:#fff; font-weight:800; font-size:13px;
+}
+.footer-brand span{font-weight:700; font-size:17px; color:#fff; letter-spacing:-.015em}
+.footer-tagline{font-size:13.5px; color:rgba(255,255,255,.45); line-height:1.55; max-width:270px; margin-bottom:22px}
+.footer-contact{font-size:13.5px; color:rgba(255,255,255,.7); display:flex; flex-direction:column; gap:5px}
+.footer-contact strong{color:#fff; font-weight:600; display:block}
+.footer-col h6{
+  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(255,255,255,.38);
+  margin:0 0 16px; font-weight:600;
+}
+.footer-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px; font-size:13.5px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:22px; font-size:12.5px; color:rgba(255,255,255,.35);
+}
+.footer-legal{display:flex; gap:22px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:980px){
+  .hero-car h1{font-size:42px}
+  .hero-grid{grid-template-columns:1fr; padding-top:32px}
+  .hero-visual-car{border-radius:20px; min-height:400px}
+  .ba-card{min-height:260px}
+  .trust-bar .inner{grid-template-columns:1fr 1fr}
+  .trust-item{border-right:none; border-bottom:1px solid var(--c-gris-200)}
+  .trust-item:nth-child(odd){padding-left:0}
+  .section-head{grid-template-columns:1fr; gap:20px}
+  .section-head h2{font-size:32px}
+  .prestations-grid,.avis-grid,.why-car-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr 1fr; gap:28px}
+  .steps-grid::before{display:none}
+  .assurances-grid{grid-template-columns:1fr}
+  .stats-car-grid{grid-template-columns:1fr 1fr; gap:24px}
+  .stat-car-block{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,.1); padding-top:22px}
+  .stat-car-block:first-child{border-top:none; padding-top:0}
+  .footer-grid{grid-template-columns:1fr 1fr; gap:28px}
+  .nav-links{display:none}
+  .hero-stats{flex-direction:column; gap:16px}
+  .hero-stats .hs{border-right:none; margin-right:0; padding:0; border-bottom:1px solid var(--c-gris-200); padding-bottom:16px}
+  .hero-stats .hs:last-child{border-bottom:none; padding-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+/* ─── ICONS ─── */
+const Ico = {
+  Arrow: ({size=18}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>,
+  ArrowUpRight: ({size=14}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17l9-9M16 8H8M16 8v8"/></svg>,
+  Check: ({size=11}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>,
+  Phone: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>,
+  Star: ({size=14, fill=false}) => <svg width={size} height={size} viewBox="0 0 24 24" fill={fill?"currentColor":"none"} stroke="currentColor" strokeWidth="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>,
+  Shield: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+  Paint: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M3 9v6a2 2 0 0 0 2 2h7"/><path d="M16 19a2 2 0 1 0 4 0c0-1-1-2-2-3-1 1-2 2-2 3z"/></svg>,
+  Wrench: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-1-1-2.5 2.5-2.5z"/></svg>,
+  Car: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 11h18l-2-5a2 2 0 0 0-2-1H7a2 2 0 0 0-2 1l-2 5zM3 11v6h2v-2h14v2h2v-6M7 14h.01M17 14h.01"/></svg>,
+  Zap: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  Clock: ({size=20}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>,
+  Sparkle: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>,
+  Layers: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
+  Eye: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
+  Key: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="8" cy="15" r="5"/><path d="M15.09 10.9L21 5M21 5h-3M21 5v3"/></svg>,
+  FileText: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,
+  Truck: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>,
+  Award: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>,
+  Euro: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 10h10M4 14h10M19 5a9 9 0 1 0 0 14"/></svg>,
+};
+
+/* ─── NAVBAR ─── */
+function Nav(){
+  return (
+    <nav className="topnav">
+      <div className="inner">
+        <div style={{display:'flex', alignItems:'center'}}>
+          <a href="index.html" className="nav-brand">
+            <div className="glyph">C</div>
+            <div className="brand-name">Clinic <span>Carrosserie</span></div>
+          </a>
+          <div className="nav-links">
+            <a className="nav-link" href="#prestations">Prestations</a>
+            <a className="nav-link" href="#gallery">Avant / Après</a>
+            <a className="nav-link" href="#assurances">Assurances</a>
+            <a className="nav-link" href="#atelier">Atelier</a>
+          </div>
+        </div>
+        <a className="btn btn-car" href="#devis">
+          Demander un devis
+        </a>
+      </div>
+    </nav>
+  );
+}
+
+/* ─── HERO ─── */
+function Hero(){
+  return (
+    <section className="hero-car">
+      <div className="container">
+        <div className="hero-grid">
+
+          {/* Left */}
+          <div>
+            <div className="hero-eyebrow">Clinic Carrosserie · Réparation</div>
+            <h1>Votre voiture,<br/>comme <em>sortie<br/>d'usine.</em></h1>
+            <p className="lede">
+              Tôlerie, peinture cabine, débosselage sans peinture, polissage.
+              Atelier certifié, prise en charge assurance possible.
+            </p>
+            <div className="hero-cta-row">
+              <a className="btn btn-car btn-lg" href="#devis">
+                Demander un devis sous 24 h
+              </a>
+              <a className="btn btn-ghost btn-lg" href="#gallery">
+                Voir nos réalisations
+              </a>
+            </div>
+            <div className="hero-stats">
+              <div className="hs">
+                <div className="hs-label">Devis sous</div>
+                <div className="hs-val">24 h</div>
+              </div>
+              <div className="hs">
+                <div className="hs-label">Garantie peinture</div>
+                <div className="hs-val">2 ans</div>
+              </div>
+              <div className="hs">
+                <div className="hs-label">Assurances</div>
+                <div className="hs-val">Toutes</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — before/after visual */}
+          <div className="hero-visual-car">
+            <div className="ba-cards">
+              <div className="ba-card avant">
+                <span className="ba-label">AVANT</span>
+                <div className="ba-placeholder">
+                  <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                    <path d="M3 11h18l-2-5a2 2 0 0 0-2-1H7a2 2 0 0 0-2 1l-2 5zM3 11v6h2v-2h14v2h2v-6M7 14h.01M17 14h.01"/>
+                    <path d="M9 11l-1-3M15 11l1-3" strokeWidth="1" opacity=".5"/>
+                  </svg>
+                </div>
+                <div className="ba-caption">
+                  <div className="bc-main">Renault Clio</div>
+                  <div className="bc-sub">choc latéral droit</div>
+                </div>
+              </div>
+              <div className="ba-card apres">
+                <span className="ba-label">APRÈS</span>
+                <div className="ba-placeholder">
+                  <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                    <path d="M3 11h18l-2-5a2 2 0 0 0-2-1H7a2 2 0 0 0-2 1l-2 5zM3 11v6h2v-2h14v2h2v-6M7 14h.01M17 14h.01"/>
+                    <path d="M20 6L9 17l-5-5" strokeWidth="2" opacity=".7"/>
+                  </svg>
+                </div>
+                <div className="ba-caption">
+                  <div className="bc-highlight">3 jours</div>
+                  <div className="bc-sub">en atelier</div>
+                </div>
+              </div>
+            </div>
+            <a className="gallery-row" href="#gallery">
+              <div className="gallery-row-left">
+                <div className="gr-title">Galerie avant / après</div>
+                <div className="gr-count">142 interventions documentées</div>
+              </div>
+              <div className="gr-arrow"><Ico.Arrow size={18}/></div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── TRUST BAR ─── */
+function TrustBar(){
+  const items = [
+    { ico:<Ico.Clock size={20}/>, t:"Devis sous 24 h", d:"Réponse garantie le jour ouvré suivant" },
+    { ico:<Ico.Shield size={20}/>, t:"Garantie peinture 2 ans", d:"Sur tous nos travaux de peinture cabine" },
+    { ico:<Ico.Award size={20}/>, t:"Certifié Qualibody", d:"Label qualité carrosserie reconnu" },
+    { ico:<Ico.Truck size={20}/>, t:"Véhicule de prêt", d:"Disponible sur demande, sous réserve" },
+  ];
+  return (
+    <div className="trust-bar">
+      <div className="inner">
+        {items.map((it,i) => (
+          <div className="trust-item" key={i}>
+            <div className="trust-ico">{it.ico}</div>
+            <div>
+              <h5>{it.t}</h5>
+              <p>{it.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─── PRESTATIONS ─── */
+function Prestations(){
+  const services = [
+    { ico:<Ico.Wrench/>, t:"Tôlerie", d:"Redressage, débosselage, remplacement de pièces. Travail à la main par nos carrossiers sur toutes marques.", tag:"Toutes marques" },
+    { ico:<Ico.Paint/>, t:"Peinture cabine", d:"Teinte assortie à la teinte d'origine grâce à notre spectrophotomètre. Garantie 2 ans sur l'application.", tag:"Garantie 2 ans" },
+    { ico:<Ico.Zap/>, t:"Débosselage sans peinture", d:"Technique PDR pour les bosses sans éraflure. Pas de peinture, résultat parfait, durée réduite à quelques heures.", tag:"Sans peinture" },
+    { ico:<Ico.Sparkle/>, t:"Polissage & lustrage", d:"Élimination des micro-rayures, oxydation, faux plis de peinture. Restitution d'un éclat neuf sur peinture existante.", tag:"Éclat neuf" },
+    { ico:<Ico.Eye/>, t:"Remplacement de vitres", d:"Pare-brise, lunette arrière, vitres latérales. Pose homologuée avec mastic d'origine constructeur.", tag:"Homologué" },
+    { ico:<Ico.Layers/>, t:"Traitement anti-corrosion", d:"Protection des soubassements, injection de cire dans les cavités. Traitement préventif ou curatif sur tous véhicules.", tag:"Préventif & curatif" },
+  ];
+  return (
+    <section className="section prestations-section" id="prestations">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Nos prestations</div>
+            <h2>Six métiers,<br/>un seul atelier.</h2>
+          </div>
+          <p className="desc">
+            Du débosselage au remplacement de vitres, en passant par la peinture cabine et
+            le polissage — nos carrossiers maîtrisent l'ensemble des interventions sur caisse.
+          </p>
+        </div>
+        <div className="prestations-grid">
+          {services.map((s,i) => (
+            <div className="srv-card" key={i}>
+              <div className="srv-ico">{s.ico}</div>
+              <h4>{s.t}</h4>
+              <p>{s.d}</p>
+              <span className="srv-tag">{s.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── GALERIE AVANT/APRÈS ─── */
+function Gallery(){
+  const pairs = [
+    { avant:"Choc frontal", apres:"Réparé en 4 j", model:"Peugeot 208", detail:"Capot + aile avant gauche", tag:"Tôlerie + peinture" },
+    { avant:"Choc latéral", apres:"Réparé en 3 j", model:"Renault Clio", detail:"Porte arrière droite", tag:"Débosselage PDR" },
+    { avant:"Rayures profondes", apres:"Réparé en 2 j", model:"Volkswagen Golf", detail:"Bas de caisse complet", tag:"Peinture cabine" },
+    { avant:"Impact arrière", apres:"Réparé en 5 j", model:"Citroën C3", detail:"Hayon + pare-chocs arrière", tag:"Tôlerie + peinture" },
+    { avant:"Grêle sévère", apres:"Réparé en 2 j", model:"BMW Série 3", detail:"Toit + capot + ailes", tag:"Débosselage PDR" },
+    { avant:"Oxydation générale", apres:"Réparé en 3 j", model:"Toyota Yaris", detail:"Polissage complet + vernis", tag:"Polissage lustrage" },
+  ];
+  return (
+    <section className="section gallery-section" id="gallery">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Avant / Après</div>
+            <h2>142 réalisations<br/>documentées.</h2>
+          </div>
+          <p className="desc">
+            Chaque intervention est photographiée avant et après. Pas de retouche, pas de mise en scène —
+            uniquement le travail réel de notre équipe.
+          </p>
+        </div>
+        <div className="gallery-grid">
+          {pairs.map((p,i) => (
+            <div className="gallery-pair" key={i}>
+              <div className="gp-images">
+                <div className="gp-avant">
+                  <span className="gp-tag">AVANT</span>
+                  <div className="gp-meta" style={{marginTop:'auto'}}>
+                    <span className="gp-chip">{p.avant}</span>
+                  </div>
+                </div>
+                <div className="gp-apres">
+                  <span className="gp-tag">APRÈS</span>
+                  <div className="gp-meta">
+                    <span className="gp-chip">{p.apres}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="gp-info">
+                <div className="gp-title">{p.model} — {p.detail}</div>
+                <div className="gp-detail">{p.tag}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── COMMENT ÇA MARCHE ─── */
+function HowItWorks(){
+  const steps = [
+    { ico:<Ico.FileText size={22}/>, t:"Demande de devis", d:"En ligne ou par téléphone. Décrivez le sinistre et envoyez des photos. Réponse sous 24 h." },
+    { ico:<Ico.Eye size={22}/>, t:"Estimation sur place", d:"Passage en atelier pour expertise gratuite. Devis détaillé pièces et main-d'œuvre avant toute décision." },
+    { ico:<Ico.Wrench size={22}/>, t:"Réparation en atelier", d:"Votre véhicule entre dans notre atelier. Suivi par SMS à chaque étape. Véhicule de prêt disponible." },
+    { ico:<Ico.Car size={22}/>, t:"Livraison soignée", d:"Votre voiture livrée propre, contrôlée. Garantie peinture signée. Facture et garantie remises en main propre." },
+  ];
+  return (
+    <section className="section how-section">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Notre processus</div>
+            <h2>De la demande<br/>à la livraison.</h2>
+          </div>
+          <p className="desc">
+            Quatre étapes claires. Vous savez à chaque moment où en est votre véhicule
+            et combien coûte l'intervention, avant qu'on commence.
+          </p>
+        </div>
+        <div className="steps-grid">
+          {steps.map((s,i) => (
+            <div className="step" key={i}>
+              <div className="step-ico-wrap">{s.ico}</div>
+              <h4>{s.t}</h4>
+              <p>{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── ASSURANCES ─── */
+function Assurances(){
+  return (
+    <section className="section assurances-section" id="assurances">
+      <div className="container">
+        <div className="assurances-grid">
+          <div className="ass-info">
+            <div className="lbl">Assurances</div>
+            <h3>Agréé toutes<br/>compagnies.</h3>
+            <p>
+              Nous gérons directement la prise en charge avec votre assureur.
+              Vous n'avancez rien, vous ne vous occupez de rien. On s'occupe du dossier
+              de A à Z, de l'expertise contradictoire à la facturation directe.
+            </p>
+            <ul className="ass-checklist">
+              <li>
+                <span className="ass-check"><Ico.Check /></span>
+                Expertise contradictoire organisée par nos soins
+              </li>
+              <li>
+                <span className="ass-check"><Ico.Check /></span>
+                Aucune avance de frais pour votre franchise
+              </li>
+              <li>
+                <span className="ass-check"><Ico.Check /></span>
+                Facturation directe à votre compagnie d'assurance
+              </li>
+              <li>
+                <span className="ass-check"><Ico.Check /></span>
+                Véhicule de prêt pendant la durée des travaux
+              </li>
+              <li>
+                <span className="ass-check"><Ico.Check /></span>
+                Compte-rendu d'intervention fourni à l'assureur
+              </li>
+            </ul>
+            <a className="btn btn-car btn-lg" href="#devis">
+              Ouvrir un dossier sinistre
+            </a>
+          </div>
+          <div className="insurers-panel">
+            <div className="ip-label">Compagnies partenaires</div>
+            <div className="ip-list">
+              {["AXA","Allianz","MAIF","Generali","Groupama","MMA","Macif","Covéa","Direct Assurance","MAAF","GMF","Matmut"].map((ins,i) => (
+                <div className="ip-item" key={i}>{ins}</div>
+              ))}
+            </div>
+            <div className="ip-note">
+              <strong>Pas dans la liste ?</strong> On travaille avec toutes les compagnies — appelez-nous,
+              on vérifie l'agrément en direct.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── BANNER DEVIS ─── */
+function DevisBanner(){
+  return (
+    <div className="devis-banner" id="devis">
+      <div className="container">
+        <div className="db-inner">
+          <div className="db-label">Devis gratuit · Réponse sous 24 h</div>
+          <h2>Votre devis en un message.</h2>
+          <p>Décrivez le dommage, envoyez quelques photos. On vous répond avant la fin du jour ouvré.</p>
+          <div className="db-row">
+            <a className="btn btn-xl" href="mailto:devis@clinicauto.fr"
+              style={{background:'#fff', color:'var(--c-car-bleu)', fontWeight:700}}>
+              Envoyer des photos par mail
+            </a>
+            <a className="btn btn-ghost-white btn-xl" href="tel:+33186932480">
+              <Ico.Phone size={18}/> 01 86 93 24 80
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── POURQUOI NOUS ─── */
+function WhyUs(){
+  const items = [
+    { ico:<Ico.Award/>, t:"Certifié Qualibody", d:"Label qualité carrosserie délivré après audit de nos locaux, outils et procédures. Gage de sérieux reconnu par les assureurs." },
+    { ico:<Ico.Shield/>, t:"Garantie peinture 2 ans", d:"Toutes nos applications peinture cabine sont garanties deux ans pièces et main-d'œuvre. Sans condition." },
+    { ico:<Ico.Clock/>, t:"Délais respectés", d:"Date de livraison contractualisée à la remise du véhicule. Retard ? On vous appelle, on justifie, on compense." },
+    { ico:<Ico.Euro/>, t:"Devis transparent", d:"Pièces et main-d'œuvre détaillées à la ligne. Aucun dépassement sans votre accord préalable. Facture identique au devis." },
+    { ico:<Ico.Truck/>, t:"Véhicule de prêt", d:"Disponible à la journée pendant vos travaux, sous réserve de disponibilité. Inclus pour les sinistres pris en charge assurance." },
+    { ico:<Ico.Car/>, t:"Toutes marques", d:"Véhicules français, allemands, japonais, coréens — notre atelier est équipé et formé pour traiter toutes les carrosseries." },
+  ];
+  return (
+    <section className="why-car-section" id="atelier">
+      <div className="container">
+        <div className="section-head" style={{marginBottom:48}}>
+          <div>
+            <div className="lbl" style={{color:'rgba(144,202,249,.8)'}}>
+              <span style={{width:28, height:1, background:'rgba(144,202,249,.5)', display:'block'}}></span>
+              Pourquoi nous choisir
+            </div>
+            <h2 style={{color:'#fff', fontSize:44}}>Six raisons de<br/>nous confier votre voiture.</h2>
+          </div>
+          <p className="desc" style={{color:'rgba(255,255,255,.55)'}}>
+            Pas un groupement, pas une franchise. Un atelier indépendant avec ses propres
+            carrossiers, ses propres outils, sa propre exigence.
+          </p>
+        </div>
+        <div className="why-car-grid">
+          {items.map((it,i) => (
+            <div className="why-car-card" key={i}>
+              <div className="wcc-ico">{it.ico}</div>
+              <div className="wcc-body">
+                <h4>{it.t}</h4>
+                <p>{it.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── STATS ─── */
+function Stats(){
+  return (
+    <section className="stats-car-section">
+      <div className="container">
+        <div style={{textAlign:'center', marginBottom:60, position:'relative', zIndex:1}}>
+          <div style={{fontFamily:'var(--ff-mono)', fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', color:'var(--c-car-bleu-pastel)', marginBottom:14}}>En chiffres</div>
+          <h2 style={{fontSize:44, fontWeight:800, letterSpacing:'-.03em', margin:'0 0 14px', color:'#fff'}}>L'atelier en chiffres.</h2>
+          <p style={{fontSize:15.5, color:'rgba(255,255,255,.6)', maxWidth:440, margin:'0 auto'}}>Données issues de nos interventions depuis l'ouverture de l'atelier carrosserie en 2021.</p>
+        </div>
+        <div className="stats-car-grid">
+          <div className="stat-car-block">
+            <div className="num">142<em>+</em></div>
+            <h5>Interventions documentées</h5>
+            <p>Dont 94 % prises en charge assurance depuis 2021.</p>
+          </div>
+          <div className="stat-car-block">
+            <div className="num">2<small>ans</small></div>
+            <h5>Garantie peinture</h5>
+            <p>Sur 100 % de nos applications peinture cabine.</p>
+          </div>
+          <div className="stat-car-block">
+            <div className="num">4.9<small>/5</small></div>
+            <h5>Satisfaction clients</h5>
+            <p>84 avis vérifiés sur Google Reviews pour la carrosserie.</p>
+          </div>
+          <div className="stat-car-block">
+            <div className="num">3.2<small>j</small></div>
+            <h5>Délai moyen atelier</h5>
+            <p>De la remise du véhicule à la livraison, toutes réparations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── AVIS ─── */
+function Avis(){
+  const avis = [
+    { init:"CB", n:"Camille B.", d:"Il y a 2 semaines", t:"Choc latéral sur ma Golf. Le devis est arrivé le lendemain matin, la voiture était prête en 3 jours. La teinte est parfaitement assortie. Impossible de voir où c'était abîmé." },
+    { init:"RD", n:"Romain D.", d:"Il y a 1 mois", t:"Sinistre assurance géré entièrement par l'atelier. Aucun formulaire à remplir de mon côté, aucune avance de frais. La voiture était comme neuve, la garantie de 2 ans est rassurante." },
+    { init:"NM", n:"Nadia M.", d:"Il y a 5 semaines", t:"Grêle sur le capot et le toit — j'avais peur du résultat avec le débosselage PDR. Résultat impeccable en deux jours. La peinture n'a pas été touchée. Je recommande sans hésiter." },
+  ];
+  return (
+    <section className="section avis-section">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Avis clients</div>
+            <h2>Ce qu'ils disent<br/>après livraison.</h2>
+          </div>
+          <p className="desc">
+            Avis non triés, extraits de Google Reviews. Derniers avis pour la carrosserie uniquement.
+          </p>
+        </div>
+        <div className="avis-grid">
+          {avis.map((a,i) => (
+            <div className="avis-card" key={i}>
+              <div className="avis-stars">
+                {[...Array(5)].map((_,j) => <Ico.Star key={j} size={14} fill />)}
+              </div>
+              <p className="avis-text">« {a.t} »</p>
+              <div className="avis-author">
+                <div className="avis-avatar">{a.init}</div>
+                <div>
+                  <div className="avis-name">{a.n}</div>
+                  <div className="avis-date">{a.d} · Google Reviews</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CTA FINAL ─── */
+function FinalCta(){
+  return (
+    <section className="cta-car-section" id="contact">
+      <div className="container">
+        <div style={{fontFamily:'var(--ff-mono)', fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', color:'var(--c-car-bleu)', marginBottom:14}}>Devis gratuit · Sans engagement</div>
+        <h2>Votre voiture mérite<br/>un <em>résultat parfait.</em></h2>
+        <p>Envoyez des photos du sinistre. On vous répond avec un devis détaillé avant la fin du jour ouvré.</p>
+        <div className="cta-row">
+          <a className="btn btn-car btn-xl" href="mailto:devis@clinicauto.fr">
+            <Ico.FileText size={18}/> Envoyer une demande de devis
+          </a>
+          <a className="btn btn-ghost-dark btn-lg" href="tel:+33186932480">
+            <Ico.Phone size={18}/> 01 86 93 24 80
+          </a>
+        </div>
+        <p style={{marginTop:22, fontSize:13, color:'var(--c-gris-400)'}}>
+          Consultez aussi <a href="depannage.html" style={{color:'var(--c-car-bleu)', fontWeight:600}}>Clinic Dépannage</a> ou <a href="index.html" style={{color:'var(--c-vert-foret)', fontWeight:600}}>ClinicAuto Pro</a>.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FOOTER ─── */
+function Footer(){
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand">
+              <div className="glyph">C</div>
+              <span>ClinicAuto</span>
+            </div>
+            <p className="footer-tagline">Garage, vente B2B et carrosserie. Trois métiers, une équipe, depuis 2014.</p>
+            <div className="footer-contact">
+              <strong>ClinicAuto SAS</strong>
+              <span>42 rue de la Liberté, 93200 Saint-Denis</span>
+              <span>01 86 93 24 80 · contact@clinicauto.fr</span>
+            </div>
+          </div>
+          <div className="footer-col">
+            <h6>Activités</h6>
+            <ul>
+              <li><a href="pro.html">ClinicAuto Pro</a></li>
+              <li><a href="depannage.html">Clinic Dépannage</a></li>
+              <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h6>Société</h6>
+            <ul>
+              <li><a href="#">À propos</a></li>
+              <li><a href="#">Recrutement</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h6>Légal</h6>
+            <ul>
+              <li><a href="#">Mentions légales</a></li>
+              <li><a href="#">CGV / CGU</a></li>
+              <li><a href="#">Politique RGPD</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2026 ClinicAuto SAS · RCS Bobigny 894 217 506</span>
+          <div className="footer-legal">
+            <span>Capital 50 000 €</span>
+            <span>TVA FR 39 894 217 506</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── APP ─── */
+function App(){
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <TrustBar />
+      <Prestations />
+      <Gallery />
+      <HowItWorks />
+      <DevisBanner />
+      <Assurances />
+      <WhyUs />
+      <Stats />
+      <Avis />
+      <FinalCta />
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
