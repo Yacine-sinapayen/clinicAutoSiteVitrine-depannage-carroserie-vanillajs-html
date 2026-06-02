@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clinic Carrosserie — Tôlerie, peinture & débosselage · Toutes assurances</title>
+<title>Clinic Carrosserie — Tôlerie, peinture & débosselage</title>
+<link rel="icon" type="image/svg+xml" href="favicon-car.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -96,6 +97,60 @@ button{font-family:inherit; cursor:pointer; border:none}
 }
 .nav-link:hover{color:var(--c-car-bleu); background:var(--c-car-bleu-bg)}
 .nav-right{display:flex; align-items:center; gap:20px; margin-left:auto}
+
+/* ─── UNIVERSE NAV LINKS ─── */
+.nav-universe-links{display:flex; gap:2px; align-items:center; margin-left:24px}
+.nav-uni-link{
+  color:var(--c-gris-500); padding:7px 12px; border-radius:8px;
+  font-size:13.5px; font-weight:500; transition:all .15s ease;
+  display:flex; align-items:center; gap:7px; white-space:nowrap;
+}
+.nav-uni-link:hover{color:var(--c-noir-doux); background:var(--c-gris-100)}
+.nav-uni-link .swatch{width:7px; height:7px; border-radius:50%; flex-shrink:0}
+.nav-uni-link.pro .swatch{background:#2ECC71}
+.nav-uni-link.dep .swatch{background:#E74C3C}
+.nav-uni-link.mec .swatch{background:#F59E0B}
+.nav-uni-link.car .swatch{background:#1976D2}
+.nav-uni-link.active{color:var(--c-noir-doux); font-weight:600; background:var(--c-gris-100)}
+.nav-mobile-group{display:none; align-items:center; gap:10px}
+.nav-mobile-call{display:grid; width:38px; height:38px; border-radius:50%; color:#fff; place-items:center; flex-shrink:0}
+.nav-burger{
+  display:flex; flex-direction:column; justify-content:center; gap:5px;
+  width:38px; height:38px; border-radius:9px; padding:10px;
+  background:var(--c-gris-100); cursor:pointer; border:none; flex-shrink:0;
+}
+.nav-burger span{display:block; height:2px; border-radius:2px; background:var(--c-noir-doux); transition:all .25s ease}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0; transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-drawer{position:fixed; inset:0; z-index:49; pointer-events:none}
+.mobile-drawer-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s ease}
+.mobile-drawer-panel{
+  position:absolute; top:0; right:0; bottom:0; width:min(300px, 85vw);
+  background:var(--c-vert-nuit); padding:80px 24px 36px;
+  display:flex; flex-direction:column;
+  transform:translateX(100%); transition:transform .3s ease;
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.mobile-drawer.open{pointer-events:all}
+.mobile-drawer.open .mobile-drawer-backdrop{opacity:1}
+.mobile-drawer.open .mobile-drawer-panel{transform:translateX(0)}
+.mobile-nav-links{display:flex; flex-direction:column; gap:4px; margin-bottom:auto}
+.mobile-nav-link{
+  display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:12px;
+  color:#fff; font-size:16px; font-weight:500; transition:background .15s ease;
+}
+.mobile-nav-link:hover{background:rgba(255,255,255,.07)}
+.mobile-nav-link.active{background:rgba(255,255,255,.1); font-weight:600}
+.mobile-nav-link .swatch{width:9px; height:9px; border-radius:50%; flex-shrink:0}
+.mobile-nav-link.pro .swatch{background:#2ECC71}
+.mobile-nav-link.dep .swatch{background:#E74C3C}
+.mobile-nav-link.mec .swatch{background:#F59E0B}
+.mobile-nav-link.car .swatch{background:#1976D2}
+.mobile-drawer-cta{
+  display:flex; align-items:center; gap:10px; padding:14px 18px; border-radius:12px;
+  margin-top:20px; font-weight:600; font-size:15px; justify-content:center; color:#fff;
+}
 
 /* ─── HERO ─── */
 .hero-car{
@@ -395,59 +450,6 @@ button{font-family:inherit; cursor:pointer; border:none}
 }
 .step:hover .step-ico-wrap{background:var(--c-car-bleu); color:#fff; border-color:var(--c-car-bleu)}
 
-/* ─── ASSURANCES ─── */
-.assurances-section{background:var(--c-blanc-casse); border-top:1px solid var(--c-gris-200)}
-.assurances-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center}
-.ass-info .lbl{margin-bottom:16px}
-.ass-info h3{
-  font-size:40px; font-weight:800; letter-spacing:-.025em;
-  color:var(--c-vert-nuit); margin:0 0 16px; line-height:1.1;
-}
-.ass-info p{font-size:15.5px; color:var(--c-gris-500); line-height:1.65; margin:0 0 28px}
-.ass-checklist{
-  list-style:none; padding:0; margin:0 0 32px;
-  display:flex; flex-direction:column; gap:12px;
-}
-.ass-checklist li{
-  display:flex; align-items:flex-start; gap:12px;
-  font-size:14.5px; color:var(--c-vert-nuit); font-weight:500;
-}
-.ass-check{
-  width:22px; height:22px; border-radius:50%;
-  background:var(--c-car-bleu-bg); color:var(--c-car-bleu);
-  display:grid; place-items:center; flex-shrink:0; margin-top:1px;
-}
-.insurers-panel{
-  background:linear-gradient(155deg, var(--c-car-bleu-dark) 0%, var(--c-car-bleu) 100%);
-  border-radius:24px; padding:36px;
-  position:relative; overflow:hidden;
-}
-.insurers-panel::before{
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(ellipse 70% 60% at 80% 20%, rgba(255,255,255,.08), transparent 55%);
-  pointer-events:none;
-}
-.ip-label{
-  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.18em;
-  text-transform:uppercase; color:rgba(255,255,255,.5);
-  margin-bottom:20px; position:relative; z-index:1;
-}
-.ip-list{
-  display:grid; grid-template-columns:1fr 1fr; gap:10px;
-  position:relative; z-index:1; margin-bottom:28px;
-}
-.ip-item{
-  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.12);
-  border-radius:12px; padding:12px 16px;
-  font-size:13.5px; font-weight:600; color:#fff;
-}
-.ip-note{
-  background:rgba(255,255,255,.08); border-radius:12px;
-  padding:14px 18px; position:relative; z-index:1;
-  font-size:13px; color:rgba(255,255,255,.75); line-height:1.5;
-}
-.ip-note strong{color:#fff}
-
 /* ─── POURQUOI NOUS ─── */
 .why-car-section{background:var(--c-vert-nuit); color:#fff; padding:96px 0; position:relative; overflow:hidden}
 .why-car-section::before{
@@ -587,12 +589,13 @@ button{font-family:inherit; cursor:pointer; border:none}
   .gallery-grid{grid-template-columns:1fr 1fr}
   .steps-grid{grid-template-columns:1fr 1fr; gap:28px}
   .steps-grid::before{display:none}
-  .assurances-grid{grid-template-columns:1fr}
-  .stats-car-grid{grid-template-columns:1fr 1fr; gap:24px}
+.stats-car-grid{grid-template-columns:1fr 1fr; gap:24px}
   .stat-car-block{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,.1); padding-top:22px}
   .stat-car-block:first-child{border-top:none; padding-top:0}
   .footer-grid{grid-template-columns:1fr 1fr; gap:28px}
   .nav-links{display:none}
+  .nav-universe-links{display:none}
+  .nav-mobile-group{display:flex}
   .hero-stats{flex-direction:column; gap:16px}
   .hero-stats .hs{border-right:none; margin-right:0; padding:0; border-bottom:1px solid var(--c-gris-200); padding-bottom:16px}
   .hero-stats .hs:last-child{border-bottom:none; padding-bottom:0}
@@ -635,26 +638,66 @@ const Ico = {
 
 /* ─── NAVBAR ─── */
 function Nav(){
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
   return (
-    <nav className="topnav">
-      <div className="inner">
-        <div style={{display:'flex', alignItems:'center'}}>
-          <a href="index.html" className="nav-brand">
-            <div className="glyph">C</div>
-            <div className="brand-name">Clinic <span>Carrosserie</span></div>
-          </a>
-          <div className="nav-links">
-            <a className="nav-link" href="#prestations">Prestations</a>
-            <a className="nav-link" href="#gallery">Avant / Après</a>
-            <a className="nav-link" href="#assurances">Assurances</a>
-            <a className="nav-link" href="#atelier">Atelier</a>
+    <>
+      <nav className="topnav">
+        <div className="inner">
+          <div style={{display:'flex', alignItems:'center'}}>
+            <a href="index.html" className="nav-brand">
+              <div className="glyph">C</div>
+              <div className="brand-name">Clinic <span>Carrosserie</span></div>
+            </a>
+            <div className="nav-universe-links">
+              <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
+              <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage</a>
+              <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Mécanique</a>
+              <a className="nav-uni-link car active" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
+            </div>
+          </div>
+          <div className="nav-right">
+            <a className="btn btn-car" href="#devis" style={{display:'flex', alignItems:'center', gap:8}}>
+              Demander un devis
+            </a>
+            <div className="nav-mobile-group">
+              <a className="nav-mobile-call" href="tel:+33661788505" style={{background:'var(--c-car-bleu)'}} aria-label="Appeler"><Ico.Phone size={18}/></a>
+              <button className={`nav-burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+                <span/><span/><span/>
+              </button>
+            </div>
           </div>
         </div>
-        <a className="btn btn-car" href="#devis">
-          Demander un devis
-        </a>
+      </nav>
+      <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
+        <div className="mobile-drawer-backdrop" onClick={() => setMenuOpen(false)} />
+        <div className="mobile-drawer-panel">
+          <nav className="mobile-nav-links">
+            <a className="mobile-nav-link" href="index.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch" style={{background:'#2ECC71'}}></span> Accueil
+            </a>
+            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> ClinicAuto Pro
+            </a>
+            <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Dépannage
+            </a>
+            <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Mécanique
+            </a>
+            <a className="mobile-nav-link car active" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Carrosserie
+            </a>
+          </nav>
+          <a className="mobile-drawer-cta" href="tel:+33661788505" style={{background:'var(--c-car-bleu)'}}>
+            <Ico.Phone size={18}/> 06 61 78 85 05
+          </a>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
 
@@ -671,7 +714,6 @@ function Hero(){
             <h1>Votre voiture,<br/>comme <em>sortie<br/>d'usine.</em></h1>
             <p className="lede">
               Tôlerie, peinture cabine, débosselage sans peinture, polissage.
-              Atelier certifié, prise en charge assurance possible.
             </p>
             <div className="hero-cta-row">
               <a className="btn btn-car btn-lg" href="#devis">
@@ -689,10 +731,6 @@ function Hero(){
               <div className="hs">
                 <div className="hs-label">Garantie peinture</div>
                 <div className="hs-val">2 ans</div>
-              </div>
-              <div className="hs">
-                <div className="hs-label">Assurances</div>
-                <div className="hs-val">Toutes</div>
               </div>
             </div>
           </div>
@@ -892,64 +930,6 @@ function HowItWorks(){
   );
 }
 
-/* ─── ASSURANCES ─── */
-function Assurances(){
-  return (
-    <section className="section assurances-section" id="assurances">
-      <div className="container">
-        <div className="assurances-grid">
-          <div className="ass-info">
-            <div className="lbl">Assurances</div>
-            <h3>Agréé toutes<br/>compagnies.</h3>
-            <p>
-              Nous gérons directement la prise en charge avec votre assureur.
-              Vous n'avancez rien, vous ne vous occupez de rien. On s'occupe du dossier
-              de A à Z, de l'expertise contradictoire à la facturation directe.
-            </p>
-            <ul className="ass-checklist">
-              <li>
-                <span className="ass-check"><Ico.Check /></span>
-                Expertise contradictoire organisée par nos soins
-              </li>
-              <li>
-                <span className="ass-check"><Ico.Check /></span>
-                Aucune avance de frais pour votre franchise
-              </li>
-              <li>
-                <span className="ass-check"><Ico.Check /></span>
-                Facturation directe à votre compagnie d'assurance
-              </li>
-              <li>
-                <span className="ass-check"><Ico.Check /></span>
-                Véhicule de prêt pendant la durée des travaux
-              </li>
-              <li>
-                <span className="ass-check"><Ico.Check /></span>
-                Compte-rendu d'intervention fourni à l'assureur
-              </li>
-            </ul>
-            <a className="btn btn-car btn-lg" href="#devis">
-              Ouvrir un dossier sinistre
-            </a>
-          </div>
-          <div className="insurers-panel">
-            <div className="ip-label">Compagnies partenaires</div>
-            <div className="ip-list">
-              {["AXA","Allianz","MAIF","Generali","Groupama","MMA","Macif","Covéa","Direct Assurance","MAAF","GMF","Matmut"].map((ins,i) => (
-                <div className="ip-item" key={i}>{ins}</div>
-              ))}
-            </div>
-            <div className="ip-note">
-              <strong>Pas dans la liste ?</strong> On travaille avec toutes les compagnies — appelez-nous,
-              on vérifie l'agrément en direct.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ─── BANNER DEVIS ─── */
 function DevisBanner(){
   return (
@@ -977,11 +957,11 @@ function DevisBanner(){
 /* ─── POURQUOI NOUS ─── */
 function WhyUs(){
   const items = [
-    { ico:<Ico.Award/>, t:"Certifié Qualibody", d:"Label qualité carrosserie délivré après audit de nos locaux, outils et procédures. Gage de sérieux reconnu par les assureurs." },
+    { ico:<Ico.Award/>, t:"Certifié Qualibody", d:"Label qualité carrosserie délivré après audit de nos locaux, outils et procédures. Gage de sérieux et d'exigence." },
     { ico:<Ico.Shield/>, t:"Garantie peinture 2 ans", d:"Toutes nos applications peinture cabine sont garanties deux ans pièces et main-d'œuvre. Sans condition." },
     { ico:<Ico.Clock/>, t:"Délais respectés", d:"Date de livraison contractualisée à la remise du véhicule. Retard ? On vous appelle, on justifie, on compense." },
     { ico:<Ico.Euro/>, t:"Devis transparent", d:"Pièces et main-d'œuvre détaillées à la ligne. Aucun dépassement sans votre accord préalable. Facture identique au devis." },
-    { ico:<Ico.Truck/>, t:"Véhicule de prêt", d:"Disponible à la journée pendant vos travaux, sous réserve de disponibilité. Inclus pour les sinistres pris en charge assurance." },
+    { ico:<Ico.Truck/>, t:"Véhicule de prêt", d:"Disponible à la journée pendant vos travaux, sous réserve de disponibilité." },
     { ico:<Ico.Car/>, t:"Toutes marques", d:"Véhicules français, allemands, japonais, coréens — notre atelier est équipé et formé pour traiter toutes les carrosseries." },
   ];
   return (
@@ -1030,7 +1010,7 @@ function Stats(){
           <div className="stat-car-block">
             <div className="num">142<em>+</em></div>
             <h5>Interventions documentées</h5>
-            <p>Dont 94 % prises en charge assurance depuis 2021.</p>
+            <p>Documentées depuis l'ouverture de l'atelier en 2021.</p>
           </div>
           <div className="stat-car-block">
             <div className="num">2<small>ans</small></div>
@@ -1057,7 +1037,7 @@ function Stats(){
 function Avis(){
   const avis = [
     { init:"CB", n:"Camille B.", d:"Il y a 2 semaines", t:"Choc latéral sur ma Golf. Le devis est arrivé le lendemain matin, la voiture était prête en 3 jours. La teinte est parfaitement assortie. Impossible de voir où c'était abîmé." },
-    { init:"RD", n:"Romain D.", d:"Il y a 1 mois", t:"Sinistre assurance géré entièrement par l'atelier. Aucun formulaire à remplir de mon côté, aucune avance de frais. La voiture était comme neuve, la garantie de 2 ans est rassurante." },
+    { init:"RD", n:"Romain D.", d:"Il y a 1 mois", t:"Réparation gérée entièrement par l'atelier. Très réactifs, aucun souci administratif. La voiture était comme neuve, la garantie de 2 ans est rassurante." },
     { init:"NM", n:"Nadia M.", d:"Il y a 5 semaines", t:"Grêle sur le capot et le toit — j'avais peur du résultat avec le débosselage PDR. Résultat impeccable en deux jours. La peinture n'a pas été touchée. Je recommande sans hésiter." },
   ];
   return (
@@ -1104,7 +1084,7 @@ function FinalCta(){
         <p>Envoyez des photos du sinistre. On vous répond avec un devis détaillé avant la fin du jour ouvré.</p>
         <div className="cta-row">
           <a className="btn btn-car btn-xl" href="mailto:devis@clinicauto.fr">
-            <Ico.FileText size={18}/> Envoyer une demande de devis
+            <Ico.FileText size={18}/> Demander un devis
           </a>
           <a className="btn btn-ghost-dark btn-lg" href="tel:+33661788505">
             <Ico.Phone size={18}/> 06 61 78 85 05
@@ -1184,7 +1164,6 @@ function App(){
       <Gallery />
       <HowItWorks />
       <DevisBanner />
-      <Assurances />
       <WhyUs />
       <Stats />
       <Avis />

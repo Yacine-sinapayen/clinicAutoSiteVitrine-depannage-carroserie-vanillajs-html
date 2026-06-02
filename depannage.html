@@ -96,6 +96,60 @@ button{font-family:inherit; cursor:pointer; border:none}
 }
 .nav-zone svg{color:var(--c-dep-rouge)}
 
+/* ─── UNIVERSE NAV LINKS ─── */
+.nav-universe-links{display:flex; gap:2px; align-items:center; margin-left:24px}
+.nav-uni-link{
+  color:var(--c-gris-500); padding:7px 12px; border-radius:8px;
+  font-size:13.5px; font-weight:500; transition:all .15s ease;
+  display:flex; align-items:center; gap:7px; white-space:nowrap;
+}
+.nav-uni-link:hover{color:var(--c-noir-doux); background:var(--c-gris-100)}
+.nav-uni-link .swatch{width:7px; height:7px; border-radius:50%; flex-shrink:0}
+.nav-uni-link.pro .swatch{background:#2ECC71}
+.nav-uni-link.dep .swatch{background:#E74C3C}
+.nav-uni-link.mec .swatch{background:#F59E0B}
+.nav-uni-link.car .swatch{background:#1976D2}
+.nav-uni-link.active{color:var(--c-noir-doux); font-weight:600; background:var(--c-gris-100)}
+.nav-mobile-group{display:none; align-items:center; gap:10px}
+.nav-mobile-call{display:grid; width:38px; height:38px; border-radius:50%; color:#fff; place-items:center; flex-shrink:0}
+.nav-burger{
+  display:flex; flex-direction:column; justify-content:center; gap:5px;
+  width:38px; height:38px; border-radius:9px; padding:10px;
+  background:var(--c-gris-100); cursor:pointer; border:none; flex-shrink:0;
+}
+.nav-burger span{display:block; height:2px; border-radius:2px; background:var(--c-noir-doux); transition:all .25s ease}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0; transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-drawer{position:fixed; inset:0; z-index:49; pointer-events:none}
+.mobile-drawer-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s ease}
+.mobile-drawer-panel{
+  position:absolute; top:0; right:0; bottom:0; width:min(300px, 85vw);
+  background:var(--c-vert-nuit); padding:80px 24px 36px;
+  display:flex; flex-direction:column;
+  transform:translateX(100%); transition:transform .3s ease;
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.mobile-drawer.open{pointer-events:all}
+.mobile-drawer.open .mobile-drawer-backdrop{opacity:1}
+.mobile-drawer.open .mobile-drawer-panel{transform:translateX(0)}
+.mobile-nav-links{display:flex; flex-direction:column; gap:4px; margin-bottom:auto}
+.mobile-nav-link{
+  display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:12px;
+  color:#fff; font-size:16px; font-weight:500; transition:background .15s ease;
+}
+.mobile-nav-link:hover{background:rgba(255,255,255,.07)}
+.mobile-nav-link.active{background:rgba(255,255,255,.1); font-weight:600}
+.mobile-nav-link .swatch{width:9px; height:9px; border-radius:50%; flex-shrink:0}
+.mobile-nav-link.pro .swatch{background:#2ECC71}
+.mobile-nav-link.dep .swatch{background:#E74C3C}
+.mobile-nav-link.mec .swatch{background:#F59E0B}
+.mobile-nav-link.car .swatch{background:#1976D2}
+.mobile-drawer-cta{
+  display:flex; align-items:center; gap:10px; padding:14px 18px; border-radius:12px;
+  margin-top:20px; font-weight:600; font-size:15px; justify-content:center; color:#fff;
+}
+
 /* ─── HERO DÉPANNAGE ─── */
 
 .hero-dep{
@@ -545,6 +599,8 @@ button{font-family:inherit; cursor:pointer; border:none}
   .stat-dep-block:first-child{border-top:none; padding-top:0}
   .footer-grid{grid-template-columns:1fr 1fr; gap:28px}
   .topnav .nav-zone{display:none}
+  .nav-universe-links{display:none}
+  .nav-mobile-group{display:flex}
 }
 </style>
 </head>
@@ -582,24 +638,66 @@ const Ico = {
 
 /* ─── NAVBAR ─── */
 function Nav(){
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
   return (
-    <nav className="topnav">
-      <div className="inner">
-        <a href="index.html" className="nav-brand">
-          <div className="glyph">C</div>
-          <div className="brand-name">Clinic <span>Dépannage</span></div>
-        </a>
-        <div className="nav-right">
-          <div className="nav-zone">
-            <Ico.Pin size={15} />
-            Zone d'intervention : Gironde &amp; Bordeaux Métropole
+    <>
+      <nav className="topnav">
+        <div className="inner">
+          <div style={{display:'flex', alignItems:'center'}}>
+            <a href="index.html" className="nav-brand">
+              <div className="glyph">C</div>
+              <div className="brand-name">Clinic <span>Dépannage</span></div>
+            </a>
+            <div className="nav-universe-links">
+              <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
+              <a className="nav-uni-link dep active" href="depannage.html"><span className="swatch"></span>Dépannage</a>
+              <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Mécanique</a>
+              <a className="nav-uni-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
+            </div>
           </div>
-          <a className="btn btn-danger" href="tel:+33661788505">
-            Appeler maintenant
+          <div className="nav-right">
+            <a className="btn btn-danger" href="tel:+33661788505" style={{display:'flex', alignItems:'center', gap:8}}>
+              <Ico.Phone size={16}/> 06 61 78 85 05
+            </a>
+            <div className="nav-mobile-group">
+              <a className="nav-mobile-call" href="tel:+33661788505" style={{background:'var(--c-dep-rouge)'}} aria-label="Appeler"><Ico.Phone size={18}/></a>
+              <button className={`nav-burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+                <span/><span/><span/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
+        <div className="mobile-drawer-backdrop" onClick={() => setMenuOpen(false)} />
+        <div className="mobile-drawer-panel">
+          <nav className="mobile-nav-links">
+            <a className="mobile-nav-link" href="index.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch" style={{background:'#2ECC71'}}></span> Accueil
+            </a>
+            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> ClinicAuto Pro
+            </a>
+            <a className="mobile-nav-link dep active" href="depannage.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Dépannage
+            </a>
+            <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Mécanique
+            </a>
+            <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Carrosserie
+            </a>
+          </nav>
+          <a className="mobile-drawer-cta" href="tel:+33661788505" style={{background:'var(--c-dep-rouge)'}}>
+            <Ico.Phone size={18}/> 06 61 78 85 05
           </a>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
 
@@ -1021,9 +1119,9 @@ function Stats(){
 /* ─── AVIS ─── */
 function Avis(){
   const avis = [
-    { init:"ML", n:"Marie L.", d:"Il y a 3 jours", t:"Tombée en panne sur le périphérique à 23 h, le dépanneur était là en 32 minutes. Prix annoncé au téléphone respecté à l'euro près. Vraiment professionnel et rassurant." },
+    { init:"ML", n:"Marie L.", d:"Il y a 3 jours", t:"Tombée en panne sur la A10 à 23 h, le dépanneur était là en 32 minutes. Prix annoncé au téléphone respecté à l'euro près. Vraiment professionnel et rassurant." },
     { init:"TK", n:"Thomas K.", d:"Il y a 1 semaine", t:"Batterie morte un dimanche matin. Appelé à 8h30, intervention à 9h05. Le mécanicien a aussi identifié un problème d'alternateur qu'on a réglé directement à l'atelier." },
-    { init:"SR", n:"Sophia R.", d:"Il y a 2 semaines", t:"Accident sur la rocade bordelaise. L'équipe a géré la sécurisation, la déclaration et le remorquage. Aucune avance de frais, tout était pris en charge. Je recommande vraiment." },
+    { init:"JM", n:"Julien M.", d:"Il y a 2 semaines", t:"Crevaison sur la D1113 en direction de Langon, un dimanche après-midi. Dépanneur sur place en 28 minutes. Roue de secours montée sur place, facture reçue par mail le soir même." },
   ];
   return (
     <section className="section avis-section" id="avis">
