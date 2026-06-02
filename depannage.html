@@ -512,7 +512,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 }
 .section-nav .sn-inner{
   max-width:1280px; margin:0 auto; padding:0 32px;
-  display:flex; align-items:center; gap:0;
+  display:flex; align-items:center; justify-content:center; gap:0;
   overflow-x:auto; scrollbar-width:none;
 }
 .section-nav .sn-inner::-webkit-scrollbar{display:none}
@@ -708,8 +708,8 @@ function Hero(){
 function TrustBar(){
   const items = [
     { ico:<Ico.Clock size={20}/>, t:"Sous 45 min", d:"Délai d'intervention garanti" },
-    { ico:<Ico.Star size={20} fill/>, t:"4.8 / 5", d:"412 avis clients vérifiés" },
-    { ico:<Ico.Pin size={20}/>, t:"Gironde &amp; alentours", d:"33, 47, 24, 40 — Bordeaux Métropole" },
+    { ico:<Ico.Star size={20} fill/>, t:"4.8 / 5", d:"218 avis clients vérifiés" },
+    { ico:<Ico.Pin size={20}/>, t:"Gironde & alentours", d:"33, 47, 24, 40 — Bordeaux Métropole" },
     { ico:<Ico.Card size={20}/>, t:"Paiement après", d:"Carte, CB, espèces, virement" },
   ];
   return (
@@ -732,7 +732,7 @@ function TrustBar(){
 /* ─── SERVICES ─── */
 function Services(){
   const services = [
-    { ico:<Ico.Truck/>, t:"Remorquage", d:"Transport vers le garage de votre choix ou notre atelier. État constaté en présence du client.", tag:"Paris & IDF" },
+    { ico:<Ico.Truck/>, t:"Remorquage", d:"Transport vers le garage de votre choix ou notre atelier. État constaté en présence du client.", tag:"Gironde & Bordeaux Métropole" },
     { ico:<Ico.Zap/>, t:"Panne batterie", d:"Démarrage au câble ou remplacement sur place. Diagnostic pour déterminer si elle est récupérable.", tag:"Intervention rapide" },
     { ico:<Ico.Alert/>, t:"Accident & assistance", d:"Sécurisation, assistance administrative, prise en charge pour expertise ou destruction.", tag:"Assurance acceptée" },
     { ico:<Ico.Car/>, t:"Crevaison & roue", d:"Montage de la roue de secours ou convoyage vers un centre de pneumatiques si nécessaire.", tag:"Tous véhicules" },
@@ -856,7 +856,7 @@ function ZoneIntervention(){
               <div style={{width:1, background:'var(--c-gris-200)'}}></div>
               <div>
                 <div style={{fontSize:26, fontWeight:800, color:'var(--c-dep-rouge)', letterSpacing:'-.02em'}}>~20 min</div>
-                <div style={{fontSize:11.5, color:'var(--c-gris-400)', fontFamily:'var(--ff-mono)', textTransform:'uppercase', letterSpacing:'.08em', marginTop:4}}>Paris intramuros</div>
+                <div style={{fontSize:11.5, color:'var(--c-gris-400)', fontFamily:'var(--ff-mono)', textTransform:'uppercase', letterSpacing:'.08em', marginTop:4}}>Bordeaux Métropole</div>
               </div>
             </div>
           </div>
@@ -932,7 +932,7 @@ function Tarifs(){
           </div>
         </div>
         <p style={{textAlign:'center', fontSize:12.5, color:'var(--c-gris-400)', marginTop:24}}>
-          Tarifs indicatifs HT hors pièces. Devis ferme communiqué avant toute intervention. Majoration nuit (+20 %) de 22 h à 7 h.
+          Tarifs indicatifs TTC. Devis ferme communiqué avant toute intervention. Majoration nuit (+20 %) de 22 h à 7 h.
         </p>
       </div>
     </section>
@@ -945,7 +945,7 @@ function WhyUs(){
     { ico:<Ico.Clock/>, t:"Disponible 24h/24, 365 j/an", d:"Noël, jour de l'an, 3 h du matin — on décroche. Permanence humaine, pas un répondeur." },
     { ico:<Ico.Euro/>, t:"Devis ferme au téléphone", d:"On vous donne le prix avant de partir. Pas d'approximatif, pas de surprise à l'arrivée." },
     { ico:<Ico.Shield/>, t:"Assurance & garantie", d:"Interventions couvertes. État constaté contradictoirement. Aucun litige possible." },
-    { ico:<Ico.Map/>, t:"Connaissance du terrain IDF", d:"12 ans à dépanner en Île-de-France. On connaît les zones, les sens uniques, les accès difficiles." },
+    { ico:<Ico.Map/>, t:"Connaissance du terrain Gironde", d:"On couvre la Gironde et les départements voisins. On connaît les zones, les accès difficiles, le Médoc, le Bassin, le Libournais." },
     { ico:<Ico.Wrench/>, t:"Mécaniciens qualifiés", d:"Nos dépanneurs sont des mécaniciens certifiés. Beaucoup de pannes se règlent sur place." },
     { ico:<Ico.Car/>, t:"Tous types de véhicules", d:"Voitures, SUV, utilitaires légers, motos — tous véhicules jusqu'à 3,5 tonnes." },
   ];
@@ -1023,7 +1023,7 @@ function Avis(){
   const avis = [
     { init:"ML", n:"Marie L.", d:"Il y a 3 jours", t:"Tombée en panne sur le périphérique à 23 h, le dépanneur était là en 32 minutes. Prix annoncé au téléphone respecté à l'euro près. Vraiment professionnel et rassurant." },
     { init:"TK", n:"Thomas K.", d:"Il y a 1 semaine", t:"Batterie morte un dimanche matin. Appelé à 8h30, intervention à 9h05. Le mécanicien a aussi identifié un problème d'alternateur qu'on a réglé directement à l'atelier." },
-    { init:"SR", n:"Sophia R.", d:"Il y a 2 semaines", t:"Accident sur la N3. L'équipe a géré la sécurisation, la déclaration et le remorquage. Aucune avance de frais, tout était pris en charge. Je recommande vraiment." },
+    { init:"SR", n:"Sophia R.", d:"Il y a 2 semaines", t:"Accident sur la rocade bordelaise. L'équipe a géré la sécurisation, la déclaration et le remorquage. Aucune avance de frais, tout était pris en charge. Je recommande vraiment." },
   ];
   return (
     <section className="section avis-section" id="avis">
@@ -1094,7 +1094,7 @@ function Footer(){
               <div className="glyph">C</div>
               <span>ClinicAuto</span>
             </div>
-            <p className="footer-tagline">Garage, vente B2B et carrosserie. Trois métiers, une équipe, depuis 2014.</p>
+            <p className="footer-tagline">Garage, vente B2B, mécanique et carrosserie. Quatre métiers, une équipe, depuis 2014.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
               <span>ZA Bel Air, 33360 Cénac</span>
