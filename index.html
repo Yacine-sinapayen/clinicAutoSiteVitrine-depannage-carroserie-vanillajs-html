@@ -238,10 +238,20 @@ button{font-family:inherit; cursor:pointer; border:none}
 
 /* Visual: activity cards in hero */
 .hero-visual{
-  display:grid; grid-template-columns:repeat(2,1fr);
-  gap:18px; position:relative;
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:16px; position:relative;
   width:100%; margin-top:48px;
 }
+.hero-visual .act-card{
+  min-height:0; padding:22px 22px 18px;
+}
+.hero-visual .act-card .ac-label{margin-bottom:0}
+.hero-visual .act-card h3{font-size:18px; margin:12px 0 14px}
+.hero-visual .act-card .ac-desc{display:none}
+.hero-visual .act-card .ac-list{margin-bottom:0; gap:6px; flex:1}
+.hero-visual .act-card .ac-list li{font-size:12.5px}
+.hero-visual .act-card .ac-list li:nth-child(n+3){display:none}
+.hero-visual .act-card .ac-foot{margin-top:auto; padding-top:14px}
 .hv-card{
   border-radius:20px; padding:26px 26px 22px; color:#fff;
   display:flex; flex-direction:column; gap:0;
@@ -534,6 +544,7 @@ button{font-family:inherit; cursor:pointer; border:none}
   .hero h1{font-size:44px}
   .hero[data-hero="editorial"] h1, .hero[data-hero="immersive"] h1{font-size:54px}
   .hero-visual{grid-template-columns:1fr 1fr; gap:12px; margin-top:32px}
+
   .section-head{grid-template-columns:1fr; gap:24px}
   .section-head h2{font-size:36px}
   .activities, .activities[data-style="stacked"]{grid-template-columns:1fr; grid-template-rows:auto}
