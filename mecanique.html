@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clinic Mécanique — Entretien & réparation auto en Gironde</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --c-vert-nuit:#012A1A;
+  --c-vert-foret:#0D5C3A;
+  --c-vert-accent:#2ECC71;
+  --c-blanc-casse:#F5F5F0;
+  --c-noir-doux:#1A1A1A;
+  --c-gris-100:#EEEEE8;
+  --c-gris-200:#DDDDD5;
+  --c-gris-300:#BFBFB6;
+  --c-gris-400:#8C8C85;
+  --c-gris-500:#5A5A55;
+
+  --c-mec-acier:#1A2332;
+  --c-mec-acier-2:#243047;
+  --c-mec-acier-3:#0D1520;
+  --c-mec-ambre:#D97706;
+  --c-mec-ambre-clair:#F59E0B;
+  --c-mec-ambre-dark:#92400E;
+  --c-mec-ambre-bg:#FFFBEB;
+  --c-mec-ambre-border:#FDE68A;
+  --c-dep-rouge:#C0392B;
+  --c-car-bleu:#1565A8;
+
+  --ff-sans:"Inter", system-ui, -apple-system, sans-serif;
+  --ff-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--ff-sans);
+  color:var(--c-noir-doux);
+  background:#fff;
+  font-size:15px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit; text-decoration:none}
+button{font-family:inherit; cursor:pointer; border:none}
+
+/* ─── BUTTONS ─── */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--ff-sans); font-weight:600; font-size:14px;
+  padding:11px 20px; border-radius:10px;
+  border:1px solid transparent; cursor:pointer;
+  transition:all .15s ease; white-space:nowrap;
+}
+.btn-mec{background:var(--c-mec-ambre); color:#fff}
+.btn-mec:hover{background:var(--c-mec-ambre-dark)}
+.btn-ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.3)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-ghost-dark{background:transparent; color:var(--c-noir-doux); border:1.5px solid var(--c-gris-200)}
+.btn-ghost-dark:hover{background:var(--c-gris-100)}
+.btn-lg{padding:14px 24px; font-size:15px; border-radius:12px}
+.btn-xl{padding:16px 28px; font-size:16px; border-radius:12px; font-weight:700}
+
+/* ─── NAVBAR ─── */
+.topnav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:#fff;
+  border-bottom:1px solid var(--c-gris-200);
+  padding:0;
+}
+.topnav .inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-brand{
+  display:inline-flex; align-items:center; gap:10px;
+  font-weight:700; font-size:18px; letter-spacing:-.015em;
+  color:var(--c-noir-doux);
+}
+.nav-brand .glyph{
+  width:34px; height:34px; border-radius:9px;
+  background:linear-gradient(135deg, var(--c-mec-ambre-clair) 0%, var(--c-mec-ambre-dark) 100%);
+  display:grid; place-items:center; color:#fff; font-weight:800; font-size:15px;
+  flex-shrink:0;
+}
+.nav-brand .brand-name span{color:var(--c-mec-ambre)}
+.nav-right{display:flex; align-items:center; gap:20px}
+.nav-tag{
+  font-size:13.5px; color:var(--c-gris-500);
+  display:flex; align-items:center; gap:6px;
+}
+.nav-tag svg{color:var(--c-mec-ambre)}
+
+/* ─── HERO MÉCANIQUE ─── */
+.hero-mec{
+  background:linear-gradient(148deg, var(--c-mec-acier-3) 0%, var(--c-mec-acier) 55%, var(--c-mec-acier-2) 100%);
+  color:#fff;
+  padding:108px 0 0;
+  position:relative; overflow:hidden;
+}
+.hero-mec::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 70% at 80% 20%, rgba(245,158,11,.08), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 5% 90%, rgba(0,0,0,.3), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.012) 0px, rgba(255,255,255,.012) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(25deg, rgba(255,255,255,.008) 0px, rgba(255,255,255,.008) 1px, transparent 1px, transparent 80px);
+  pointer-events:none;
+}
+.hero-mec .container{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  position:relative; z-index:1;
+}
+.hero-grid{
+  display:grid; grid-template-columns:1.1fr .9fr;
+  gap:56px; align-items:center;
+  padding:72px 0 80px;
+}
+
+/* Badge */
+.status-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(8px);
+  padding:7px 14px; border-radius:999px;
+  font-size:13px; font-weight:500; color:rgba(255,255,255,.9);
+  margin-bottom:28px;
+}
+.status-dot{
+  width:8px; height:8px; border-radius:50%; background:var(--c-mec-ambre-clair);
+  box-shadow:0 0 0 3px rgba(245,158,11,.25);
+  flex-shrink:0;
+}
+
+/* H1 */
+.hero-mec h1{
+  font-size:62px; line-height:1.03; letter-spacing:-.035em;
+  font-weight:800; margin:0 0 20px;
+}
+.hero-mec h1 .accent{color:var(--c-mec-ambre-clair)}
+
+/* Lede */
+.hero-mec .lede{
+  font-size:16.5px; color:rgba(255,255,255,.72); line-height:1.6;
+  max-width:480px; margin:0 0 36px;
+}
+
+/* Phone card */
+.phone-card{
+  display:inline-flex; align-items:center; gap:16px;
+  background:#fff; border-radius:16px;
+  padding:18px 24px;
+  box-shadow:0 8px 32px rgba(0,0,0,.22);
+  margin-bottom:16px;
+}
+.phone-card .phone-ico-wrap{
+  width:46px; height:46px; border-radius:12px;
+  background:var(--c-mec-ambre-bg); color:var(--c-mec-ambre);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.phone-card .phone-label{
+  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--c-gris-400); margin-bottom:3px;
+}
+.phone-card .phone-num{
+  font-size:24px; font-weight:800; letter-spacing:-.02em;
+  color:var(--c-noir-doux); line-height:1;
+}
+.callback-link{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:13.5px; color:rgba(255,255,255,.65);
+  transition:color .15s;
+}
+.callback-link:hover{color:#fff}
+
+/* Stats card hero (right) */
+.atelier-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+}
+.atelier-card .ac-label{
+  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.16em;
+  text-transform:uppercase; color:rgba(255,255,255,.45);
+  margin-bottom:16px;
+}
+.atelier-card .ac-big{
+  font-size:72px; font-weight:800; letter-spacing:-.04em;
+  line-height:1; color:#fff; margin-bottom:2px;
+  display:flex; align-items:baseline; gap:8px;
+}
+.atelier-card .ac-big small{font-size:26px; font-weight:600; opacity:.7}
+.atelier-card .ac-sub{font-size:13px; color:rgba(255,255,255,.5); margin-bottom:26px}
+.atelier-card .ac-divider{height:1px; background:rgba(255,255,255,.1); margin-bottom:22px}
+.atelier-card .ac-row{display:grid; grid-template-columns:1fr 1fr; gap:0}
+.atelier-card .ac-mini-label{
+  font-family:var(--ff-mono); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(255,255,255,.38); margin-bottom:5px;
+}
+.atelier-card .ac-mini-val{font-size:22px; font-weight:700; color:#fff; letter-spacing:-.02em}
+.atelier-card .ac-row .ac-mini:last-child{
+  border-left:1px solid rgba(255,255,255,.1); padding-left:22px;
+}
+.atelier-card .ac-badges{
+  display:flex; flex-direction:column; gap:10px; margin-top:22px;
+}
+.atelier-card .ac-badge{
+  display:flex; align-items:center; gap:12px;
+  background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.2);
+  border-radius:12px; padding:10px 14px;
+  font-size:13px; color:rgba(255,255,255,.8);
+}
+.atelier-card .ac-badge svg{color:var(--c-mec-ambre-clair); flex-shrink:0}
+
+/* ─── TRUST BAR ─── */
+.trust-bar{
+  background:var(--c-blanc-casse);
+  border-bottom:1px solid var(--c-gris-200);
+  padding:0;
+}
+.trust-bar .inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.trust-item{
+  display:flex; align-items:center; gap:14px;
+  padding:24px 0;
+  border-right:1px solid var(--c-gris-200);
+  padding-right:24px; padding-left:24px;
+}
+.trust-item:first-child{padding-left:0}
+.trust-item:last-child{border-right:none}
+.trust-ico{
+  width:42px; height:42px; border-radius:11px;
+  background:var(--c-mec-ambre-bg); color:var(--c-mec-ambre);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.trust-item h5{margin:0 0 2px; font-size:14.5px; font-weight:700; color:var(--c-noir-doux)}
+.trust-item p{margin:0; font-size:12.5px; color:var(--c-gris-400); line-height:1.35}
+
+/* ─── SECTIONS ─── */
+.section{padding:96px 0}
+.container{max-width:1280px; margin:0 auto; padding:0 32px}
+.section-head{
+  display:grid; grid-template-columns:1fr 1.2fr; gap:64px;
+  align-items:end; margin-bottom:56px;
+}
+.lbl{
+  font-family:var(--ff-mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--c-mec-ambre);
+  margin-bottom:16px; display:flex; align-items:center; gap:12px;
+}
+.lbl::before{content:""; width:28px; height:1px; background:var(--c-mec-ambre)}
+.section-head h2{
+  font-size:44px; line-height:1.06; letter-spacing:-.025em;
+  font-weight:700; margin:0; color:var(--c-vert-nuit);
+}
+.section-head .desc{font-size:15.5px; color:var(--c-gris-500); line-height:1.65}
+
+/* ─── SERVICES ─── */
+.services-section{background:#fff; border-top:1px solid var(--c-gris-200)}
+.services-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.srv-card{
+  padding:24px 26px; border-radius:18px;
+  border:1px solid var(--c-gris-200);
+  background:var(--c-blanc-casse);
+  display:flex; flex-direction:column; gap:12px;
+  transition:all .2s ease;
+}
+.srv-card:hover{
+  border-color:rgba(217,119,6,.3);
+  box-shadow:0 6px 24px rgba(217,119,6,.08);
+  transform:translateY(-2px);
+}
+.srv-ico{
+  width:48px; height:48px; border-radius:12px;
+  background:var(--c-mec-ambre-bg); color:var(--c-mec-ambre);
+  display:grid; place-items:center;
+}
+.srv-card h4{margin:0; font-size:15px; font-weight:700; color:var(--c-vert-nuit)}
+.srv-card p{margin:0; font-size:13px; color:var(--c-gris-500); line-height:1.5}
+.srv-tag{
+  display:inline-flex; font-family:var(--ff-mono); font-size:10.5px;
+  letter-spacing:.06em; color:var(--c-mec-ambre);
+  background:var(--c-mec-ambre-bg); padding:4px 10px; border-radius:20px;
+  margin-top:auto; font-weight:600;
+}
+
+/* ─── URGENCY BANNER ─── */
+.urgency-banner{
+  background:linear-gradient(135deg, var(--c-mec-acier-3) 0%, var(--c-mec-acier) 60%, var(--c-mec-acier-2) 100%);
+  padding:56px 0; text-align:center; color:#fff; position:relative; overflow:hidden;
+}
+.urgency-banner::before{
+  content:""; position:absolute; inset:0;
+  background:repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 60px);
+  pointer-events:none;
+}
+.urgency-banner::after{
+  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:600px; height:300px; border-radius:50%;
+  background:radial-gradient(ellipse, rgba(245,158,11,.06), transparent 70%);
+  pointer-events:none;
+}
+.urgency-banner .ub-inner{position:relative; z-index:1}
+.urgency-banner .ub-label{
+  font-family:var(--ff-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--c-mec-ambre-clair); margin-bottom:14px;
+}
+.urgency-banner h2{font-size:42px; font-weight:700; letter-spacing:-.03em; margin:0 0 12px}
+.urgency-banner p{font-size:16px; color:rgba(255,255,255,.72); margin:0 auto 28px; max-width:520px}
+.ub-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+/* ─── COMMENT ÇA MARCHE ─── */
+.how-section{background:var(--c-blanc-casse); border-top:1px solid var(--c-gris-200)}
+.steps-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  position:relative;
+}
+.steps-grid::before{
+  content:""; position:absolute;
+  top:33px; left:calc(12.5% + 20px); right:calc(12.5% + 20px);
+  height:1px; background:var(--c-gris-200); z-index:0;
+}
+.step{display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 20px; position:relative; z-index:1}
+.step-ico{
+  width:66px; height:66px; border-radius:50%;
+  background:#fff; border:2px solid var(--c-gris-200);
+  display:grid; place-items:center;
+  color:var(--c-mec-ambre); margin-bottom:22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  transition:all .2s ease;
+}
+.step:hover .step-ico{background:var(--c-mec-ambre); color:#fff; border-color:var(--c-mec-ambre)}
+.step h4{margin:0 0 6px; font-size:16px; font-weight:700; color:var(--c-vert-nuit)}
+.step p{margin:0; font-size:13.5px; color:var(--c-gris-500); line-height:1.5}
+
+/* ─── POURQUOI NOUS (dark) ─── */
+.why-mec-section{background:var(--c-mec-acier); color:#fff; padding:96px 0; position:relative; overflow:hidden}
+.why-mec-section::before{
+  content:""; position:absolute; right:-150px; top:-150px;
+  width:420px; height:420px; border-radius:50%;
+  background:radial-gradient(circle, rgba(245,158,11,.06), transparent 65%);
+  pointer-events:none;
+}
+.why-mec-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; position:relative; z-index:1}
+.why-mec-card{
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
+  border-radius:18px; padding:26px 28px;
+  display:flex; gap:18px; align-items:flex-start; transition:all .2s ease;
+}
+.why-mec-card:hover{background:rgba(255,255,255,.07)}
+.wmc-ico{
+  width:46px; height:46px; border-radius:12px;
+  background:rgba(217,119,6,.2); color:var(--c-mec-ambre-clair);
+  display:grid; place-items:center; flex-shrink:0;
+}
+.wmc-body h4{margin:0 0 5px; font-size:16px; font-weight:700}
+.wmc-body p{margin:0; font-size:13.5px; color:rgba(255,255,255,.5); line-height:1.5}
+
+/* ─── STATS ─── */
+.stats-mec-section{
+  background:linear-gradient(135deg, var(--c-mec-acier-3) 0%, var(--c-mec-ambre-dark) 60%, var(--c-mec-ambre) 100%);
+  color:#fff; padding:96px 0; position:relative; overflow:hidden;
+}
+.stats-mec-section::before{
+  content:""; position:absolute; inset:0;
+  background:repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px, transparent 1px, transparent 80px);
+  pointer-events:none;
+}
+.stats-mec-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; z-index:1}
+.stat-mec-block{border-left:1px solid rgba(255,255,255,.15); padding-left:28px}
+.stat-mec-block:first-child{border-left:none; padding-left:0}
+.stat-mec-block .num{font-size:56px; font-weight:800; line-height:1; letter-spacing:-.03em; margin-bottom:10px; display:flex; align-items:baseline; gap:6px}
+.stat-mec-block .num small{font-size:20px; opacity:.65; font-weight:500}
+.stat-mec-block .num em{font-style:normal; color:var(--c-mec-acier-3)}
+.stat-mec-block h5{margin:0 0 5px; font-size:14px; font-weight:700}
+.stat-mec-block p{margin:0; font-size:12.5px; color:rgba(255,255,255,.55); line-height:1.45}
+
+/* ─── TARIFS ─── */
+.tarifs-section{background:var(--c-blanc-casse); border-top:1px solid var(--c-gris-200)}
+.tarifs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.tarif-card{
+  padding:28px 30px; border-radius:20px; border:1px solid var(--c-gris-200);
+  background:#fff; position:relative; overflow:hidden; transition:all .2s ease;
+}
+.tarif-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.07); transform:translateY(-2px)}
+.tarif-card.featured{border-color:var(--c-mec-ambre); box-shadow:0 0 0 3px rgba(217,119,6,.06)}
+.tarif-card.featured::before{
+  content:""; position:absolute; left:0; top:0; bottom:0;
+  width:4px; background:linear-gradient(180deg, var(--c-mec-ambre-clair) 0%, var(--c-mec-ambre-dark) 100%);
+}
+.tarif-badge{
+  display:inline-flex; margin-bottom:14px;
+  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  padding:4px 12px; border-radius:20px; font-weight:600;
+  background:var(--c-mec-ambre-bg); color:var(--c-mec-ambre);
+}
+.tarif-card.featured .tarif-badge{background:var(--c-mec-ambre); color:#fff}
+.tarif-card h4{margin:0 0 14px; font-size:19px; font-weight:700; color:var(--c-vert-nuit)}
+.tarif-price{font-size:38px; font-weight:800; color:var(--c-mec-ambre); letter-spacing:-.025em; line-height:1.1; margin-bottom:6px}
+.tarif-price small{font-size:15px; font-weight:500; color:var(--c-gris-400)}
+.tarif-desc{font-size:13px; color:var(--c-gris-500); margin:0 0 22px; line-height:1.5}
+.tarif-list{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px}
+.tarif-list li{display:flex; align-items:flex-start; gap:10px; font-size:13.5px}
+.tarif-list .chk{
+  width:18px; height:18px; border-radius:50%;
+  background:var(--c-mec-ambre-bg); color:var(--c-mec-ambre);
+  display:grid; place-items:center; flex-shrink:0; margin-top:1px;
+}
+
+/* ─── AVIS ─── */
+.avis-section{background:#fff; border-top:1px solid var(--c-gris-200)}
+.avis-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.avis-card{
+  padding:26px 28px; border-radius:18px;
+  background:var(--c-blanc-casse); border:1px solid var(--c-gris-200);
+}
+.avis-stars{display:flex; gap:3px; margin-bottom:12px; color:var(--c-mec-ambre-clair)}
+.avis-text{font-size:14px; color:var(--c-gris-500); line-height:1.6; margin:0 0 18px; font-style:italic}
+.avis-author{display:flex; align-items:center; gap:12px}
+.avis-avatar{
+  width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg, var(--c-mec-ambre-clair) 0%, var(--c-mec-ambre-dark) 100%);
+  color:#fff; display:grid; place-items:center; font-weight:700; font-size:13px; flex-shrink:0;
+}
+.avis-name{font-size:13.5px; font-weight:700; color:var(--c-vert-nuit)}
+.avis-date{font-size:12px; color:var(--c-gris-400)}
+
+/* ─── CTA FINAL ─── */
+.cta-mec-section{padding:96px 0; background:var(--c-blanc-casse); text-align:center; border-top:1px solid var(--c-gris-200)}
+.cta-mec-section h2{
+  font-size:48px; line-height:1.05; letter-spacing:-.03em; font-weight:800;
+  margin:0 0 14px; color:var(--c-vert-nuit);
+}
+.cta-mec-section h2 em{font-style:normal; color:var(--c-mec-ambre)}
+.cta-mec-section > .container > p{font-size:16.5px; color:var(--c-gris-500); margin:0 auto 32px; max-width:520px}
+.cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+/* ─── SECTION NAV ─── */
+.section-nav{
+  position:sticky; top:64px; z-index:90;
+  background:#fff;
+  border-bottom:1px solid var(--c-gris-200);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.section-nav .sn-inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; justify-content:center; gap:0;
+  overflow-x:auto; scrollbar-width:none;
+}
+.section-nav .sn-inner::-webkit-scrollbar{display:none}
+.sn-link{
+  padding:14px 18px; font-size:13.5px; font-weight:500;
+  color:var(--c-gris-500); white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:all .15s ease; flex-shrink:0;
+}
+.sn-link:hover{color:var(--c-mec-ambre)}
+.sn-link.active{color:var(--c-mec-ambre); border-bottom-color:var(--c-mec-ambre)}
+.sn-sep{width:1px; height:18px; background:var(--c-gris-200); flex-shrink:0}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--c-vert-nuit); color:rgba(255,255,255,.65); padding:72px 0 28px}
+.footer-grid{
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px;
+  padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.09);
+}
+.footer-brand{display:inline-flex; align-items:center; gap:10px; margin-bottom:16px}
+.footer-brand .glyph{
+  width:30px; height:30px; border-radius:8px;
+  background:linear-gradient(135deg, var(--c-mec-ambre-clair) 0%, var(--c-mec-ambre-dark) 100%);
+  display:grid; place-items:center; color:#fff; font-weight:800; font-size:13px;
+}
+.footer-brand span{font-weight:700; font-size:17px; color:#fff; letter-spacing:-.015em}
+.footer-tagline{font-size:13.5px; color:rgba(255,255,255,.45); line-height:1.55; max-width:270px; margin-bottom:22px}
+.footer-contact{font-size:13.5px; color:rgba(255,255,255,.7); display:flex; flex-direction:column; gap:5px}
+.footer-contact strong{color:#fff; font-weight:600; display:block}
+.footer-col h6{
+  font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(255,255,255,.38);
+  margin:0 0 16px; font-weight:600;
+}
+.footer-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px; font-size:13.5px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:22px; font-size:12.5px; color:rgba(255,255,255,.35);
+}
+.footer-legal{display:flex; gap:22px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:980px){
+  .hero-mec h1{font-size:40px}
+  .hero-grid{grid-template-columns:1fr; gap:40px}
+  .atelier-card{display:none}
+  .trust-bar .inner{grid-template-columns:1fr 1fr}
+  .trust-item{border-right:none; border-bottom:1px solid var(--c-gris-200)}
+  .trust-item:nth-child(odd){padding-left:0}
+  .section-head{grid-template-columns:1fr; gap:20px}
+  .section-head h2{font-size:32px}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .tarifs-grid,.avis-grid,.why-mec-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr 1fr; gap:28px}
+  .steps-grid::before{display:none}
+  .stats-mec-grid{grid-template-columns:1fr 1fr; gap:24px}
+  .stat-mec-block{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,.1); padding-top:22px}
+  .stat-mec-block:first-child{border-top:none; padding-top:0}
+  .footer-grid{grid-template-columns:1fr 1fr; gap:28px}
+  .topnav .nav-tag{display:none}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+/* ─── ICONS ─── */
+const Ico = {
+  Phone: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>,
+  Arrow: ({size=18}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>,
+  Check: ({size=11}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>,
+  Star: ({size=14, fill=false}) => <svg width={size} height={size} viewBox="0 0 24 24" fill={fill?"currentColor":"none"} stroke="currentColor" strokeWidth="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>,
+  Wrench: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-1-1-2.5 2.5-2.5z"/></svg>,
+  Settings: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>,
+  Zap: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  Gauge: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 14l2-2"/><circle cx="12" cy="12" r="10"/><path d="M6.3 17.7A8 8 0 1 1 17.7 17.7"/></svg>,
+  Shield: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+  Wind: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>,
+  Tool: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-1-1-2.5 2.5-2.5z"/></svg>,
+  Car: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 11h18l-2-5a2 2 0 0 0-2-1H7a2 2 0 0 0-2 1l-2 5zM3 11v6h2v-2h14v2h2v-6M7 14h.01M17 14h.01"/></svg>,
+  Cpu: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>,
+  Clock: ({size=20}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>,
+  Euro: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 10h10M4 14h10M19 5a9 9 0 1 0 0 14"/></svg>,
+  Pin: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="10" r="3"/><path d="M12 22s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12z"/></svg>,
+  Calendar: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+  CheckCircle: ({size=22}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
+};
+
+/* ─── NAVBAR ─── */
+function Nav(){
+  return (
+    <nav className="topnav">
+      <div className="inner">
+        <a href="index.html" className="nav-brand">
+          <div className="glyph">C</div>
+          <div className="brand-name">Clinic <span>Mécanique</span></div>
+        </a>
+        <div className="nav-right">
+          <div className="nav-tag">
+            <Ico.Pin size={15} />
+            Atelier à Cénac — Gironde (33)
+          </div>
+          <a className="btn btn-mec" href="tel:+33661788505">
+            Prendre rendez-vous
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+/* ─── SECTION NAV ─── */
+function SectionNav(){
+  const [active, setActive] = useState('');
+  useEffect(() => {
+    const sections = ['services','comment-ca-marche','tarifs','pourquoi-nous','avis','contact'];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin:'-30% 0px -60% 0px' });
+    sections.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+  const links = [
+    { id:'services', label:'Services' },
+    { id:'comment-ca-marche', label:'Rendez-vous' },
+    { id:'tarifs', label:'Tarifs' },
+    { id:'pourquoi-nous', label:'Notre atelier' },
+    { id:'avis', label:'Avis clients' },
+    { id:'contact', label:'Contact' },
+  ];
+  return (
+    <div className="section-nav">
+      <div className="sn-inner">
+        {links.map((l, i) => (
+          <React.Fragment key={l.id}>
+            {i > 0 && <span className="sn-sep" />}
+            <a className={`sn-link${active === l.id ? ' active' : ''}`} href={`#${l.id}`}>
+              {l.label}
+            </a>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─── HERO ─── */
+function Hero(){
+  return (
+    <section className="hero-mec">
+      <div className="container">
+        <div className="hero-grid">
+
+          {/* ── Colonne gauche ── */}
+          <div>
+            <div className="status-badge">
+              <span className="status-dot"></span>
+              Atelier ouvert · Lun–Sam 8h–18h30
+            </div>
+            <h1>
+              Votre voiture mérite<br/>
+              un vrai<br/>
+              <span className="accent">mécanicien.</span>
+            </h1>
+            <p className="lede">
+              Entretien courant, distribution, freinage, diagnostic électronique,
+              climatisation — notre atelier de Cénac prend en charge tous vos
+              véhicules. Devis gratuit sous 24 h.
+            </p>
+
+            <a className="phone-card" href="tel:+33661788505">
+              <div className="phone-ico-wrap">
+                <Ico.Phone size={22} />
+              </div>
+              <div>
+                <div className="phone-label">Prendre rendez-vous</div>
+                <div className="phone-num">06 61 78 85 05</div>
+              </div>
+            </a>
+
+            <div style={{display:'block'}}>
+              <a className="callback-link" href="#contact">
+                Ou demandez un devis en ligne →
+              </a>
+            </div>
+          </div>
+
+          {/* ── Colonne droite : atelier card ── */}
+          <div className="atelier-card">
+            <div className="ac-label">Notre atelier en chiffres</div>
+            <div className="ac-big">24<small>h</small></div>
+            <div className="ac-sub">Délai devis gratuit — pour toute demande reçue avant 17 h</div>
+            <div className="ac-divider"></div>
+            <div className="ac-row">
+              <div className="ac-mini">
+                <div className="ac-mini-label">Satisfaction</div>
+                <div className="ac-mini-val">4.8 / 5</div>
+              </div>
+              <div className="ac-mini">
+                <div className="ac-mini-label">Depuis</div>
+                <div className="ac-mini-val">2014</div>
+              </div>
+            </div>
+            <div className="ac-badges">
+              <div className="ac-badge">
+                <Ico.Shield size={16} />
+                Pièces garanties 12 mois / 20 000 km
+              </div>
+              <div className="ac-badge">
+                <Ico.CheckCircle size={16} />
+                Préparation contrôle technique incluse
+              </div>
+              <div className="ac-badge">
+                <Ico.Car size={16} />
+                Toutes marques · Véhicule de prêt sur demande
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── TRUST BAR ─── */
+function TrustBar(){
+  const items = [
+    { ico:<Ico.Clock size={20}/>, t:"Devis sous 24 h", d:"Gratuit, sans engagement" },
+    { ico:<Ico.Shield size={20}/>, t:"Pièces garanties", d:"12 mois ou 20 000 km" },
+    { ico:<Ico.Car size={20}/>, t:"Toutes marques", d:"VP, SUV, utilitaires légers" },
+    { ico:<Ico.Gauge size={20}/>, t:"Diagnostic électronique", d:"Valise multimarque sur place" },
+  ];
+  return (
+    <div className="trust-bar">
+      <div className="inner">
+        {items.map((it,i) => (
+          <div className="trust-item" key={i}>
+            <div className="trust-ico">{it.ico}</div>
+            <div>
+              <h5>{it.t}</h5>
+              <p>{it.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─── SERVICES ─── */
+function Services(){
+  const services = [
+    { ico:<Ico.Settings/>, t:"Vidange & entretien", d:"Vidange huile, filtres air/habitacle/carburant, inspection générale. Préconisations constructeur respectées.", tag:"Toutes marques" },
+    { ico:<Ico.Zap/>, t:"Distribution & courroie", d:"Remplacement courroie de distribution, kit tendeur, courroie accessoires. Risque zéro pour le moteur.", tag:"Intervention critique" },
+    { ico:<Ico.Gauge/>, t:"Freinage complet", d:"Plaquettes, disques, étriers, liquide de frein. Contrôle efficacité freinage inclus à chaque intervention.", tag:"Sécurité" },
+    { ico:<Ico.Cpu/>, t:"Diagnostic électronique", d:"Lecture et effacement codes défaut, diagnostic capteurs, TPMS, ABS, airbags. Valise multimarque dernière génération.", tag:"Valise multimarque" },
+    { ico:<Ico.Wind/>, t:"Climatisation", d:"Recharge gaz R134a / R1234yf, contrôle étanchéité, remplacement compresseur, filtre habitacle.", tag:"Recharge incluse" },
+    { ico:<Ico.Tool/>, t:"Embrayage & boîte", d:"Remplacement kit embrayage, volant moteur bimasse, câble ou système hydraulique. Boîtes manuelles et automatiques.", tag:"Mécanique lourde" },
+    { ico:<Ico.Car/>, t:"Pneumatiques", d:"Montage, équilibrage, géométrie 3D. Conseil marque, profil et saisonnalité selon votre usage.", tag:"Géométrie 3D" },
+    { ico:<Ico.CheckCircle/>, t:"Préparation CT", d:"Inspection pré-contrôle technique complète. On identifie et corrige les points défaillants avant votre passage.", tag:"Contrôle technique" },
+  ];
+  return (
+    <section className="section services-section" id="services">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Nos interventions</div>
+            <h2>Du courant au<br/>complexe, on s'en charge.</h2>
+          </div>
+          <p className="desc">
+            Notre atelier est équipé pour les travaux d'entretien classiques comme pour
+            la mécanique lourde. Un seul numéro, un seul interlocuteur du devis à la restitution.
+          </p>
+        </div>
+        <div className="services-grid">
+          {services.map((s,i) => (
+            <div className="srv-card" key={i}>
+              <div className="srv-ico">{s.ico}</div>
+              <h4>{s.t}</h4>
+              <p>{s.d}</p>
+              <span className="srv-tag">{s.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── URGENCY BANNER ─── */
+function CenterBanner(){
+  return (
+    <div className="urgency-banner">
+      <div className="container">
+        <div className="ub-inner">
+          <div className="ub-label">Devis gratuit — réponse garantie sous 24 h</div>
+          <h2>Une question sur votre véhicule ?<br/>On vous rappelle.</h2>
+          <p>Appelez-nous ou laissez vos coordonnées — un mécanicien vous répond directement, sans passer par un centre d'appels.</p>
+          <div className="ub-row">
+            <a className="btn btn-xl" href="tel:+33661788505"
+              style={{background:'var(--c-mec-ambre-clair)', color:'var(--c-mec-acier)', fontWeight:700}}>
+              <Ico.Phone size={18}/> 06 61 78 85 05
+            </a>
+            <a className="btn btn-ghost btn-xl" href="#tarifs">Voir les tarifs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── COMMENT ÇA MARCHE ─── */
+function HowItWorks(){
+  const steps = [
+    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 61 78 85 05. On prend vos coordonnées, la marque, le modèle et vos symptômes." },
+    { ico:<Ico.Calendar size={22}/>, t:"On fixe un RDV", d:"Créneau proposé sous 24 h. Véhicule de prêt disponible sur demande si l'immobilisation dépasse une journée." },
+    { ico:<Ico.Wrench size={22}/>, t:"On intervient", d:"Devis ferme remis avant toute intervention. Vous validez — on commence uniquement avec votre accord." },
+    { ico:<Ico.CheckCircle size={22}/>, t:"Restitution", d:"Véhicule restitué prêt à rouler. Facture détaillée, pièces montrées sur demande, garantie appliquée." },
+  ];
+  return (
+    <section className="section how-section" id="comment-ca-marche">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Processus</div>
+            <h2>Du coup de fil<br/>à la restitution.</h2>
+          </div>
+          <p className="desc">
+            Pas de devis approximatif, pas de mauvaise surprise à la caisse. Vous savez ce que coûte
+            la réparation avant qu'on pose la première clé.
+          </p>
+        </div>
+        <div className="steps-grid">
+          {steps.map((s,i) => (
+            <div className="step" key={i}>
+              <div className="step-ico">{s.ico}</div>
+              <h4>{s.t}</h4>
+              <p>{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── TARIFS ─── */
+function Tarifs(){
+  return (
+    <section className="section tarifs-section" id="tarifs">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Tarification</div>
+            <h2>Devis gratuit,<br/>prix ferme.</h2>
+          </div>
+          <p className="desc">
+            On ne commence jamais sans votre accord écrit sur le devis. Pas de facturation surprise,
+            pas d'heure de main-d'œuvre cachée.
+          </p>
+        </div>
+        <div className="tarifs-grid">
+          <div className="tarif-card">
+            <span className="tarif-badge">Entretien</span>
+            <h4>Révision & vidange</h4>
+            <div className="tarif-price">À partir de 89 € <small>TTC</small></div>
+            <p className="tarif-desc">Vidange huile, filtre à huile, contrôle niveaux, inspection 30 points. Pièces selon véhicule.</p>
+            <ul className="tarif-list">
+              <li><span className="chk"><Ico.Check/></span>Huile préconisation constructeur</li>
+              <li><span className="chk"><Ico.Check/></span>Rapport d'inspection remis</li>
+              <li><span className="chk"><Ico.Check/></span>Pièces garanties 12 mois</li>
+            </ul>
+          </div>
+          <div className="tarif-card featured">
+            <span className="tarif-badge">Le plus demandé</span>
+            <h4>Freinage complet</h4>
+            <div className="tarif-price">À partir de 149 € <small>TTC</small></div>
+            <p className="tarif-desc">Plaquettes + disques (par essieu), purge liquide de frein si nécessaire. Sécurité avant tout.</p>
+            <ul className="tarif-list">
+              <li><span className="chk"><Ico.Check/></span>Pièces qualité OEM ou d'origine</li>
+              <li><span className="chk"><Ico.Check/></span>Contrôle freinage sur route</li>
+              <li><span className="chk"><Ico.Check/></span>Garantie 20 000 km</li>
+              <li><span className="chk"><Ico.Check/></span>Devis gratuit par téléphone</li>
+            </ul>
+          </div>
+          <div className="tarif-card">
+            <span className="tarif-badge">Diagnostic</span>
+            <h4>Valise & diagnostic</h4>
+            <div className="tarif-price">Offert*</div>
+            <p className="tarif-desc">*Le diagnostic est offert dès lors que vous confiez la réparation à notre atelier. Sinon : 45 € TTC.</p>
+            <ul className="tarif-list">
+              <li><span className="chk"><Ico.Check/></span>Valise multimarque dernière gen</li>
+              <li><span className="chk"><Ico.Check/></span>Lecture + effacement codes défaut</li>
+              <li><span className="chk"><Ico.Check/></span>Rapport technique remis</li>
+              <li><span className="chk"><Ico.Check/></span>Toutes marques & motorisations</li>
+            </ul>
+          </div>
+        </div>
+        <p style={{textAlign:'center', fontSize:12.5, color:'var(--c-gris-400)', marginTop:24}}>
+          Tarifs indicatifs HT hors pièces. Devis ferme remis par écrit avant toute intervention. Main-d'œuvre facturée à l'heure réelle, jamais au forfait abusif.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── POURQUOI NOUS ─── */
+function WhyUs(){
+  const items = [
+    { ico:<Ico.Euro/>, t:"Devis ferme, zéro surprise", d:"Le prix communiqué avant le début des travaux est le prix sur la facture. Point." },
+    { ico:<Ico.Shield/>, t:"Pièces garanties 12 mois", d:"Toutes les pièces posées dans notre atelier sont garanties 12 mois ou 20 000 km — quelle que soit la marque." },
+    { ico:<Ico.Cpu/>, t:"Diagnostic électronique inclus", d:"On ne remplace jamais une pièce à l'aveugle. Diagnostic valise offert pour toute réparation confiée à l'atelier." },
+    { ico:<Ico.Car/>, t:"Véhicule de prêt disponible", d:"Pour les interventions d'une journée ou plus, on met un véhicule de prêt à disposition sur demande." },
+    { ico:<Ico.Wrench/>, t:"Mécaniciens expérimentés", d:"Notre équipe cumule plus de 40 ans d'expérience sur toutes les marques. Pas d'apprentis seuls sur votre voiture." },
+    { ico:<Ico.Clock/>, t:"Délais respectés", d:"On ne promet que ce qu'on tient. Si un délai change, on vous appelle avant que vous ayez à rappeler." },
+  ];
+  return (
+    <section className="why-mec-section" id="pourquoi-nous">
+      <div className="container">
+        <div className="section-head" style={{marginBottom:48}}>
+          <div>
+            <div className="lbl" style={{color:'rgba(245,158,11,.75)'}}>
+              <span style={{width:28, height:1, background:'rgba(245,158,11,.5)', display:'block'}}></span>
+              Notre atelier
+            </div>
+            <h2 style={{color:'#fff', fontSize:44}}>Six engagements<br/>qu'on tient vraiment.</h2>
+          </div>
+          <p className="desc" style={{color:'rgba(255,255,255,.5)'}}>
+            On est un garage familial indépendant, pas une franchise. Nos techniciens parlent
+            directement aux clients — aucun intermédiaire commercial entre vous et le mécanicien.
+          </p>
+        </div>
+        <div className="why-mec-grid">
+          {items.map((it,i) => (
+            <div className="why-mec-card" key={i}>
+              <div className="wmc-ico">{it.ico}</div>
+              <div className="wmc-body">
+                <h4>{it.t}</h4>
+                <p>{it.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── STATS ─── */
+function Stats(){
+  return (
+    <section className="stats-mec-section">
+      <div className="container">
+        <div style={{textAlign:'center', marginBottom:60, position:'relative', zIndex:1}}>
+          <div style={{fontFamily:'var(--ff-mono)', fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', color:'rgba(26,35,50,.7)', marginBottom:14}}>En chiffres</div>
+          <h2 style={{fontSize:44, fontWeight:800, letterSpacing:'-.03em', margin:'0 0 14px', color:'#fff'}}>12 ans d'atelier<br/>en chiffres.</h2>
+          <p style={{fontSize:15.5, color:'rgba(255,255,255,.7)', maxWidth:440, margin:'0 auto'}}>Des données simples qu'on aime bien partager.</p>
+        </div>
+        <div className="stats-mec-grid">
+          <div className="stat-mec-block">
+            <div className="num">12<small>ans</small></div>
+            <h5>D'expérience atelier</h5>
+            <p>Fondé à Cénac en 2014. Équipe stable depuis le premier jour.</p>
+          </div>
+          <div className="stat-mec-block">
+            <div className="num">3 200<em>+</em></div>
+            <h5>Véhicules entretenus</h5>
+            <p>Sur les 12 derniers mois, toutes opérations confondues.</p>
+          </div>
+          <div className="stat-mec-block">
+            <div className="num">24<small>h</small></div>
+            <h5>Délai devis garanti</h5>
+            <p>Pour toute demande reçue avant 17 h en semaine.</p>
+          </div>
+          <div className="stat-mec-block">
+            <div className="num">4.8<small>/5</small></div>
+            <h5>Note Google</h5>
+            <p>218 avis vérifiés sur Google Reviews — toutes activités.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── AVIS ─── */
+function Avis(){
+  const avis = [
+    { init:"PD", n:"Pierre D.", d:"Il y a 5 jours", t:"Distribution refaite sur ma Golf 7 1.6 TDI. Devis reçu en 2 heures, intervention le lendemain. Prix tenu à l'euro près et voiture rendue propre. Je reviendrai." },
+    { init:"NB", n:"Nadia B.", d:"Il y a 2 semaines", t:"Voyant moteur allumé depuis des semaines, personne n'avait trouvé. Ici, diagnostic valise en 20 minutes — capteur de pression rail. Réparé dans la journée, voyant éteint." },
+    { init:"CB", n:"Christophe B.", d:"Il y a 3 semaines", t:"Révision complète + préparation contrôle technique. Rapport détaillé avec photo à l'appui. Mon CT est passé sans contre-visite. Service impeccable." },
+  ];
+  return (
+    <section className="section avis-section" id="avis">
+      <div className="container">
+        <div className="section-head">
+          <div>
+            <div className="lbl">Avis clients</div>
+            <h2>Ce qu'ils disent<br/>après l'atelier.</h2>
+          </div>
+          <p className="desc">
+            Extraits de nos dernières évaluations Google Reviews, dans l'ordre chronologique. Non triés.
+          </p>
+        </div>
+        <div className="avis-grid">
+          {avis.map((a,i) => (
+            <div className="avis-card" key={i}>
+              <div className="avis-stars">
+                {[...Array(5)].map((_,j) => <Ico.Star key={j} size={14} fill />)}
+              </div>
+              <p className="avis-text">« {a.t} »</p>
+              <div className="avis-author">
+                <div className="avis-avatar">{a.init}</div>
+                <div>
+                  <div className="avis-name">{a.n}</div>
+                  <div className="avis-date">{a.d} · Google Reviews</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CTA FINAL ─── */
+function FinalCta(){
+  return (
+    <section className="cta-mec-section" id="contact">
+      <div className="container">
+        <div style={{fontFamily:'var(--ff-mono)', fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', color:'var(--c-mec-ambre)', marginBottom:14}}>Besoin d'un entretien ou d'une réparation ?</div>
+        <h2>Appelez.<br/>On <em>s'en occupe.</em></h2>
+        <p>Du lundi au samedi de 8 h à 18 h 30. Un mécanicien répond, pas un standard.</p>
+        <div className="cta-row">
+          <a className="btn btn-mec btn-xl" href="tel:+33661788505">
+            <Ico.Phone size={18}/> 06 61 78 85 05
+          </a>
+          <a className="btn btn-ghost-dark btn-lg" href="mailto:contact@clinicauto.fr">
+            Envoyer un message
+          </a>
+        </div>
+        <p style={{marginTop:22, fontSize:13, color:'var(--c-gris-400)'}}>
+          Consultez aussi <a href="depannage.html" style={{color:'var(--c-dep-rouge)', fontWeight:600}}>Clinic Dépannage</a> et <a href="carrosserie.html" style={{color:'var(--c-car-bleu)', fontWeight:600}}>Clinic Carrosserie</a>.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FOOTER ─── */
+function Footer(){
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand">
+              <div className="glyph">C</div>
+              <span>ClinicAuto</span>
+            </div>
+            <p className="footer-tagline">Garage, vente B2B, mécanique et carrosserie. Quatre métiers, une équipe, depuis 2014.</p>
+            <div className="footer-contact">
+              <strong>ClinicAuto SAS</strong>
+              <span>ZA Bel Air, 33360 Cénac</span>
+              <span>06 61 78 85 05 · contact@clinicauto.fr</span>
+            </div>
+          </div>
+          <div className="footer-col">
+            <h6>Activités</h6>
+            <ul>
+              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
+              <li><a href="depannage.html">Clinic Dépannage</a></li>
+              <li><a href="mecanique.html">Clinic Mécanique</a></li>
+              <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h6>Société</h6>
+            <ul>
+              <li><a href="#">À propos</a></li>
+              <li><a href="#">Recrutement</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h6>Légal</h6>
+            <ul>
+              <li><a href="#">Mentions légales</a></li>
+              <li><a href="#">CGV / CGU</a></li>
+              <li><a href="#">Politique RGPD</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2026 ClinicAuto SAS · RCS Bobigny 894 217 506</span>
+          <div className="footer-legal">
+            <span>Capital 50 000 €</span>
+            <span>TVA FR 39 894 217 506</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── APP ─── */
+function App(){
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <TrustBar />
+      <SectionNav />
+      <Services />
+      <CenterBanner />
+      <HowItWorks />
+      <Tarifs />
+      <WhyUs />
+      <Stats />
+      <Avis />
+      <FinalCta />
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

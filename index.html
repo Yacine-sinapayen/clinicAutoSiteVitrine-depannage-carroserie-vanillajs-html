@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ClinicAuto — Garage, dépannage et carrosserie</title>
+<title>ClinicAuto — Garage, dépannage, mécanique et carrosserie</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,6 +33,10 @@
   --c-car-bleu:#1565A8;
   --c-car-bleu-clair:#1976D2;
   --c-car-bleu-pastel:#90CAF9;
+
+  --c-mec-acier:#1A2332;
+  --c-mec-ambre:#D97706;
+  --c-mec-ambre-clair:#F59E0B;
 
   --ff-sans:"Inter", system-ui, -apple-system, sans-serif;
   --ff-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
@@ -107,6 +111,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .nav-link.pro .swatch{background:var(--c-vert-accent)}
 .nav-link.dep .swatch{background:var(--c-dep-rouge-clair)}
 .nav-link.car .swatch{background:var(--c-car-bleu-clair)}
+.nav-link.mec .swatch{background:var(--c-mec-ambre-clair)}
 .nav-cta{margin-left:14px}
 .nav-mobile-call{
   display:grid; width:40px; height:40px; border-radius:50%;
@@ -167,6 +172,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .mobile-nav-link.pro .swatch{background:var(--c-vert-accent)}
 .mobile-nav-link.dep .swatch{background:var(--c-dep-rouge-clair)}
 .mobile-nav-link.car .swatch{background:var(--c-car-bleu-clair)}
+.mobile-nav-link.mec .swatch{background:var(--c-mec-ambre-clair)}
 .mobile-drawer-cta{
   display:flex; align-items:center; gap:10px;
   padding:16px 20px; border-radius:14px; margin-top:24px;
@@ -232,8 +238,8 @@ button{font-family:inherit; cursor:pointer; border:none}
 
 /* Visual: activity cards in hero */
 .hero-visual{
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:25px; position:relative;
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:18px; position:relative;
   width:100%; margin-top:48px;
 }
 .hv-card{
@@ -271,6 +277,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .hv-pro{background:linear-gradient(155deg, var(--c-pro-navy) 0%, #0e1a3a 100%)}
 .hv-dep{background:linear-gradient(155deg, var(--c-dep-rouge) 0%, #8B1F14 100%)}
 .hv-car{background:linear-gradient(155deg, var(--c-car-bleu) 0%, #0B3D6B 100%)}
+.hv-mec{background:linear-gradient(155deg, var(--c-mec-acier) 0%, #0D1520 100%)}
 
 /* Hero variant: text-only */
 .hero[data-hero="editorial"] .hero-grid{grid-template-columns:1fr; max-width:920px; margin:0 auto; text-align:center}
@@ -380,6 +387,8 @@ button{font-family:inherit; cursor:pointer; border:none}
 .act-dep .ac-label{color:#FED7CD}
 .act-car{background:linear-gradient(155deg, var(--c-car-bleu) 0%, #0B3D6B 100%)}
 .act-car .ac-label{color:var(--c-car-bleu-pastel)}
+.act-mec{background:linear-gradient(155deg, var(--c-mec-acier) 0%, #0D1520 100%)}
+.act-mec .ac-label{color:var(--c-mec-ambre-clair)}
 
 /* "Soft" activity card variant */
 .activities[data-style="soft"] .act-card{
@@ -524,7 +533,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 @media (max-width: 980px){
   .hero h1{font-size:44px}
   .hero[data-hero="editorial"] h1, .hero[data-hero="immersive"] h1{font-size:54px}
-  .hero-visual{grid-template-columns:1fr; margin-top:32px}
+  .hero-visual{grid-template-columns:1fr 1fr; gap:12px; margin-top:32px}
   .section-head{grid-template-columns:1fr; gap:24px}
   .section-head h2{font-size:36px}
   .activities, .activities[data-style="stacked"]{grid-template-columns:1fr; grid-template-rows:auto}
@@ -537,6 +546,9 @@ button{font-family:inherit; cursor:pointer; border:none}
   .nav-links{display:none}
   .nav-mobile-group{display:flex; align-items:center; gap:10px}
   .cta-section h2{font-size:32px}
+}
+@media (max-width: 600px){
+  .hero-visual{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -606,6 +618,7 @@ function Nav(){
           <div className="nav-links">
             <a className="nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
             <a className="nav-link dep" href="depannage.html"><span className="swatch"></span>Dépannage</a>
+            <a className="nav-link mec" href="mecanique.html"><span className="swatch"></span>Mécanique</a>
             <a className="nav-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
             <a className="btn btn-accent btn-sm nav-cta" href="tel:+33661788505" style={{padding:'8px 14px', fontSize:13, marginLeft:14}}>
               <Ico.Phone /> 06 61 78 85 05
@@ -632,6 +645,9 @@ function Nav(){
             </a>
             <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Dépannage
+            </a>
+            <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Mécanique
             </a>
             <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
@@ -680,14 +696,26 @@ function Hero({ style, headline, accent }){
                 <div className="arrow"><Ico.Arrow /></div>
               </div>
             </a>
-            <a className="act-card act-car" href="/carrosserie" target="_blank" rel="noopener noreferrer">
+            <a className="act-card act-car" href="carrosserie.html" target="_blank" rel="noopener noreferrer">
               <span className="ac-label">CLINIC CARROSSERIE · ATELIER</span>
               <h3>Réparation carrosserie</h3>
-              <p className="ac-desc">Tôlerie, peinture cabine, débosselage sans peinture, polissage. Devis sous 24 h, prise en charge assurance.</p>
+              <p className="ac-desc">Tôlerie, peinture cabine, débosselage sans peinture, polissage. Devis sous 24 h.</p>
               <ul className="ac-list">
-                <li><Ico.Check /> Agréé toutes assurances</li>
                 <li><Ico.Check /> Garantie peinture 2 ans</li>
                 <li><Ico.Check /> Véhicule de prêt sur demande</li>
+              </ul>
+              <div className="ac-foot">
+                <div className="arrow"><Ico.Arrow /></div>
+              </div>
+            </a>
+            <a className="act-card act-mec" href="mecanique.html">
+              <span className="ac-label">CLINIC MÉCANIQUE · ATELIER</span>
+              <h3>Entretien & réparation mécanique</h3>
+              <p className="ac-desc">Vidange, distribution, freinage, diagnostic électronique, climatisation. Devis gratuit sous 24 h.</p>
+              <ul className="ac-list">
+                <li><Ico.Check /> Toutes marques · Toutes motorisations</li>
+                <li><Ico.Check /> Pièces garanties 12 mois / 20 000 km</li>
+                <li><Ico.Check /> Préparation contrôle technique incluse</li>
               </ul>
               <div className="ac-foot">
                 <div className="arrow"><Ico.Arrow /></div>
@@ -808,9 +836,10 @@ function Footer(){
           <div className="footer-col">
             <h6>Activités</h6>
             <ul>
-              <li><a href="/pro">ClinicAuto Pro</a></li>
+              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
               <li><a href="depannage.html">Clinic Dépannage</a></li>
-              <li><a href="/carrosserie">Clinic Carrosserie</a></li>
+              <li><a href="mecanique.html">Clinic Mécanique</a></li>
+              <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
             </ul>
           </div>
           <div className="footer-col">
