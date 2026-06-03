@@ -545,6 +545,29 @@ button{font-family:inherit; cursor:pointer; border:none}
 .cta-car-section > .container > p{font-size:16.5px; color:var(--c-gris-500); margin:0 auto 32px; max-width:520px}
 .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 
+/* ─── SECTION NAV ─── */
+.section-nav{
+  position:sticky; top:64px; z-index:90;
+  background:#fff;
+  border-bottom:1px solid var(--c-gris-200);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.section-nav .sn-inner{
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  display:flex; align-items:center; gap:0;
+  overflow-x:auto; scrollbar-width:none;
+}
+.section-nav .sn-inner::-webkit-scrollbar{display:none}
+.sn-link{
+  padding:14px 18px; font-size:13.5px; font-weight:500;
+  color:var(--c-gris-500); white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:all .15s ease; flex-shrink:0;
+}
+.sn-link:hover{color:var(--c-car-bleu)}
+.sn-link.active{color:var(--c-car-bleu); border-bottom-color:var(--c-car-bleu)}
+.sn-sep{width:1px; height:18px; background:var(--c-gris-200); flex-shrink:0}
+
 /* ─── FOOTER ─── */
 .footer{background:var(--c-vert-nuit); color:rgba(255,255,255,.65); padding:72px 0 28px}
 .footer-grid{
@@ -698,6 +721,41 @@ function Nav(){
         </div>
       </div>
     </>
+  );
+}
+
+/* ─── SECTION NAV ─── */
+function SectionNav(){
+  const [active, setActive] = useState('');
+  useEffect(() => {
+    const sections = ['prestations','gallery','comment-ca-marche','atelier','avis','contact'];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin:'-30% 0px -60% 0px' });
+    sections.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+  const links = [
+    { id:'prestations', label:'Prestations' },
+    { id:'gallery', label:'Galerie' },
+    { id:'comment-ca-marche', label:'Rendez-vous' },
+    { id:'atelier', label:'Notre atelier' },
+    { id:'avis', label:'Avis clients' },
+    { id:'contact', label:'Contact' },
+  ];
+  return (
+    <div className="section-nav">
+      <div className="sn-inner">
+        {links.map((l, i) => (
+          <React.Fragment key={l.id}>
+            {i > 0 && <span className="sn-sep" />}
+            <a className={`sn-link${active === l.id ? ' active' : ''}`} href={`#${l.id}`}>
+              {l.label}
+            </a>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -904,7 +962,7 @@ function HowItWorks(){
     { ico:<Ico.Car size={22}/>, t:"Livraison soignée", d:"Votre voiture livrée propre, contrôlée. Garantie peinture signée. Facture et garantie remises en main propre." },
   ];
   return (
-    <section className="section how-section">
+    <section className="section how-section" id="comment-ca-marche">
       <div className="container">
         <div className="section-head">
           <div>
@@ -1041,7 +1099,7 @@ function Avis(){
     { init:"NM", n:"Nadia M.", d:"Il y a 5 semaines", t:"Grêle sur le capot et le toit — j'avais peur du résultat avec le débosselage PDR. Résultat impeccable en deux jours. La peinture n'a pas été touchée. Je recommande sans hésiter." },
   ];
   return (
-    <section className="section avis-section">
+    <section className="section avis-section" id="avis">
       <div className="container">
         <div className="section-head">
           <div>
@@ -1160,6 +1218,7 @@ function App(){
       <Nav />
       <Hero />
       <TrustBar />
+      <SectionNav />
       <Prestations />
       <Gallery />
       <HowItWorks />
