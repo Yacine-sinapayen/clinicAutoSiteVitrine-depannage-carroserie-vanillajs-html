@@ -217,6 +217,7 @@ button{font-family:inherit; cursor:pointer; border:none}
   font-weight:600; margin:0 0 24px; max-width:810px;
 }
 .hero h1 em{font-style:normal; color:var(--c-vert-accent)}
+.hero h1 .h1-ul{color:inherit; text-decoration:underline; text-decoration-color:var(--c-vert-accent); text-underline-offset:6px; text-decoration-thickness:2px}
 .hero .lede{
   font-size:18px; color:rgba(255,255,255,.72); max-width:520px;
   margin:0 0 0; line-height:1.55;
@@ -373,22 +374,20 @@ button{font-family:inherit; cursor:pointer; border:none}
 .act-card .ac-list li{display:flex; align-items:center; gap:8px}
 .act-card .ac-list li svg{flex-shrink:0; opacity:.85}
 .act-card .ac-foot{
-  display:flex; align-items:center; justify-content:center;
+  display:flex; align-items:center; justify-content:flex-end;
   border-top:1px solid rgba(255,255,255,.18); padding-top:18px;
+  margin-top:auto;
 }
 .act-card .ac-foot .url{
   font-family:var(--ff-mono); font-size:11.5px; opacity:.7;
   letter-spacing:.02em;
 }
-.act-card .ac-foot .arrow{
-  width:44px; height:44px; border-radius:50%;
-  background:rgba(255,255,255,.16);
-  display:grid; place-items:center;
-  transition:all .25s ease;
+.act-card .ac-foot .discover{
+  font-size:12.5px; font-weight:500; letter-spacing:.04em;
+  opacity:.72; transition:opacity .25s ease, transform .25s ease;
 }
-.act-card:hover .ac-foot .arrow{
-  background:rgba(255,255,255,.32);
-  transform:translateX(6px);
+.act-card:hover .ac-foot .discover{
+  opacity:1; transform:translateX(4px);
 }
 
 .act-pro{background:linear-gradient(155deg, var(--c-vert-nuit) 0%, var(--c-pro-navy) 100%)}
@@ -426,9 +425,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .activities[data-style="soft"] .act-car .ac-list li svg{color:var(--c-car-bleu)}
 .activities[data-style="soft"] .act-card .ac-foot{border-top-color:var(--c-gris-200)}
 .activities[data-style="soft"] .act-card .url{color:var(--c-gris-500); opacity:1}
-.activities[data-style="soft"] .act-pro .ac-foot .arrow{background:var(--c-vert-nuit); color:#fff}
-.activities[data-style="soft"] .act-dep .ac-foot .arrow{background:var(--c-dep-rouge); color:#fff}
-.activities[data-style="soft"] .act-car .ac-foot .arrow{background:var(--c-car-bleu); color:#fff}
+.activities[data-style="soft"] .act-card .ac-foot .discover{color:var(--c-gris-500); opacity:.8}
 
 /* "Stacked" variant — bigger feature card for SEA priority */
 .activities[data-style="stacked"]{
@@ -679,7 +676,7 @@ function Hero({ style, headline, accent }){
       <div className="container">
         <div className="hero-grid">
           <div className="hero-eyebrow"><span className="dot"></span> Garage automobile · Bordeaux-Cénac</div>
-            <h1>Clinic<em>Auto</em>, quatre expertises, <em>une seule exigence.</em></h1>
+            <h1>Clinic<em>Auto</em>, quatre expertises, <span class="h1-ul">une seule exigence.</span></h1>
           <div className="hero-visual">
             <a className="act-card act-pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">
               <span className="ac-label">CLINICAUTO PRO</span>
@@ -691,7 +688,7 @@ function Hero({ style, headline, accent }){
                 <li><Ico.Check /> Enlèvement organisé</li>
               </ul>
               <div className="ac-foot">
-                <div className="arrow"><Ico.Arrow /></div>
+                <span className="discover">Découvrir →</span>
               </div>
             </a>
             <a className="act-card act-dep" href="depannage.html" target="_blank" rel="noopener noreferrer">
@@ -704,7 +701,7 @@ function Hero({ style, headline, accent }){
                 <li><Ico.Check /> Paiement après l'intervention</li>
               </ul>
               <div className="ac-foot">
-                <div className="arrow"><Ico.Arrow /></div>
+                <span className="discover">Découvrir →</span>
               </div>
             </a>
             <a className="act-card act-car" href="carrosserie.html" target="_blank" rel="noopener noreferrer">
@@ -716,7 +713,7 @@ function Hero({ style, headline, accent }){
                 <li><Ico.Check /> Véhicule de prêt sur demande</li>
               </ul>
               <div className="ac-foot">
-                <div className="arrow"><Ico.Arrow /></div>
+                <span className="discover">Découvrir →</span>
               </div>
             </a>
             <a className="act-card act-mec" href="mecanique.html">
@@ -729,7 +726,7 @@ function Hero({ style, headline, accent }){
                 <li><Ico.Check /> Préparation contrôle technique incluse</li>
               </ul>
               <div className="ac-foot">
-                <div className="arrow"><Ico.Arrow /></div>
+                <span className="discover">Découvrir →</span>
               </div>
             </a>
           </div>
