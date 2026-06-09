@@ -97,7 +97,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .nav-zone svg{color:var(--c-dep-rouge)}
 
 /* ─── UNIVERSE NAV LINKS ─── */
-.nav-universe-links{display:flex; gap:2px; align-items:center; margin-left:24px}
+.nav-universe-links{display:flex; gap:2px; align-items:center}
 .nav-uni-link{
   color:var(--c-gris-500); padding:7px 12px; border-radius:8px;
   font-size:13.5px; font-weight:500; transition:all .15s ease;
@@ -528,7 +528,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 
 /* ─── FOOTER ─── */
-.footer{background:var(--c-vert-nuit); color:rgba(255,255,255,.65); padding:72px 0 28px}
+.footer{background:#1a0302; color:rgba(255,255,255,.65); padding:72px 0 28px}
 .footer-grid{
   display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px;
   padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.09);
@@ -646,24 +646,22 @@ function Nav(){
     <>
       <nav className="topnav">
         <div className="inner">
-          <div style={{display:'flex', alignItems:'center'}}>
-            <a href="index.html" className="nav-brand">
-              <div className="glyph">C</div>
-              <div className="brand-name">Clinic <span>Dépannage</span></div>
-            </a>
+          <a href="index.html" className="nav-brand">
+            <div className="glyph">C</div>
+            <div className="brand-name">Clinic <span>Dépannage</span></div>
+          </a>
+          <div className="nav-right">
             <div className="nav-universe-links">
               <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
               <a className="nav-uni-link dep active" href="depannage.html"><span className="swatch"></span>Dépannage</a>
-              <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Mécanique</a>
+              <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Entretien et réparation</a>
               <a className="nav-uni-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
             </div>
-          </div>
-          <div className="nav-right">
-            <a className="btn btn-danger" href="tel:+33661788505" style={{display:'flex', alignItems:'center', gap:8}}>
-              <Ico.Phone size={16}/> 06 61 78 85 05
+            <a className="btn btn-danger" href="tel:+33613638747" style={{display:'flex', alignItems:'center', gap:8}}>
+              <Ico.Phone size={16}/> 06 13 63 87 47
             </a>
             <div className="nav-mobile-group">
-              <a className="nav-mobile-call" href="tel:+33661788505" style={{background:'var(--c-dep-rouge)'}} aria-label="Appeler"><Ico.Phone size={18}/></a>
+              <a className="nav-mobile-call" href="tel:+33613638747" style={{background:'var(--c-dep-rouge)'}} aria-label="Appeler"><Ico.Phone size={18}/></a>
               <button className={`nav-burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
                 <span/><span/><span/>
               </button>
@@ -685,14 +683,14 @@ function Nav(){
               <span className="swatch"></span> Clinic Dépannage
             </a>
             <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> Clinic Mécanique
+              <span className="swatch"></span> Entretien et réparation
             </a>
             <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
             </a>
           </nav>
-          <a className="mobile-drawer-cta" href="tel:+33661788505" style={{background:'var(--c-dep-rouge)'}}>
-            <Ico.Phone size={18}/> 06 61 78 85 05
+          <a className="mobile-drawer-cta" href="tel:+33613638747" style={{background:'var(--c-dep-rouge)'}}>
+            <Ico.Phone size={18}/> 06 13 63 87 47
           </a>
         </div>
       </div>
@@ -759,13 +757,13 @@ function Hero(){
               par téléphone avant l'intervention.
             </p>
 
-            <a className="phone-card" href="tel:+33661788505">
+            <a className="phone-card" href="tel:+33613638747">
               <div className="phone-ico-wrap">
                 <Ico.Phone size={22} />
               </div>
               <div>
                 <div className="phone-label">Appel direct 24/7</div>
-                <div className="phone-num">06 61 78 85 05</div>
+                <div className="phone-num">06 13 63 87 47</div>
               </div>
             </a>
 
@@ -785,12 +783,12 @@ function Hero(){
             <div className="sc-divider"></div>
             <div className="sc-row">
               <div className="sc-mini">
-                <div className="sc-mini-label">Note clients</div>
-                <div className="sc-mini-val">4.8 / 5</div>
+                <div className="sc-mini-val">95 %</div>
+                <div className="sc-mini-label">Clients satisfaits</div>
               </div>
               <div className="sc-mini">
-                <div className="sc-mini-label">Disponibilité</div>
                 <div className="sc-mini-val">24 h / 24</div>
+                <div className="sc-mini-label">Disponibilité</div>
               </div>
             </div>
           </div>
@@ -805,7 +803,7 @@ function Hero(){
 function TrustBar(){
   const items = [
     { ico:<Ico.Clock size={20}/>, t:"Sous 45 min", d:"Délai d'intervention garanti" },
-    { ico:<Ico.Star size={20} fill/>, t:"4.8 / 5", d:"218 avis clients vérifiés" },
+    { ico:<Ico.Star size={20} fill/>, t:"95 %", d:"de clients satisfaits · enquête client" },
     { ico:<Ico.Pin size={20}/>, t:"Gironde & alentours", d:"33, 47, 24, 40 — Bordeaux Métropole" },
     { ico:<Ico.Card size={20}/>, t:"Paiement après", d:"Carte, CB, espèces, virement" },
   ];
@@ -874,9 +872,9 @@ function UrgencyBanner(){
           <h2>Ne restez pas au bord de la route.</h2>
           <p>Un dépanneur part vers vous dans les 5 minutes suivant votre appel.</p>
           <div className="ub-row">
-            <a className="btn btn-xl" href="tel:+33661788505"
+            <a className="btn btn-xl" href="tel:+33613638747"
               style={{background:'#fff', color:'var(--c-dep-rouge)', fontWeight:700}}>
-              <Ico.Phone size={18}/> 06 61 78 85 05
+              <Ico.Phone size={18}/> 06 13 63 87 47
             </a>
             <a className="btn btn-ghost btn-xl" href="#tarifs">Voir les tarifs</a>
           </div>
@@ -889,7 +887,7 @@ function UrgencyBanner(){
 /* ─── COMMENT ÇA MARCHE ─── */
 function HowItWorks(){
   const steps = [
-    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 61 78 85 05. Réponse en moins de 10 secondes, 24h/24, 365 jours par an." },
+    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 13 63 87 47. Réponse en moins de 10 secondes, 24h/24, 365 jours par an." },
     { ico:<Ico.Alert size={22}/>, t:"On évalue", d:"Localisation, type de panne, véhicule. Devis ferme communiqué avant toute intervention." },
     { ico:<Ico.Truck size={22}/>, t:"On part", d:"Un dépanneur quitte notre base dans les 5 minutes." },
     { ico:<Ico.Check size={16}/>, t:"C'est réglé", d:"Intervention sur place ou remorquage. Paiement après la prestation, facture immédiate." },
@@ -1092,7 +1090,7 @@ function Stats(){
           <div className="stat-dep-block">
             <div className="num">38<small>min</small></div>
             <h5>Délai moyen</h5>
-            <p>Sur 412 interventions ce mois-ci en Gironde.</p>
+            <p>Sur 72 interventions ce mois-ci en Gironde.</p>
           </div>
           <div className="stat-dep-block">
             <div className="num">4 862<em>+</em></div>
@@ -1105,9 +1103,9 @@ function Stats(){
             <p>Taux mesuré par enquête post-intervention systematique.</p>
           </div>
           <div className="stat-dep-block">
-            <div className="num">4.8<small>/5</small></div>
-            <h5>Note Google</h5>
-            <p>218 avis vérifiés sur Google Reviews.</p>
+            <div className="num">95<small>%</small></div>
+            <h5>Clients satisfaits</h5>
+            <p>95 % de clients satisfaits suite à notre enquête client.</p>
           </div>
         </div>
       </div>
@@ -1131,7 +1129,7 @@ function Avis(){
             <h2>Ce qu'ils disent<br/>après l'intervention.</h2>
           </div>
           <p className="desc">
-            Extraits de nos dernières évaluations Google Reviews, dans l'ordre chronologique. Non triés.
+            Retours de nos clients suite à notre enquête de satisfaction.
           </p>
         </div>
         <div className="avis-grid">
@@ -1145,7 +1143,7 @@ function Avis(){
                 <div className="avis-avatar">{a.init}</div>
                 <div>
                   <div className="avis-name">{a.n}</div>
-                  <div className="avis-date">{a.d} · Google Reviews</div>
+                  <div className="avis-date">{a.d}</div>
                 </div>
               </div>
             </div>
@@ -1165,8 +1163,8 @@ function FinalCta(){
         <h2>Appelez.<br/>On <em>répond</em>.</h2>
         <p>Du lundi au dimanche, de minuit à minuit. Urgence dépannage toujours prioritaire.</p>
         <div className="cta-row">
-          <a className="btn btn-danger btn-xl" href="tel:+33661788505">
-            <Ico.Phone size={18}/> 06 61 78 85 05
+          <a className="btn btn-danger btn-xl" href="tel:+33613638747">
+            <Ico.Phone size={18}/> 06 13 63 87 47
           </a>
           <a className="btn btn-ghost-dark btn-lg" href="mailto:contact@clinicauto.fr">
             Envoyer un message
@@ -1191,11 +1189,11 @@ function Footer(){
               <div className="glyph">C</div>
               <span>ClinicAuto</span>
             </div>
-            <p className="footer-tagline">Garage, vente B2B, mécanique et carrosserie. Quatre métiers, une équipe, depuis 2014.</p>
+            <p className="footer-tagline">Garage, vente Pro, mécanique et carrosserie.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
               <span>ZA Bel Air, 33360 Cénac</span>
-              <span>06 61 78 85 05 · contact@clinicauto.fr</span>
+              <span>06 13 63 87 47 · contact@clinicauto.fr</span>
             </div>
           </div>
           <div className="footer-col">
@@ -1203,31 +1201,31 @@ function Footer(){
             <ul>
               <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
               <li><a href="depannage.html">Clinic Dépannage</a></li>
+              <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
               <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h6>Société</h6>
             <ul>
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Recrutement</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="a-propos.html">À propos</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h6>Légal</h6>
             <ul>
-              <li><a href="#">Mentions légales</a></li>
+              <li><a href="mentions-legales.html">Mentions légales</a></li>
               <li><a href="#">CGV / CGU</a></li>
               <li><a href="#">Politique RGPD</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 ClinicAuto SAS · RCS Bobigny 894 217 506</span>
+          <span>© 2026 ClinicAuto SAS</span>
           <div className="footer-legal">
-            <span>Capital 50 000 €</span>
-            <span>TVA FR 39 894 217 506</span>
+            <span>Capital 5 000 €</span>
+            <span>TVA FR61939632873</span>
           </div>
         </div>
       </div>

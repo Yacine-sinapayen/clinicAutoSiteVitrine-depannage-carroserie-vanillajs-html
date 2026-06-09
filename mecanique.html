@@ -99,7 +99,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .nav-tag svg{color:var(--c-mec-ambre)}
 
 /* ─── UNIVERSE NAV LINKS ─── */
-.nav-universe-links{display:flex; gap:2px; align-items:center; margin-left:24px}
+.nav-universe-links{display:flex; gap:2px; align-items:center}
 .nav-uni-link{
   color:var(--c-gris-500); padding:7px 12px; border-radius:8px;
   font-size:13.5px; font-weight:500; transition:all .15s ease;
@@ -524,7 +524,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .sn-sep{width:1px; height:18px; background:var(--c-gris-200); flex-shrink:0}
 
 /* ─── FOOTER ─── */
-.footer{background:var(--c-vert-nuit); color:rgba(255,255,255,.65); padding:72px 0 28px}
+.footer{background:var(--c-mec-acier-3); color:rgba(255,255,255,.65); padding:72px 0 28px}
 .footer-grid{
   display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px;
   padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.09);
@@ -623,24 +623,22 @@ function Nav(){
     <>
       <nav className="topnav">
         <div className="inner">
-          <div style={{display:'flex', alignItems:'center'}}>
-            <a href="index.html" className="nav-brand">
-              <div className="glyph">C</div>
-              <div className="brand-name">Clinic <span>Mécanique</span></div>
-            </a>
+          <a href="index.html" className="nav-brand">
+            <div className="glyph">C</div>
+            <div className="brand-name">Clinic <span>Mécanique</span></div>
+          </a>
+          <div className="nav-right">
             <div className="nav-universe-links">
               <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
               <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage</a>
-              <a className="nav-uni-link mec active" href="mecanique.html"><span className="swatch"></span>Mécanique</a>
+              <a className="nav-uni-link mec active" href="mecanique.html"><span className="swatch"></span>Entretien et réparation</a>
               <a className="nav-uni-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
             </div>
-          </div>
-          <div className="nav-right">
-            <a className="btn btn-mec" href="tel:+33661788505" style={{display:'flex', alignItems:'center', gap:8}}>
-              <Ico.Phone size={16}/> 06 61 78 85 05
+            <a className="btn btn-mec" href="tel:+33613638747" style={{display:'flex', alignItems:'center', gap:8}}>
+              <Ico.Phone size={16}/> 06 13 63 87 47
             </a>
             <div className="nav-mobile-group">
-              <a className="nav-mobile-call" href="tel:+33661788505" style={{background:'var(--c-mec-ambre)'}} aria-label="Appeler"><Ico.Phone size={18}/></a>
+              <a className="nav-mobile-call" href="tel:+33613638747" style={{background:'var(--c-mec-ambre)'}} aria-label="Appeler"><Ico.Phone size={18}/></a>
               <button className={`nav-burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
                 <span/><span/><span/>
               </button>
@@ -662,14 +660,14 @@ function Nav(){
               <span className="swatch"></span> Clinic Dépannage
             </a>
             <a className="mobile-nav-link mec active" href="mecanique.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> Clinic Mécanique
+              <span className="swatch"></span> Entretien et réparation
             </a>
             <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
             </a>
           </nav>
-          <a className="mobile-drawer-cta" href="tel:+33661788505" style={{background:'var(--c-mec-ambre)'}}>
-            <Ico.Phone size={18}/> 06 61 78 85 05
+          <a className="mobile-drawer-cta" href="tel:+33613638747" style={{background:'var(--c-mec-ambre)'}}>
+            <Ico.Phone size={18}/> 06 13 63 87 47
           </a>
         </div>
       </div>
@@ -736,13 +734,13 @@ function Hero(){
               véhicules. Devis gratuit sous 24 h.
             </p>
 
-            <a className="phone-card" href="tel:+33661788505">
+            <a className="phone-card" href="tel:+33613638747">
               <div className="phone-ico-wrap">
                 <Ico.Phone size={22} />
               </div>
               <div>
                 <div className="phone-label">Prendre rendez-vous</div>
-                <div className="phone-num">06 61 78 85 05</div>
+                <div className="phone-num">06 13 63 87 47</div>
               </div>
             </a>
 
@@ -761,8 +759,8 @@ function Hero(){
             <div className="ac-divider"></div>
             <div className="ac-row">
               <div className="ac-mini">
-                <div className="ac-mini-label">Satisfaction</div>
-                <div className="ac-mini-val">4.8 / 5</div>
+                <div className="ac-mini-label">Clients satisfaits</div>
+                <div className="ac-mini-val">95 %</div>
               </div>
               <div className="ac-mini">
                 <div className="ac-mini-label">Depuis</div>
@@ -866,9 +864,9 @@ function CenterBanner(){
           <h2>Une question sur votre véhicule ?<br/>On vous rappelle.</h2>
           <p>Appelez-nous ou laissez vos coordonnées — un mécanicien vous répond directement, sans passer par un centre d'appels.</p>
           <div className="ub-row">
-            <a className="btn btn-xl" href="tel:+33661788505"
+            <a className="btn btn-xl" href="tel:+33613638747"
               style={{background:'var(--c-mec-ambre-clair)', color:'var(--c-mec-acier)', fontWeight:700}}>
-              <Ico.Phone size={18}/> 06 61 78 85 05
+              <Ico.Phone size={18}/> 06 13 63 87 47
             </a>
             <a className="btn btn-ghost btn-xl" href="#tarifs">Voir les tarifs</a>
           </div>
@@ -881,7 +879,7 @@ function CenterBanner(){
 /* ─── COMMENT ÇA MARCHE ─── */
 function HowItWorks(){
   const steps = [
-    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 61 78 85 05. On prend vos coordonnées, la marque, le modèle et vos symptômes." },
+    { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 13 63 87 47. On prend vos coordonnées, la marque, le modèle et vos symptômes." },
     { ico:<Ico.Calendar size={22}/>, t:"On fixe un RDV", d:"Créneau proposé sous 24 h. Véhicule de prêt disponible sur demande si l'immobilisation dépasse une journée." },
     { ico:<Ico.Wrench size={22}/>, t:"On intervient", d:"Devis ferme remis avant toute intervention. Vous validez — on commence uniquement avec votre accord." },
     { ico:<Ico.CheckCircle size={22}/>, t:"Restitution", d:"Véhicule restitué prêt à rouler. Facture détaillée, pièces montrées sur demande, garantie appliquée." },
@@ -1042,9 +1040,9 @@ function Stats(){
             <p>Pour toute demande reçue avant 17 h en semaine.</p>
           </div>
           <div className="stat-mec-block">
-            <div className="num">4.8<small>/5</small></div>
-            <h5>Note Google</h5>
-            <p>218 avis vérifiés sur Google Reviews — toutes activités.</p>
+            <div className="num">95<small>%</small></div>
+            <h5>Clients satisfaits</h5>
+            <p>95 % de clients satisfaits suite à notre enquête client.</p>
           </div>
         </div>
       </div>
@@ -1068,7 +1066,7 @@ function Avis(){
             <h2>Ce qu'ils disent<br/>après l'atelier.</h2>
           </div>
           <p className="desc">
-            Extraits de nos dernières évaluations Google Reviews, dans l'ordre chronologique. Non triés.
+            Retours de nos clients suite à notre enquête de satisfaction.
           </p>
         </div>
         <div className="avis-grid">
@@ -1082,7 +1080,7 @@ function Avis(){
                 <div className="avis-avatar">{a.init}</div>
                 <div>
                   <div className="avis-name">{a.n}</div>
-                  <div className="avis-date">{a.d} · Google Reviews</div>
+                  <div className="avis-date">{a.d}</div>
                 </div>
               </div>
             </div>
@@ -1102,8 +1100,8 @@ function FinalCta(){
         <h2>Appelez.<br/>On <em>s'en occupe.</em></h2>
         <p>Du lundi au samedi de 8 h à 18 h 30. Un mécanicien répond, pas un standard.</p>
         <div className="cta-row">
-          <a className="btn btn-mec btn-xl" href="tel:+33661788505">
-            <Ico.Phone size={18}/> 06 61 78 85 05
+          <a className="btn btn-mec btn-xl" href="tel:+33613638747">
+            <Ico.Phone size={18}/> 06 13 63 87 47
           </a>
           <a className="btn btn-ghost-dark btn-lg" href="mailto:contact@clinicauto.fr">
             Envoyer un message
@@ -1128,11 +1126,11 @@ function Footer(){
               <div className="glyph">C</div>
               <span>ClinicAuto</span>
             </div>
-            <p className="footer-tagline">Garage, vente B2B, mécanique et carrosserie. Quatre métiers, une équipe, depuis 2014.</p>
+            <p className="footer-tagline">Garage, vente Pro, mécanique et carrosserie.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
               <span>ZA Bel Air, 33360 Cénac</span>
-              <span>06 61 78 85 05 · contact@clinicauto.fr</span>
+              <span>06 13 63 87 47 · contact@clinicauto.fr</span>
             </div>
           </div>
           <div className="footer-col">
@@ -1140,32 +1138,31 @@ function Footer(){
             <ul>
               <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
               <li><a href="depannage.html">Clinic Dépannage</a></li>
-              <li><a href="mecanique.html">Clinic Mécanique</a></li>
+              <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
               <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h6>Société</h6>
             <ul>
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Recrutement</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="a-propos.html">À propos</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
           <div className="footer-col">
             <h6>Légal</h6>
             <ul>
-              <li><a href="#">Mentions légales</a></li>
+              <li><a href="mentions-legales.html">Mentions légales</a></li>
               <li><a href="#">CGV / CGU</a></li>
               <li><a href="#">Politique RGPD</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 ClinicAuto SAS · RCS Bobigny 894 217 506</span>
+          <span>© 2026 ClinicAuto SAS</span>
           <div className="footer-legal">
-            <span>Capital 50 000 €</span>
-            <span>TVA FR 39 894 217 506</span>
+            <span>Capital 5 000 €</span>
+            <span>TVA FR61939632873</span>
           </div>
         </div>
       </div>
