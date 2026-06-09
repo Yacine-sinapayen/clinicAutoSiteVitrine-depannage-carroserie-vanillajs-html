@@ -625,10 +625,10 @@ function Nav(){
         <div className="container">
           <a href="index.html" aria-label="ClinicAuto"><Wordmark /></a>
           <div className="nav-links">
-            <a className="nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
-            <a className="nav-link dep" href="depannage.html"><span className="swatch"></span>Dépannage</a>
             <a className="nav-link mec" href="mecanique.html"><span className="swatch"></span>Entretien et réparation</a>
+            <a className="nav-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
             <a className="nav-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
+            <a className="nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
             <a className="btn btn-accent btn-sm nav-cta" href="tel:+33613638747" style={{padding:'8px 14px', fontSize:13, marginLeft:14}}>
               <Ico.Phone /> 06 13 63 87 47
             </a>
@@ -649,17 +649,17 @@ function Nav(){
             <a className="mobile-nav-link pro" href="index.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Accueil
             </a>
-            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> ClinicAuto Pro
-            </a>
-            <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> Clinic Dépannage
-            </a>
             <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Entretien et réparation
             </a>
+            <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Dépannage & Transfert
+            </a>
             <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
+            </a>
+            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> ClinicAuto Pro
             </a>
           </nav>
           <a className="mobile-drawer-cta" href="tel:+33613638747">
@@ -693,7 +693,7 @@ function Hero({ style, headline, accent }){
               </div>
             </a>
             <a className="act-card act-dep" href="depannage.html" target="_blank" rel="noopener noreferrer">
-              <span className="ac-label">CLINIC DÉPANNAGE · 24/7</span>
+              <span className="ac-label">CLINIC DÉPANNAGE · 24h/24</span>
               <h3>Dépannage et remorquage</h3>
               <p className="ac-desc">Panne, accident, batterie, crevaison — partout à Bordeaux-Cénac, jour et nuit. Intervention sous 45 min.</p>
               <ul className="ac-list">
@@ -795,7 +795,7 @@ function Stats(){
           <div className="stat-block">
             <div className="num">38<small>min</small></div>
             <h5>Délai moyen dépannage</h5>
-            <p>Sur 412 interventions ce mois-ci, en Gironde.</p>
+            <p>En Gironde.</p>
           </div>
           <div className="stat-block">
             <div className="num">95<small>%</small></div>
@@ -840,10 +840,10 @@ function Footer(){
           <div className="footer-col">
             <h6>Activités</h6>
             <ul>
-              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
-              <li><a href="depannage.html">Clinic Dépannage</a></li>
               <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
+              <li><a href="depannage.html">Clinic Dépannage & Transfert</a></li>
               <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
+              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
             </ul>
           </div>
           <div className="footer-col">

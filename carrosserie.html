@@ -326,13 +326,13 @@ button{font-family:inherit; cursor:pointer; border:none}
 .section{padding:96px 0}
 .container{max-width:1280px; margin:0 auto; padding:0 32px}
 .section-head{
-  display:grid; grid-template-columns:1fr 1.2fr; gap:64px;
-  align-items:end; margin-bottom:56px;
+  display:flex; flex-direction:row; gap:64px;
+  align-items:start; margin-bottom:56px; width:100%;
 }
 .lbl{
-  font-family:var(--ff-mono); font-size:11px; letter-spacing:.18em;
+  font-family:var(--ff-mono); font-size:13px; letter-spacing:.18em;
   text-transform:uppercase; color:var(--c-car-bleu);
-  margin-bottom:16px; display:flex; align-items:center; gap:12px;
+  margin:0; display:flex; align-items:center; gap:12px; width:50%;
 }
 .lbl::before{content:""; width:28px; height:1px; background:var(--c-car-bleu)}
 .section-head h2{
@@ -340,7 +340,7 @@ button{font-family:inherit; cursor:pointer; border:none}
   font-weight:700; margin:0; color:var(--c-vert-nuit);
 }
 .section-head .desc{
-  font-size:15.5px; color:var(--c-gris-500); line-height:1.65;
+  font-size:15.5px; color:var(--c-gris-500); line-height:1.65; margin:0; width:50%;
 }
 
 /* ─── PRESTATIONS ─── */
@@ -676,10 +676,10 @@ function Nav(){
           </a>
           <div className="nav-right">
             <div className="nav-universe-links">
-              <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
-              <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage</a>
               <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Entretien et réparation</a>
+              <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
               <a className="nav-uni-link car active" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
+              <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
             </div>
             <a className="btn btn-car" href="#devis" style={{display:'flex', alignItems:'center', gap:8}}>
               Demander un devis
@@ -700,17 +700,17 @@ function Nav(){
             <a className="mobile-nav-link" href="index.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch" style={{background:'#2ECC71'}}></span> Accueil
             </a>
-            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> ClinicAuto Pro
-            </a>
-            <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> Clinic Dépannage
-            </a>
             <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Entretien et réparation
             </a>
+            <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Clinic Dépannage & Transfert
+            </a>
             <a className="mobile-nav-link car active" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
+            </a>
+            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> ClinicAuto Pro
             </a>
           </nav>
           <a className="mobile-drawer-cta" href="tel:+33613638747" style={{background:'var(--c-car-bleu)'}}>
@@ -735,9 +735,9 @@ function SectionNav(){
   }, []);
   const links = [
     { id:'prestations', label:'Prestations' },
-    { id:'gallery', label:'Galerie' },
-    { id:'comment-ca-marche', label:'Rendez-vous' },
-    { id:'atelier', label:'Notre atelier' },
+    { id:'gallery', label:'Réalisations' },
+    { id:'comment-ca-marche', label:'Comment ça marche' },
+    { id:'atelier', label:'Pourquoi nous' },
     { id:'avis', label:'Avis clients' },
     { id:'contact', label:'Contact' },
   ];
@@ -875,10 +875,7 @@ function Prestations(){
     <section className="section prestations-section" id="prestations">
       <div className="container">
         <div className="section-head">
-          <div>
-            <div className="lbl">Nos prestations</div>
-            <h2>Six métiers,<br/>un seul atelier.</h2>
-          </div>
+          <div className="lbl">Prestations</div>
           <p className="desc">
             Du débosselage au remplacement de vitres, en passant par la peinture cabine et
             le polissage — nos carrossiers maîtrisent l'ensemble des interventions sur caisse.
@@ -913,10 +910,7 @@ function Gallery(){
     <section className="section gallery-section" id="gallery">
       <div className="container">
         <div className="section-head">
-          <div>
-            <div className="lbl">Avant / Après</div>
-            <h2>142 réalisations<br/>documentées.</h2>
-          </div>
+          <div className="lbl">Réalisations</div>
           <p className="desc">
             Chaque intervention est photographiée avant et après. Pas de retouche, pas de mise en scène —
             uniquement le travail réel de notre équipe.
@@ -963,10 +957,7 @@ function HowItWorks(){
     <section className="section how-section" id="comment-ca-marche">
       <div className="container">
         <div className="section-head">
-          <div>
-            <div className="lbl">Notre processus</div>
-            <h2>De la demande<br/>à la livraison.</h2>
-          </div>
+          <div className="lbl">Comment ça marche</div>
           <p className="desc">
             Quatre étapes claires. Vous savez à chaque moment où en est votre véhicule
             et combien coûte l'intervention, avant qu'on commence.
@@ -1027,7 +1018,7 @@ function WhyUs(){
           <div>
             <div className="lbl" style={{color:'rgba(144,202,249,.8)'}}>
               <span style={{width:28, height:1, background:'rgba(144,202,249,.5)', display:'block'}}></span>
-              Pourquoi nous choisir
+              Pourquoi nous
             </div>
             <h2 style={{color:'#fff', fontSize:44}}>Six raisons de<br/>nous confier votre voiture.</h2>
           </div>
@@ -1100,10 +1091,7 @@ function Avis(){
     <section className="section avis-section" id="avis">
       <div className="container">
         <div className="section-head">
-          <div>
-            <div className="lbl">Avis clients</div>
-            <h2>Ce qu'ils disent<br/>après livraison.</h2>
-          </div>
+          <div className="lbl">Avis clients</div>
           <p className="desc">
             Retours de nos clients suite à notre enquête de satisfaction.
           </p>
@@ -1147,7 +1135,7 @@ function FinalCta(){
           </a>
         </div>
         <p style={{marginTop:22, fontSize:13, color:'var(--c-gris-400)'}}>
-          Consultez aussi <a href="depannage.html" style={{color:'var(--c-car-bleu)', fontWeight:600}}>Clinic Dépannage</a> ou <a href="index.html" style={{color:'var(--c-vert-foret)', fontWeight:600}}>ClinicAuto Pro</a>.
+          Consultez aussi <a href="depannage.html" style={{color:'var(--c-car-bleu)', fontWeight:600}}>Clinic Dépannage & Transfert</a> ou <a href="index.html" style={{color:'var(--c-vert-foret)', fontWeight:600}}>ClinicAuto Pro</a>.
         </p>
       </div>
     </section>
@@ -1175,10 +1163,10 @@ function Footer(){
           <div className="footer-col">
             <h6>Activités</h6>
             <ul>
-              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
-              <li><a href="depannage.html">Clinic Dépannage</a></li>
               <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
+              <li><a href="depannage.html">Clinic Dépannage & Transfert</a></li>
               <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
+              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
             </ul>
           </div>
           <div className="footer-col">
