@@ -203,7 +203,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 /* Lede */
 .hero-mec .lede{
   font-size:16.5px; color:rgba(255,255,255,.72); line-height:1.6;
-  max-width:480px; margin:0 0 36px;
+  max-width:500px; margin:0 0 36px;
 }
 
 /* Phone card */
@@ -500,6 +500,11 @@ button{font-family:inherit; cursor:pointer; border:none}
 .cta-mec-section > .container > p{font-size:16.5px; color:var(--c-gris-500); margin:0 auto 32px; max-width:520px}
 .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
 
+/* ─── SCROLL OFFSET for sticky nav+section-nav ─── */
+#services, #comment-ca-marche, #tarifs, #pourquoi-nous, #avis, #contact {
+  scroll-margin-top: 110px;
+}
+
 /* ─── SECTION NAV ─── */
 .section-nav{
   position:sticky; top:64px; z-index:90;
@@ -625,11 +630,11 @@ function Nav(){
         <div className="inner">
           <a href="index.html" className="nav-brand">
             <div className="glyph">C</div>
-            <div className="brand-name">Clinic <span>Mécanique</span></div>
+            <div className="brand-name">Clinic <span>Entretien & Réparation</span></div>
           </a>
           <div className="nav-right">
             <div className="nav-universe-links">
-              <a className="nav-uni-link mec active" href="mecanique.html"><span className="swatch"></span>Entretien et réparation</a>
+              <a className="nav-uni-link mec active" href="mecanique.html"><span className="swatch"></span>Entretien & réparation</a>
               <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
               <a className="nav-uni-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
               <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
@@ -654,7 +659,7 @@ function Nav(){
               <span className="swatch" style={{background:'#2ECC71'}}></span> Accueil
             </a>
             <a className="mobile-nav-link mec active" href="mecanique.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> Entretien et réparation
+              <span className="swatch"></span> Entretien & réparation
             </a>
             <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Dépannage & Transfert
@@ -721,7 +726,7 @@ function Hero(){
           <div>
             <div className="status-badge">
               <span className="status-dot"></span>
-              Atelier ouvert · Lun–Sam 8h–18h30
+              Atelier ouvert · Lun–Sam 9h–18h30
             </div>
             <h1>
               Votre voiture mérite<br/>
@@ -730,7 +735,7 @@ function Hero(){
             </h1>
             <p className="lede">
               Entretien courant, distribution, freinage, diagnostic électronique,
-              climatisation — notre atelier de Cénac prend en charge tous vos
+              climatisation — nos ateliers de Cénac et Floirac prennent en charge tous vos
               véhicules. Devis gratuit sous 24 h.
             </p>
 
@@ -744,16 +749,11 @@ function Hero(){
               </div>
             </a>
 
-            <div style={{display:'block'}}>
-              <a className="callback-link" href="#contact">
-                Ou demandez un devis en ligne →
-              </a>
-            </div>
           </div>
 
           {/* ── Colonne droite : atelier card ── */}
           <div className="atelier-card">
-            <div className="ac-label">Notre atelier en chiffres</div>
+            <div className="ac-label">Nos ateliers en chiffres</div>
             <div className="ac-big">24<small>h</small></div>
             <div className="ac-sub">Délai devis gratuit — pour toute demande reçue avant 17 h</div>
             <div className="ac-divider"></div>
@@ -770,7 +770,7 @@ function Hero(){
             <div className="ac-badges">
               <div className="ac-badge">
                 <Ico.Shield size={16} />
-                Pièces garanties 12 mois / 20 000 km
+                Pièces garanties 5 000 km ou 12 mois*
               </div>
               <div className="ac-badge">
                 <Ico.CheckCircle size={16} />
@@ -778,7 +778,7 @@ function Hero(){
               </div>
               <div className="ac-badge">
                 <Ico.Car size={16} />
-                Toutes marques · Véhicule de prêt sur demande
+                Toutes marques
               </div>
             </div>
           </div>
@@ -793,7 +793,7 @@ function Hero(){
 function TrustBar(){
   const items = [
     { ico:<Ico.Clock size={20}/>, t:"Devis sous 24 h", d:"Gratuit, sans engagement" },
-    { ico:<Ico.Shield size={20}/>, t:"Pièces garanties", d:"12 mois ou 20 000 km" },
+    { ico:<Ico.Shield size={20}/>, t:"Pièces garanties 5 000 km ou 12 mois*", d:"" },
     { ico:<Ico.Car size={20}/>, t:"Toutes marques", d:"VP, SUV, utilitaires légers" },
     { ico:<Ico.Gauge size={20}/>, t:"Diagnostic électronique", d:"Valise multimarque sur place" },
   ];
@@ -832,8 +832,8 @@ function Services(){
         <div className="section-head">
           <div className="lbl">Services</div>
           <p className="desc">
-            Notre atelier est équipé pour les travaux d'entretien classiques comme pour
-            la mécanique lourde. Un seul numéro, un seul interlocuteur du devis à la restitution.
+            Nos ateliers sont équipés pour les travaux d'entretien classiques comme pour
+            la mécanique lourde.
           </p>
         </div>
         <div className="services-grid">
@@ -859,7 +859,7 @@ function CenterBanner(){
         <div className="ub-inner">
           <div className="ub-label">Devis gratuit — réponse garantie sous 24 h</div>
           <h2>Une question sur votre véhicule ?<br/>On vous rappelle.</h2>
-          <p>Appelez-nous ou laissez vos coordonnées — un mécanicien vous répond directement, sans passer par un centre d'appels.</p>
+          <p>Appelez-nous ou laissez vos coordonnées - sans passer par un centre d'appels.</p>
           <div className="ub-row">
             <a className="btn btn-xl" href="tel:+33613638747"
               style={{background:'var(--c-mec-ambre-clair)', color:'var(--c-mec-acier)', fontWeight:700}}>
@@ -877,8 +877,8 @@ function CenterBanner(){
 function HowItWorks(){
   const steps = [
     { ico:<Ico.Phone size={22}/>, t:"Vous appelez", d:"Le 06 13 63 87 47. On prend vos coordonnées, la marque, le modèle et vos symptômes." },
-    { ico:<Ico.Calendar size={22}/>, t:"On fixe un RDV", d:"Créneau proposé sous 24 h. Véhicule de prêt disponible sur demande si l'immobilisation dépasse une journée." },
-    { ico:<Ico.Wrench size={22}/>, t:"On intervient", d:"Devis ferme remis avant toute intervention. Vous validez — on commence uniquement avec votre accord." },
+    { ico:<Ico.Calendar size={22}/>, t:"On fixe un RDV", d:"Créneau proposé sous 24 h. Mise à disposition de véhicule de location à prix avantageux si l'immobilisation dépasse une journée." },
+    { ico:<Ico.Wrench size={22}/>, t:"On intervient", d:"Devis remis avant toute intervention** par téléphone, mail, ou expliqué lors d'un RDV. Vous validez — on commence uniquement avec votre accord." },
     { ico:<Ico.CheckCircle size={22}/>, t:"Restitution", d:"Véhicule restitué prêt à rouler. Facture détaillée, pièces montrées sur demande, garantie appliquée." },
   ];
   return (
@@ -926,7 +926,7 @@ function Tarifs(){
             <ul className="tarif-list">
               <li><span className="chk"><Ico.Check/></span>Huile préconisation constructeur</li>
               <li><span className="chk"><Ico.Check/></span>Rapport d'inspection remis</li>
-              <li><span className="chk"><Ico.Check/></span>Pièces garanties 12 mois</li>
+              <li><span className="chk"><Ico.Check/></span>Pièces garanties 5 000 km ou 12 mois*</li>
             </ul>
           </div>
           <div className="tarif-card featured">
@@ -935,9 +935,9 @@ function Tarifs(){
             <div className="tarif-price">À partir de 149 € <small>TTC</small></div>
             <p className="tarif-desc">Plaquettes + disques (par essieu), purge liquide de frein si nécessaire. Sécurité avant tout.</p>
             <ul className="tarif-list">
-              <li><span className="chk"><Ico.Check/></span>Pièces qualité OEM ou d'origine</li>
+              <li><span className="chk"><Ico.Check/></span>Pièces qualité OEM</li>
               <li><span className="chk"><Ico.Check/></span>Contrôle freinage sur route</li>
-              <li><span className="chk"><Ico.Check/></span>Garantie 20 000 km</li>
+              <li><span className="chk"><Ico.Check/></span>Garantie 5 000 km ou 12 mois*</li>
               <li><span className="chk"><Ico.Check/></span>Devis gratuit par téléphone</li>
             </ul>
           </div>
@@ -947,7 +947,7 @@ function Tarifs(){
             <div className="tarif-price">Offert*</div>
             <p className="tarif-desc">*Le diagnostic est offert dès lors que vous confiez la réparation à notre atelier. Sinon : 45 € TTC.</p>
             <ul className="tarif-list">
-              <li><span className="chk"><Ico.Check/></span>Valise multimarque dernière gen</li>
+              <li><span className="chk"><Ico.Check/></span>Valise multimarque dernière génération</li>
               <li><span className="chk"><Ico.Check/></span>Lecture + effacement codes défaut</li>
               <li><span className="chk"><Ico.Check/></span>Rapport technique remis</li>
               <li><span className="chk"><Ico.Check/></span>Toutes marques & motorisations</li>
@@ -955,7 +955,7 @@ function Tarifs(){
           </div>
         </div>
         <p style={{textAlign:'center', fontSize:12.5, color:'var(--c-gris-400)', marginTop:24}}>
-          Tarifs indicatifs TTC. Devis ferme remis par écrit avant toute intervention. Main-d'œuvre facturée à l'heure réelle, jamais au forfait abusif.
+          Tarifs indicatifs TTC. Devis remis avant toute intervention**. Main-d'œuvre facturée à l'heure réelle, jamais au forfait abusif.
         </p>
       </div>
     </section>
@@ -965,11 +965,11 @@ function Tarifs(){
 /* ─── POURQUOI NOUS ─── */
 function WhyUs(){
   const items = [
-    { ico:<Ico.Euro/>, t:"Devis ferme, zéro surprise", d:"Le prix communiqué avant le début des travaux est le prix sur la facture. Point." },
-    { ico:<Ico.Shield/>, t:"Pièces garanties 12 mois", d:"Toutes les pièces posées dans notre atelier sont garanties 12 mois ou 20 000 km — quelle que soit la marque." },
+    { ico:<Ico.Euro/>, t:"Devis remis, zéro surprise", d:"Le prix communiqué avant le début des travaux est le prix sur la facture**. Vous validez, on commence." },
+    { ico:<Ico.Shield/>, t:"Pièces garanties 5 000 km ou 12 mois*", d:"Toutes les pièces posées dans notre atelier sont garanties 5 000 km ou 12 mois — quelle que soit la marque." },
     { ico:<Ico.Cpu/>, t:"Diagnostic électronique inclus", d:"On ne remplace jamais une pièce à l'aveugle. Diagnostic valise offert pour toute réparation confiée à l'atelier." },
-    { ico:<Ico.Car/>, t:"Véhicule de prêt disponible", d:"Pour les interventions d'une journée ou plus, on met un véhicule de prêt à disposition sur demande." },
-    { ico:<Ico.Wrench/>, t:"Mécaniciens expérimentés", d:"Notre équipe cumule plus de 40 ans d'expérience sur toutes les marques. Pas d'apprentis seuls sur votre voiture." },
+    { ico:<Ico.Car/>, t:"Mise à disposition de véhicule de location", d:"Pour les interventions d'une journée ou plus, mise à disposition de véhicule de location à prix avantageux." },
+    { ico:<Ico.Wrench/>, t:"Techniciens expérimentés", d:"Nos équipes cumulent plus de 20 ans d'expérience sur toutes les marques." },
     { ico:<Ico.Clock/>, t:"Délais respectés", d:"On ne promet que ce qu'on tient. Si un délai change, on vous appelle avant que vous ayez à rappeler." },
   ];
   return (
@@ -977,15 +977,13 @@ function WhyUs(){
       <div className="container">
         <div className="section-head" style={{marginBottom:48}}>
           <div>
-            <div className="lbl" style={{color:'rgba(245,158,11,.75)'}}>
-              <span style={{width:28, height:1, background:'rgba(245,158,11,.5)', display:'block'}}></span>
-              Nos engagements
+            <div className="lbl" style={{color:'rgba(245,158,11,.75)', fontSize:16, letterSpacing:'.04em', textTransform:'none', fontFamily:'var(--ff-sans)', fontWeight:700}}>
+              Nos six engagements qu'on tient vraiment.
             </div>
-            <h2 style={{color:'#fff', fontSize:44}}>Six engagements<br/>qu'on tient vraiment.</h2>
           </div>
           <p className="desc" style={{color:'rgba(255,255,255,.5)'}}>
-            On est un garage familial indépendant, pas une franchise. Nos techniciens parlent
-            directement aux clients — aucun intermédiaire commercial entre vous et le mécanicien.
+            On est un garage indépendant, pas une franchise. Nos techniciens parlent
+            directement aux clients — aucun intermédiaire commercial entre vous et nos techniciens.
           </p>
         </div>
         <div className="why-mec-grid">
@@ -1021,9 +1019,9 @@ function Stats(){
             <p>Fondé à Cénac en 2014. Équipe stable depuis le premier jour.</p>
           </div>
           <div className="stat-mec-block">
-            <div className="num">3 200<em>+</em></div>
+            <div className="num">1 000<small>+</small></div>
             <h5>Véhicules entretenus</h5>
-            <p>Sur les 12 derniers mois, toutes opérations confondues.</p>
+            <p>Toutes opérations confondues, depuis l'ouverture.</p>
           </div>
           <div className="stat-mec-block">
             <div className="num">24<small>h</small></div>
@@ -1086,7 +1084,7 @@ function FinalCta(){
       <div className="container">
         <div style={{fontFamily:'var(--ff-mono)', fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', color:'var(--c-mec-ambre)', marginBottom:14}}>Besoin d'un entretien ou d'une réparation ?</div>
         <h2>Appelez.<br/>On <em>s'en occupe.</em></h2>
-        <p>Du lundi au samedi de 8 h à 18 h 30. Un mécanicien répond, pas un standard.</p>
+        <p>Du lundi au samedi de 9 h à 18 h 30. Un technicien répond, pas un standard.</p>
         <div className="cta-row">
           <a className="btn btn-mec btn-xl" href="tel:+33613638747">
             <Ico.Phone size={18}/> 06 13 63 87 47
@@ -1117,7 +1115,8 @@ function Footer(){
             <p className="footer-tagline">Garage, vente Pro, mécanique et carrosserie.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
-              <span>ZA Bel Air, 33360 Cénac</span>
+              <span>Garage ZA Bel Air, 33360 Cénac</span>
+              <span>ou Garage 142 rue Émile Combe, 33270 Floirac</span>
               <span>06 13 63 87 47 · contact@clinicauto.fr</span>
             </div>
           </div>
@@ -1145,6 +1144,10 @@ function Footer(){
               <li><a href="#">Politique RGPD</a></li>
             </ul>
           </div>
+        </div>
+        <div style={{borderTop:'1px solid rgba(255,255,255,.09)', paddingTop:16, marginBottom:16, fontSize:11.5, color:'rgba(255,255,255,.35)', lineHeight:1.5}}>
+          * La garantie pièces de 5 000 km ou 12 mois s'applique aux pièces neuves d'origine ou équivalent OEM posées dans notre atelier. Certaines pièces spécifiques (filtres, consommables, pièces d'occasion) ne sont pas couvertes par cette garantie. Renseignez-vous auprès de notre atelier avant intervention.<br/>
+          ** Le devis est établi sur la base d'un diagnostic visuel. Si le démontage révèle des éléments non visibles avant ouverture, un devis complémentaire vous est soumis pour accord avant toute poursuite des travaux.
         </div>
         <div className="footer-bottom">
           <span>© 2026 ClinicAuto SAS</span>

@@ -625,7 +625,7 @@ function Nav(){
         <div className="container">
           <a href="index.html" aria-label="ClinicAuto"><Wordmark /></a>
           <div className="nav-links">
-            <a className="nav-link mec" href="mecanique.html"><span className="swatch"></span>Entretien et réparation</a>
+            <a className="nav-link mec" href="mecanique.html"><span className="swatch"></span>Entretien & réparation</a>
             <a className="nav-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
             <a className="nav-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
             <a className="nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
@@ -650,7 +650,7 @@ function Nav(){
               <span className="swatch"></span> Accueil
             </a>
             <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch"></span> Entretien et réparation
+              <span className="swatch"></span> Entretien & réparation
             </a>
             <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Dépannage & Transfert
@@ -676,17 +676,17 @@ function Hero({ style, headline, accent }){
     <section className="hero" data-hero={style}>
       <div className="container">
         <div className="hero-grid">
-          <div className="hero-eyebrow"><span className="dot"></span> Garage automobile · Bordeaux-Cénac</div>
+          <div className="hero-eyebrow"><span className="dot"></span> Garage automobile · Bordeaux-Cénac-Floirac</div>
             <h1>Clinic<em>Auto</em>, quatre expertises, <span class="h1-ul">une seule exigence.</span></h1>
           <div className="hero-visual">
-            <a className="act-card act-pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">
-              <span className="ac-label">CLINICAUTO PRO</span>
-              <h3>Marché des véhicules accidentés</h3>
-              <p className="ac-desc">Achat-vente entre professionnels : VEI, sinistres, épaves roulantes. Catalogue mis à jour chaque semaine.</p>
+            <a className="act-card act-mec" href="mecanique.html">
+              <span className="ac-label">CLINIC MÉCANIQUE · ATELIER</span>
+              <h3>Entretien & réparation mécanique</h3>
+              <p className="ac-desc">Vidange, distribution, freinage, diagnostic électronique, climatisation. Devis gratuit sous 24 h.</p>
               <ul className="ac-list">
-                <li><Ico.Check /> Réservé aux pros agréés</li>
-                <li><Ico.Check /> Carte grise et historique disponibles</li>
-                <li><Ico.Check /> Enlèvement organisé</li>
+                <li><Ico.Check /> Toutes marques · Toutes motorisations</li>
+                <li><Ico.Check /> Pièces garanties 12 mois / 20 000 km</li>
+                <li><Ico.Check /> Préparation contrôle technique incluse</li>
               </ul>
               <div className="ac-foot">
                 <span className="discover">Découvrir →</span>
@@ -717,14 +717,14 @@ function Hero({ style, headline, accent }){
                 <span className="discover">Découvrir →</span>
               </div>
             </a>
-            <a className="act-card act-mec" href="mecanique.html">
-              <span className="ac-label">CLINIC MÉCANIQUE · ATELIER</span>
-              <h3>Entretien & réparation mécanique</h3>
-              <p className="ac-desc">Vidange, distribution, freinage, diagnostic électronique, climatisation. Devis gratuit sous 24 h.</p>
+            <a className="act-card act-pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <span className="ac-label">CLINICAUTO PRO</span>
+              <h3>Marché des véhicules accidentés</h3>
+              <p className="ac-desc">Achat-vente entre professionnels : VEI, sinistres, épaves roulantes. Catalogue mis à jour chaque semaine.</p>
               <ul className="ac-list">
-                <li><Ico.Check /> Toutes marques · Toutes motorisations</li>
-                <li><Ico.Check /> Pièces garanties 12 mois / 20 000 km</li>
-                <li><Ico.Check /> Préparation contrôle technique incluse</li>
+                <li><Ico.Check /> Réservé aux pros agréés</li>
+                <li><Ico.Check /> Carte grise et historique disponibles</li>
+                <li><Ico.Check /> Enlèvement organisé</li>
               </ul>
               <div className="ac-foot">
                 <span className="discover">Découvrir →</span>
@@ -833,7 +833,8 @@ function Footer(){
             <p className="footer-tagline">Garage, vente Pro, mécanique et carrosserie.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
-              <span>ZA Bel Air, 33360 Cénac</span>
+              <span>Garage ZA Bel Air, 33360 Cénac</span>
+              <span>ou Garage 142 rue Émile Combe, 33270 Floirac</span>
               <span>06 13 63 87 47 · contact@clinicauto.fr</span>
             </div>
           </div>
