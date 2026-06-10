@@ -557,7 +557,14 @@ button{font-family:inherit; cursor:pointer; border:none}
   .cta-section h2{font-size:32px}
 }
 @media (max-width: 600px){
+  .container{padding:0 16px}
+  .topnav .container{padding:0 16px}
+  .nav-brand{font-size:15px}
+  .hero h1{font-size:36px}
   .hero-visual{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column; gap:8px; text-align:center}
+  .footer-legal{flex-wrap:wrap; justify-content:center; gap:12px}
 }
 </style>
 </head>
@@ -625,10 +632,11 @@ function Nav(){
         <div className="container">
           <a href="index.html" aria-label="ClinicAuto"><Wordmark /></a>
           <div className="nav-links">
+            <a className="nav-link active" href="index.html">Accueil</a>
             <a className="nav-link mec" href="mecanique.html"><span className="swatch"></span>Entretien & réparation</a>
             <a className="nav-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
             <a className="nav-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
-            <a className="nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
+            <a className="nav-link pro" href="pro.html"><span className="swatch"></span>Pro</a>
             <a className="btn btn-accent btn-sm nav-cta" href="tel:+33613638747" style={{padding:'8px 14px', fontSize:13, marginLeft:14}}>
               <Ico.Phone /> 06 13 63 87 47
             </a>
@@ -658,7 +666,7 @@ function Nav(){
             <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
             </a>
-            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+            <a className="mobile-nav-link pro" href="pro.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> ClinicAuto Pro
             </a>
           </nav>
@@ -681,11 +689,11 @@ function Hero({ style, headline, accent }){
           <div className="hero-visual">
             <a className="act-card act-mec" href="mecanique.html">
               <span className="ac-label">CLINIC MÉCANIQUE · ATELIER</span>
-              <h3>Entretien & réparation mécanique</h3>
+              <h3>Entretien & réparation</h3>
               <p className="ac-desc">Vidange, distribution, freinage, diagnostic électronique, climatisation. Devis gratuit sous 24 h.</p>
               <ul className="ac-list">
                 <li><Ico.Check /> Toutes marques · Toutes motorisations</li>
-                <li><Ico.Check /> Pièces garanties 12 mois / 20 000 km</li>
+                <li><Ico.Check /> Pièces garanties 12 mois / 5 000 km*</li>
                 <li><Ico.Check /> Préparation contrôle technique incluse</li>
               </ul>
               <div className="ac-foot">
@@ -717,7 +725,7 @@ function Hero({ style, headline, accent }){
                 <span className="discover">Découvrir →</span>
               </div>
             </a>
-            <a className="act-card act-pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <a className="act-card act-pro" href="pro.html">
               <span className="ac-label">CLINICAUTO PRO</span>
               <h3>Marché des véhicules accidentés</h3>
               <p className="ac-desc">Achat-vente entre professionnels : VEI, sinistres, épaves roulantes. Catalogue mis à jour chaque semaine.</p>
@@ -816,7 +824,7 @@ function FinalCta(){
         <p>Une équipe humaine au téléphone, du lundi au samedi de 8 h à 19 h. Urgence dépannage 24h/24.</p>
         <div className="cta-row">
           <a className="btn btn-primary btn-lg" href="tel:+33613638747"><Ico.Phone /> 06 13 63 87 47</a>
-          <a className="btn btn-ghost-dark btn-lg" href="mailto:contact@clinicauto.fr">contact@clinicauto.fr</a>
+          <a className="btn btn-ghost-dark btn-lg" href="mailto:cercleauto@gmail.com">cercleauto@gmail.com</a>
         </div>
       </div>
     </section>
@@ -834,8 +842,8 @@ function Footer(){
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
               <span>Garage ZA Bel Air, 33360 Cénac</span>
-              <span>ou Garage 142 rue Émile Combe, 33270 Floirac</span>
-              <span>06 13 63 87 47 · contact@clinicauto.fr</span>
+              <span>ou<br/>Garage 142 rue Émile Combe, 33270 Floirac</span>
+              <span>06 13 63 87 47 · cercleauto@gmail.com</span>
             </div>
           </div>
           <div className="footer-col">
@@ -844,7 +852,7 @@ function Footer(){
               <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
               <li><a href="depannage.html">Clinic Dépannage & Transfert</a></li>
               <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
-              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
+              <li><a href="pro.html">ClinicAuto Pro</a></li>
             </ul>
           </div>
           <div className="footer-col">

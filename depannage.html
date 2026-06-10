@@ -144,6 +144,13 @@
         font-size: 18px;
         letter-spacing: -0.015em;
         color: var(--c-noir-doux);
+        min-width: 0;
+        overflow: hidden;
+      }
+      .nav-brand .brand-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .nav-brand .glyph {
         width: 34px;
@@ -289,7 +296,7 @@
         right: 0;
         bottom: 0;
         width: min(300px, 85vw);
-        background: var(--c-vert-nuit);
+        background: var(--c-dep-rouge-dark);
         padding: 80px 24px 36px;
         display: flex;
         flex-direction: column;
@@ -1478,9 +1485,11 @@
           padding-left: 0;
         }
         .section-head {
-          grid-template-columns: 1fr;
-          gap: 20px;
+          flex-direction: column;
+          gap: 16px;
         }
+        .lbl { width: 100%; }
+        .section-head .desc { width: 100%; }
         .section-head h2 {
           font-size: 32px;
         }
@@ -1524,9 +1533,23 @@
         .nav-universe-links {
           display: none;
         }
+        .nav-right > .btn-danger { display: none; }
         .nav-mobile-group {
           display: flex;
         }
+      }
+      @media(max-width:600px){
+        .container{padding:0 16px}
+        .topnav .inner{padding:0 16px}
+        .nav-brand{font-size:15px}
+        .hero-dep h1{font-size:32px}
+        .trust-bar .inner{grid-template-columns:1fr}
+        .trust-item:nth-child(odd){padding-left:16px}
+        .steps-grid{grid-template-columns:1fr}
+        .footer-grid{grid-template-columns:1fr}
+        .footer-bottom{flex-direction:column; gap:8px; text-align:center}
+        .footer-legal{flex-wrap:wrap; justify-content:center; gap:12px}
+        .section{padding:64px 0}
       }
     </style>
   </head>
@@ -1794,6 +1817,7 @@
                 </a>
                 <div className="nav-right">
                   <div className="nav-universe-links">
+                    <a className="nav-uni-link" href="index.html"><span className="swatch" style={{background:'#0D5C3A'}}></span>Accueil</a>
                     <a className="nav-uni-link mec" href="mecanique.html">
                       <span className="swatch"></span>Entretien & réparation
                     </a>
@@ -1808,9 +1832,7 @@
                     </a>
                     <a
                       className="nav-uni-link pro"
-                      href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="pro.html"
                     >
                       <span className="swatch"></span>Pro
                     </a>
@@ -1818,7 +1840,6 @@
                   <a
                     className="btn btn-danger"
                     href="tel:+33613638747"
-                    style={{ display: "flex", alignItems: "center", gap: 8 }}
                   >
                     <Ico.Phone size={16} /> 06 13 63 87 47
                   </a>
@@ -1858,7 +1879,7 @@
                   >
                     <span
                       className="swatch"
-                      style={{ background: "#2ECC71" }}
+                      style={{ background: "#0D5C3A" }}
                     ></span>{" "}
                     Accueil
                   </a>
@@ -1886,9 +1907,7 @@
                   </a>
                   <a
                     className="mobile-nav-link pro"
-                    href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="pro.html"
                     onClick={() => setMenuOpen(false)}
                   >
                     <span className="swatch"></span> ClinicAuto Pro
@@ -2702,7 +2721,7 @@
                 </a>
                 <a
                   className="btn btn-ghost-dark btn-lg"
-                  href="mailto:contact@clinicauto.fr"
+                  href="mailto:cercleauto@gmail.com"
                 >
                   Envoyer un message
                 </a>
@@ -2752,7 +2771,7 @@
                   <div className="footer-contact">
                     <strong>ClinicAuto SAS</strong>
                     <span>ZA Bel Air, 33360 Cénac</span>
-                    <span>06 13 63 87 47 · contact@clinicauto.fr</span>
+                    <span>06 13 63 87 47 · cercleauto@gmail.com</span>
                   </div>
                 </div>
                 <div className="footer-col">
@@ -2771,9 +2790,7 @@
                     </li>
                     <li>
                       <a
-                        href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="pro.html"
                       >
                         ClinicAuto Pro
                       </a>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Clinic Carrosserie — Tôlerie, peinture & débosselage</title>
+<title>Clinic Carrosserie — Tôlerie, peinture & carrossage</title>
 <link rel="icon" type="image/svg+xml" href="favicon-car.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -81,7 +81,10 @@ button{font-family:inherit; cursor:pointer; border:none}
 .nav-brand{
   display:inline-flex; align-items:center; gap:10px;
   font-weight:700; font-size:18px; letter-spacing:-.015em;
-  color:var(--c-noir-doux);
+  color:var(--c-noir-doux); min-width:0; overflow:hidden;
+}
+.nav-brand .brand-name{
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .nav-brand .glyph{
   width:34px; height:34px; border-radius:9px;
@@ -127,7 +130,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .mobile-drawer-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s ease}
 .mobile-drawer-panel{
   position:absolute; top:0; right:0; bottom:0; width:min(300px, 85vw);
-  background:var(--c-vert-nuit); padding:80px 24px 36px;
+  background:var(--c-car-bleu-xdark); padding:80px 24px 36px;
   display:flex; flex-direction:column;
   transform:translateX(100%); transition:transform .3s ease;
   border-left:1px solid rgba(255,255,255,.08);
@@ -233,7 +236,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .ba-card{
   border-radius:18px; overflow:hidden;
   display:flex; flex-direction:column;
-  min-height:380px;
+  min-height:260px;
   position:relative;
 }
 .ba-card.avant{
@@ -305,7 +308,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 }
 .trust-bar .inner{
   max-width:1280px; margin:0 auto; padding:0 32px;
-  display:grid; grid-template-columns:repeat(4,1fr);
+  display:grid; grid-template-columns:repeat(3,1fr);
 }
 .trust-item{
   display:flex; align-items:center; gap:14px;
@@ -417,15 +420,15 @@ button{font-family:inherit; cursor:pointer; border:none}
 /* ─── PROCESS ─── */
 .how-section{background:#fff; border-top:1px solid var(--c-gris-200)}
 .steps-grid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:0;
   position:relative;
 }
 .steps-grid::before{
   content:""; position:absolute;
-  top:33px; left:calc(12.5% + 20px); right:calc(12.5% + 20px);
+  top:33px; left:calc(16.67% + 20px); right:calc(16.67% + 20px);
   height:1px; background:var(--c-gris-200); z-index:0;
 }
-.step{display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 20px; position:relative; z-index:1}
+.step{display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 15px; position:relative; z-index:1}
 .step-num{
   width:66px; height:66px; border-radius:50%;
   background:#fff; border:2px solid var(--c-gris-200);
@@ -451,7 +454,7 @@ button{font-family:inherit; cursor:pointer; border:none}
 .step:hover .step-ico-wrap{background:var(--c-car-bleu); color:#fff; border-color:var(--c-car-bleu)}
 
 /* ─── POURQUOI NOUS ─── */
-.why-car-section{background:var(--c-vert-nuit); color:#fff; padding:96px 0; position:relative; overflow:hidden}
+.why-car-section{background:linear-gradient(135deg, var(--c-car-bleu-xdark) 0%, var(--c-car-bleu-dark) 55%, var(--c-car-bleu) 100%); color:#fff; padding:96px 0; position:relative; overflow:hidden}
 .why-car-section::before{
   content:""; position:absolute; right:-150px; top:-150px;
   width:420px; height:420px; border-radius:50%;
@@ -490,9 +493,9 @@ button{font-family:inherit; cursor:pointer; border:none}
   pointer-events:none;
 }
 .stats-car-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; z-index:1}
-.stat-car-block{border-left:1px solid rgba(255,255,255,.15); padding-left:28px}
+.stat-car-block{border-left:1px solid rgba(255,255,255,.15); padding-left:28px; text-align:center}
 .stat-car-block:first-child{border-left:none; padding-left:0}
-.stat-car-block .num{font-size:56px; font-weight:800; line-height:1; letter-spacing:-.03em; margin-bottom:10px; display:flex; align-items:baseline; gap:6px}
+.stat-car-block .num{font-size:56px; font-weight:800; line-height:1; letter-spacing:-.03em; margin-bottom:10px; display:flex; align-items:baseline; gap:6px; justify-content:center}
 .stat-car-block .num small{font-size:20px; opacity:.65; font-weight:500}
 .stat-car-block .num em{font-style:normal; color:var(--c-car-bleu-pastel)}
 .stat-car-block h5{margin:0 0 5px; font-size:14px; font-weight:700}
@@ -603,25 +606,44 @@ button{font-family:inherit; cursor:pointer; border:none}
   .hero-grid{grid-template-columns:1fr; padding-top:32px}
   .hero-visual-car{border-radius:20px; min-height:400px}
   .ba-card{min-height:260px}
-  .trust-bar .inner{grid-template-columns:1fr 1fr}
+  .trust-bar .inner{grid-template-columns:repeat(3,1fr)}
   .trust-item{border-right:none; border-bottom:1px solid var(--c-gris-200)}
+  .trust-item:last-child{border-bottom:none}
   .trust-item:nth-child(odd){padding-left:0}
-  .section-head{grid-template-columns:1fr; gap:20px}
+  .section-head{flex-direction:column; gap:16px}
+  .lbl{width:100%}
+  .section-head .desc{width:100%}
   .section-head h2{font-size:32px}
   .prestations-grid,.avis-grid,.why-car-grid{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:1fr 1fr}
   .steps-grid{grid-template-columns:1fr 1fr; gap:28px}
   .steps-grid::before{display:none}
-.stats-car-grid{grid-template-columns:1fr 1fr; gap:24px}
+  .stats-car-grid{grid-template-columns:1fr 1fr; gap:24px}
   .stat-car-block{border-left:none; padding-left:0; border-top:1px solid rgba(255,255,255,.1); padding-top:22px}
   .stat-car-block:first-child{border-top:none; padding-top:0}
   .footer-grid{grid-template-columns:1fr 1fr; gap:28px}
   .nav-links{display:none}
   .nav-universe-links{display:none}
+  .nav-right > .btn-car{display:none}
   .nav-mobile-group{display:flex}
   .hero-stats{flex-direction:column; gap:16px}
   .hero-stats .hs{border-right:none; margin-right:0; padding:0; border-bottom:1px solid var(--c-gris-200); padding-bottom:16px}
   .hero-stats .hs:last-child{border-bottom:none; padding-bottom:0}
+}
+@media(max-width:600px){
+  .container{padding:0 16px}
+  .topnav .inner{padding:0 16px}
+  .nav-brand{font-size:15px}
+  .hero-car h1{font-size:32px}
+  .trust-bar .inner{grid-template-columns:1fr}
+  .trust-item:last-child{border-bottom:none}
+  .trust-item:nth-child(odd){padding-left:16px}
+  .steps-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column; gap:8px; text-align:center}
+  .footer-legal{flex-wrap:wrap; justify-content:center; gap:12px}
+  .section{padding:64px 0}
 }
 </style>
 </head>
@@ -676,12 +698,13 @@ function Nav(){
           </a>
           <div className="nav-right">
             <div className="nav-universe-links">
+              <a className="nav-uni-link" href="index.html"><span className="swatch" style={{background:'#0D5C3A'}}></span>Accueil</a>
               <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Entretien & réparation</a>
               <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
               <a className="nav-uni-link car active" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
-              <a className="nav-uni-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer"><span className="swatch"></span>Pro</a>
+              <a className="nav-uni-link pro" href="pro.html"><span className="swatch"></span>Pro</a>
             </div>
-            <a className="btn btn-car" href="#devis" style={{display:'flex', alignItems:'center', gap:8}}>
+            <a className="btn btn-car" href="#devis">
               Demander un devis
             </a>
             <div className="nav-mobile-group">
@@ -698,7 +721,7 @@ function Nav(){
         <div className="mobile-drawer-panel">
           <nav className="mobile-nav-links">
             <a className="mobile-nav-link" href="index.html" onClick={() => setMenuOpen(false)}>
-              <span className="swatch" style={{background:'#2ECC71'}}></span> Accueil
+              <span className="swatch" style={{background:'#0D5C3A'}}></span> Accueil
             </a>
             <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Entretien & réparation
@@ -709,7 +732,7 @@ function Nav(){
             <a className="mobile-nav-link car active" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> Clinic Carrosserie
             </a>
-            <a className="mobile-nav-link pro" href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
+            <a className="mobile-nav-link pro" href="pro.html" onClick={() => setMenuOpen(false)}>
               <span className="swatch"></span> ClinicAuto Pro
             </a>
           </nav>
@@ -769,7 +792,7 @@ function Hero(){
             <div className="hero-eyebrow">Clinic Carrosserie · Réparation</div>
             <h1>Votre voiture,<br/>comme <em>sortie<br/>d'usine.</em></h1>
             <p className="lede">
-              Tôlerie, peinture cabine, débosselage sans peinture, polissage.
+              Tôlerie, peinture cabine, polissage et carrossage.
             </p>
             <div className="hero-cta-row">
               <a className="btn btn-car btn-lg" href="#devis">
@@ -786,7 +809,7 @@ function Hero(){
               </div>
               <div className="hs">
                 <div className="hs-label">Garantie peinture</div>
-                <div className="hs-val">2 ans</div>
+                <div className="hs-val">1 an</div>
               </div>
             </div>
           </div>
@@ -840,9 +863,8 @@ function Hero(){
 function TrustBar(){
   const items = [
     { ico:<Ico.Clock size={20}/>, t:"Devis sous 24 h", d:"Réponse garantie le jour ouvré suivant" },
-    { ico:<Ico.Shield size={20}/>, t:"Garantie peinture 2 ans", d:"Sur tous nos travaux de peinture cabine" },
-    { ico:<Ico.Award size={20}/>, t:"Certifié Qualibody", d:"Label qualité carrosserie reconnu" },
-    { ico:<Ico.Truck size={20}/>, t:"Véhicule de prêt", d:"Disponible sur demande, sous réserve" },
+    { ico:<Ico.Shield size={20}/>, t:"Garantie peinture 1 an", d:"Sur tous nos travaux de peinture cabine" },
+    { ico:<Ico.Truck size={20}/>, t:"Véhicule de location à disposition", d:"Payant ou gratuit sous conditions" },
   ];
   return (
     <div className="trust-bar">
@@ -864,11 +886,10 @@ function TrustBar(){
 /* ─── PRESTATIONS ─── */
 function Prestations(){
   const services = [
-    { ico:<Ico.Wrench/>, t:"Tôlerie", d:"Redressage, débosselage, remplacement de pièces. Travail à la main par nos carrossiers sur toutes marques.", tag:"Toutes marques" },
-    { ico:<Ico.Paint/>, t:"Peinture cabine", d:"Teinte assortie à la teinte d'origine grâce à notre spectrophotomètre. Garantie 2 ans sur l'application.", tag:"Garantie 2 ans" },
-    { ico:<Ico.Zap/>, t:"Débosselage sans peinture", d:"Technique PDR pour les bosses sans éraflure. Pas de peinture, résultat parfait, durée réduite à quelques heures.", tag:"Sans peinture" },
+    { ico:<Ico.Wrench/>, t:"Tôlerie", d:"Redressage, remplacement de pièces. Travail à la main par nos carrossiers sur toutes marques.", tag:"Toutes marques" },
+    { ico:<Ico.Paint/>, t:"Peinture cabine", d:"Teinte assortie à la teinte d'origine grâce à notre spectrophotomètre. Garantie 1 an sur l'application.", tag:"Garantie 1 an" },
     { ico:<Ico.Sparkle/>, t:"Polissage & lustrage", d:"Élimination des micro-rayures, oxydation, faux plis de peinture. Restitution d'un éclat neuf sur peinture existante.", tag:"Éclat neuf" },
-    { ico:<Ico.Eye/>, t:"Remplacement de vitres", d:"Pare-brise, lunette arrière, vitres latérales. Pose homologuée avec mastic d'origine constructeur.", tag:"Homologué" },
+    { ico:<Ico.Eye/>, t:"Remplacement de vitres", d:"Pare-brise, lunette arrière, vitres latérales. Pose homologuée avec mastic.", tag:"Homologué" },
     { ico:<Ico.Layers/>, t:"Traitement anti-corrosion", d:"Protection des soubassements, injection de cire dans les cavités. Traitement préventif ou curatif sur tous véhicules.", tag:"Préventif & curatif" },
   ];
   return (
@@ -877,8 +898,7 @@ function Prestations(){
         <div className="section-head">
           <div className="lbl">Prestations</div>
           <p className="desc">
-            Du débosselage au remplacement de vitres, en passant par la peinture cabine et
-            le polissage — nos carrossiers maîtrisent l'ensemble des interventions sur caisse.
+            De la tôlerie au remplacement de vitres, en passant par le carrossage — nos carrossiers maîtrisent l'ensemble des interventions sur caisse.
           </p>
         </div>
         <div className="prestations-grid">
@@ -900,10 +920,10 @@ function Prestations(){
 function Gallery(){
   const pairs = [
     { avant:"Choc frontal", apres:"Réparé en 4 j", model:"Peugeot 208", detail:"Capot + aile avant gauche", tag:"Tôlerie + peinture" },
-    { avant:"Choc latéral", apres:"Réparé en 3 j", model:"Renault Clio", detail:"Porte arrière droite", tag:"Débosselage PDR" },
+    { avant:"Choc latéral", apres:"Réparé en 3 j", model:"Renault Clio", detail:"Porte arrière droite", tag:"Tôlerie" },
     { avant:"Rayures profondes", apres:"Réparé en 2 j", model:"Volkswagen Golf", detail:"Bas de caisse complet", tag:"Peinture cabine" },
     { avant:"Impact arrière", apres:"Réparé en 5 j", model:"Citroën C3", detail:"Hayon + pare-chocs arrière", tag:"Tôlerie + peinture" },
-    { avant:"Grêle sévère", apres:"Réparé en 2 j", model:"BMW Série 3", detail:"Toit + capot + ailes", tag:"Débosselage PDR" },
+    { avant:"Grêle sévère", apres:"Réparé en 2 j", model:"BMW Série 3", detail:"Toit + capot + ailes", tag:"Tôlerie" },
     { avant:"Oxydation générale", apres:"Réparé en 3 j", model:"Toyota Yaris", detail:"Polissage complet + vernis", tag:"Polissage lustrage" },
   ];
   return (
@@ -948,9 +968,8 @@ function Gallery(){
 /* ─── COMMENT ÇA MARCHE ─── */
 function HowItWorks(){
   const steps = [
-    { ico:<Ico.FileText size={22}/>, t:"Demande de devis", d:"En ligne ou par téléphone. Décrivez le sinistre et envoyez des photos. Réponse sous 24 h." },
-    { ico:<Ico.Eye size={22}/>, t:"Estimation sur place", d:"Passage en atelier pour expertise gratuite. Devis détaillé pièces et main-d'œuvre avant toute décision." },
-    { ico:<Ico.Wrench size={22}/>, t:"Réparation en atelier", d:"Votre véhicule entre dans notre atelier. Suivi par SMS à chaque étape. Véhicule de prêt disponible." },
+    { ico:<Ico.FileText size={22}/>, t:"Demande de devis", d:"En ligne, par téléphone ou en atelier. Décrivez le sinistre, envoyez des photos ou déposez en atelier. Devis détaillé pièces et main-d'œuvre avant toute décision**." },
+    { ico:<Ico.Wrench size={22}/>, t:"Réparation en atelier", d:"Votre véhicule entre dans notre atelier. Suivi par SMS à chaque étape. Véhicule de location à disposition." },
     { ico:<Ico.Car size={22}/>, t:"Livraison soignée", d:"Votre voiture livrée propre, contrôlée. Garantie peinture signée. Facture et garantie remises en main propre." },
   ];
   return (
@@ -987,7 +1006,7 @@ function DevisBanner(){
           <h2>Votre devis en un message.</h2>
           <p>Décrivez le dommage, envoyez quelques photos. On vous répond avant la fin du jour ouvré.</p>
           <div className="db-row">
-            <a className="btn btn-xl" href="mailto:devis@clinicauto.fr"
+            <a className="btn btn-xl" href="mailto:cercleauto@gmail.com"
               style={{background:'#fff', color:'var(--c-car-bleu)', fontWeight:700}}>
               Envoyer des photos par mail
             </a>
@@ -1004,11 +1023,10 @@ function DevisBanner(){
 /* ─── POURQUOI NOUS ─── */
 function WhyUs(){
   const items = [
-    { ico:<Ico.Award/>, t:"Certifié Qualibody", d:"Label qualité carrosserie délivré après audit de nos locaux, outils et procédures. Gage de sérieux et d'exigence." },
-    { ico:<Ico.Shield/>, t:"Garantie peinture 2 ans", d:"Toutes nos applications peinture cabine sont garanties deux ans pièces et main-d'œuvre. Sans condition." },
-    { ico:<Ico.Clock/>, t:"Délais respectés", d:"Date de livraison contractualisée à la remise du véhicule. Retard ? On vous appelle, on justifie, on compense." },
-    { ico:<Ico.Euro/>, t:"Devis transparent", d:"Pièces et main-d'œuvre détaillées à la ligne. Aucun dépassement sans votre accord préalable. Facture identique au devis." },
-    { ico:<Ico.Truck/>, t:"Véhicule de prêt", d:"Disponible à la journée pendant vos travaux, sous réserve de disponibilité." },
+    { ico:<Ico.Shield/>, t:"Garantie peinture 1 an", d:"Toutes nos applications peinture cabine sont garanties un an pièces et main-d'œuvre. Sans condition." },
+    { ico:<Ico.Clock/>, t:"Délais respectés", d:"Date de livraison contractualisée à la remise du véhicule. Retard ? On vous appelle, on justifie." },
+    { ico:<Ico.Euro/>, t:"Devis transparent", d:"Pièces et main-d'œuvre détaillées à la ligne. Aucun dépassement sans votre accord préalable**." },
+    { ico:<Ico.Truck/>, t:"Véhicule de location à disposition", d:"Disponible à la journée pendant vos travaux, à partir de 19€/j" },
     { ico:<Ico.Car/>, t:"Toutes marques", d:"Véhicules français, allemands, japonais, coréens — notre atelier est équipé et formé pour traiter toutes les carrosseries." },
   ];
   return (
@@ -1017,10 +1035,9 @@ function WhyUs(){
         <div className="section-head" style={{marginBottom:48}}>
           <div>
             <div className="lbl" style={{color:'rgba(144,202,249,.8)'}}>
-              <span style={{width:28, height:1, background:'rgba(144,202,249,.5)', display:'block'}}></span>
               Pourquoi nous
             </div>
-            <h2 style={{color:'#fff', fontSize:44}}>Six raisons de<br/>nous confier votre voiture.</h2>
+            <h2 style={{color:'#fff', fontSize:44}}>Cinq raisons de<br/>nous confier votre voiture.</h2>
           </div>
           <p className="desc" style={{color:'rgba(255,255,255,.55)'}}>
             Pas un groupement, pas une franchise. Un atelier indépendant avec ses propres
@@ -1060,7 +1077,7 @@ function Stats(){
             <p>Documentées depuis l'ouverture de l'atelier en 2021.</p>
           </div>
           <div className="stat-car-block">
-            <div className="num">2<small>ans</small></div>
+            <div className="num">1<small>an</small></div>
             <h5>Garantie peinture</h5>
             <p>Sur 100 % de nos applications peinture cabine.</p>
           </div>
@@ -1070,7 +1087,7 @@ function Stats(){
             <p>95 % de clients satisfaits suite à notre enquête client.</p>
           </div>
           <div className="stat-car-block">
-            <div className="num">3.2<small>j</small></div>
+            <div className="num">3.5<small>j</small></div>
             <h5>Délai moyen atelier</h5>
             <p>De la remise du véhicule à la livraison, toutes réparations.</p>
           </div>
@@ -1084,8 +1101,8 @@ function Stats(){
 function Avis(){
   const avis = [
     { init:"CB", n:"Camille B.", d:"Il y a 2 semaines", t:"Choc latéral sur ma Golf. Le devis est arrivé le lendemain matin, la voiture était prête en 3 jours. La teinte est parfaitement assortie. Impossible de voir où c'était abîmé." },
-    { init:"RD", n:"Romain D.", d:"Il y a 1 mois", t:"Réparation gérée entièrement par l'atelier. Très réactifs, aucun souci administratif. La voiture était comme neuve, la garantie de 2 ans est rassurante." },
-    { init:"NM", n:"Nadia M.", d:"Il y a 5 semaines", t:"Grêle sur le capot et le toit — j'avais peur du résultat avec le débosselage PDR. Résultat impeccable en deux jours. La peinture n'a pas été touchée. Je recommande sans hésiter." },
+    { init:"RD", n:"Romain D.", d:"Il y a 1 mois", t:"Réparation gérée entièrement par l'atelier. Très réactifs, aucun souci administratif. La voiture était comme neuve, la garantie est rassurante." },
+    { init:"SL", n:"Sophie L.", d:"Il y a 3 semaines", t:"Pare-chocs arrière enfoncé suite à un accrochage en parking. Devis clair, délai tenu, résultat impeccable. L'équipe est professionnelle et agréable. Je reviendrai sans hésiter." },
   ];
   return (
     <section className="section avis-section" id="avis">
@@ -1127,7 +1144,7 @@ function FinalCta(){
         <h2>Votre voiture mérite<br/>un <em>résultat parfait.</em></h2>
         <p>Envoyez des photos du sinistre. On vous répond avec un devis détaillé avant la fin du jour ouvré.</p>
         <div className="cta-row">
-          <a className="btn btn-car btn-xl" href="mailto:devis@clinicauto.fr">
+          <a className="btn btn-car btn-xl" href="mailto:cercleauto@gmail.com">
             <Ico.FileText size={18}/> Demander un devis
           </a>
           <a className="btn btn-ghost-dark btn-lg" href="tel:+33613638747">
@@ -1135,7 +1152,7 @@ function FinalCta(){
           </a>
         </div>
         <p style={{marginTop:22, fontSize:13, color:'var(--c-gris-400)'}}>
-          Consultez aussi <a href="depannage.html" style={{color:'var(--c-car-bleu)', fontWeight:600}}>Clinic Dépannage & Transfert</a> ou <a href="index.html" style={{color:'var(--c-vert-foret)', fontWeight:600}}>ClinicAuto Pro</a>.
+          Consultez aussi <a href="mecanique.html" style={{color:'#D97706', fontWeight:600}}>Clinic Entretien & Réparation</a> ou <a href="depannage.html" style={{color:'#c0392b', fontWeight:600}}>Clinic Dépannage & Transfert</a>.
         </p>
       </div>
     </section>
@@ -1153,10 +1170,11 @@ function Footer(){
               <div className="glyph">C</div>
               <span>ClinicAuto</span>
             </div>
-            <p className="footer-tagline">Garage, vente Pro et carrosserie.</p>
+            <p className="footer-tagline">Garage, vente Pro, mécanique et carrosserie.</p>
             <div className="footer-contact">
               <strong>ClinicAuto SAS</strong>
-              <span>42 rue de la Liberté, 93200 Saint-Denis</span>
+              <span>Garage ZA Bel Air, 33360 Cénac</span>
+              <span>ou<br/>Garage 142 rue Émile Combe, 33270 Floirac</span>
               <span>06 13 63 87 47 · contact@clinicauto.fr</span>
             </div>
           </div>
@@ -1166,7 +1184,7 @@ function Footer(){
               <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
               <li><a href="depannage.html">Clinic Dépannage & Transfert</a></li>
               <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
-              <li><a href="https://clinic-auto-pro-ecommerce-nextjs-no.vercel.app/" target="_blank" rel="noopener noreferrer">ClinicAuto Pro</a></li>
+              <li><a href="pro.html">ClinicAuto Pro</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -1184,6 +1202,10 @@ function Footer(){
               <li><a href="#">Politique RGPD</a></li>
             </ul>
           </div>
+        </div>
+        <div style={{borderTop:'1px solid rgba(255,255,255,.09)', paddingTop:16, marginBottom:16, fontSize:11.5, color:'rgba(255,255,255,.35)', lineHeight:1.5}}>
+          * La garantie pièces de 5 000 km ou 12 mois s'applique aux pièces neuves d'origine ou équivalent OEM posées dans notre atelier. Certaines pièces spécifiques (filtres, consommables, pièces d'occasion) ne sont pas couvertes par cette garantie. Renseignez-vous auprès de notre atelier avant intervention.<br/>
+          ** Le devis est établi sur la base d'un diagnostic visuel. Si le démontage révèle des éléments non visibles avant ouverture, un devis complémentaire vous est soumis pour accord avant toute poursuite des travaux.
         </div>
         <div className="footer-bottom">
           <span>© 2026 ClinicAuto SAS</span>

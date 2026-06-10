@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ClinicAuto Pro — Marché véhicules accidentés · Bientôt disponible</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --c-vert-nuit:#012A1A;
+  --c-vert-foret:#0D5C3A;
+  --c-vert-accent:#2ECC71;
+  --c-blanc-casse:#F5F5F0;
+  --c-noir-doux:#1A1A1A;
+  --c-gris-100:#EEEEE8;
+  --c-gris-200:#DDDDD5;
+  --c-gris-400:#8C8C85;
+  --c-gris-500:#5A5A55;
+  --c-pro-navy:#1A2744;
+  --c-pro-navy-2:#243260;
+  --c-pro-navy-3:#0F1A2E;
+  --c-dep-rouge:#C0392B;
+  --c-car-bleu:#1565A8;
+  --c-mec-ambre:#D97706;
+  --c-mec-ambre-clair:#F59E0B;
+  --ff-sans:"Inter", system-ui, -apple-system, sans-serif;
+  --ff-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:var(--ff-sans); color:var(--c-noir-doux); background:#fff; font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+a{color:inherit; text-decoration:none}
+button{font-family:inherit; cursor:pointer; border:none}
+
+/* ─── NAVBAR ─── */
+.topnav{position:fixed; top:0; left:0; right:0; z-index:100; background:#fff; border-bottom:1px solid var(--c-gris-200); padding:0}
+.topnav .inner{max-width:1280px; margin:0 auto; padding:0 32px; height:64px; display:flex; align-items:center; justify-content:space-between}
+.nav-brand{display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:18px; letter-spacing:-.015em; color:var(--c-noir-doux)}
+.nav-brand .glyph{width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--c-vert-accent) 0%,var(--c-vert-foret) 100%); display:grid; place-items:center; color:#fff; font-weight:800; font-size:15px; flex-shrink:0}
+.nav-brand .accent{color:var(--c-vert-accent)}
+.nav-right{display:flex; align-items:center; gap:20px}
+.nav-universe-links{display:flex; gap:2px; align-items:center}
+.nav-uni-link{color:var(--c-gris-500); padding:7px 12px; border-radius:8px; font-size:13.5px; font-weight:500; transition:all .15s ease; display:flex; align-items:center; gap:7px; white-space:nowrap}
+.nav-uni-link:hover{color:var(--c-noir-doux); background:var(--c-gris-100)}
+.nav-uni-link .swatch{width:7px; height:7px; border-radius:50%; flex-shrink:0}
+.nav-uni-link.pro .swatch{background:#2ECC71}
+.nav-uni-link.dep .swatch{background:#E74C3C}
+.nav-uni-link.mec .swatch{background:#F59E0B}
+.nav-uni-link.car .swatch{background:#1976D2}
+.nav-uni-link.active{color:var(--c-noir-doux); font-weight:600; background:var(--c-gris-100)}
+.nav-mobile-group{display:none; align-items:center; gap:10px}
+.nav-mobile-call{display:grid; width:38px; height:38px; border-radius:50%; color:#fff; place-items:center; flex-shrink:0}
+.nav-burger{display:flex; flex-direction:column; justify-content:center; gap:5px; width:38px; height:38px; border-radius:9px; padding:10px; background:var(--c-gris-100); cursor:pointer; border:none; flex-shrink:0}
+.nav-burger span{display:block; height:2px; border-radius:2px; background:var(--c-noir-doux); transition:all .25s ease}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0; transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-drawer{position:fixed; inset:0; z-index:49; pointer-events:none}
+.mobile-drawer-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s ease}
+.mobile-drawer-panel{position:absolute; top:0; right:0; bottom:0; width:min(300px, 85vw); background:var(--c-pro-navy-3); padding:80px 24px 36px; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .3s ease; border-left:1px solid rgba(255,255,255,.08)}
+.mobile-drawer.open{pointer-events:all}
+.mobile-drawer.open .mobile-drawer-backdrop{opacity:1}
+.mobile-drawer.open .mobile-drawer-panel{transform:translateX(0)}
+.mobile-nav-links{display:flex; flex-direction:column; gap:4px; margin-bottom:auto}
+.mobile-nav-link{display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:12px; color:#fff; font-size:16px; font-weight:500; transition:background .15s ease}
+.mobile-nav-link:hover{background:rgba(255,255,255,.07)}
+.mobile-nav-link.active{background:rgba(255,255,255,.1); font-weight:600}
+.mobile-nav-link .swatch{width:9px; height:9px; border-radius:50%; flex-shrink:0}
+.mobile-nav-link.pro .swatch{background:#2ECC71}
+.mobile-nav-link.dep .swatch{background:#E74C3C}
+.mobile-nav-link.mec .swatch{background:#F59E0B}
+.mobile-nav-link.car .swatch{background:#1976D2}
+.mobile-drawer-cta{display:flex; align-items:center; gap:10px; padding:14px 18px; border-radius:12px; margin-top:20px; font-weight:600; font-size:15px; justify-content:center; color:var(--c-vert-nuit); background:var(--c-vert-accent)}
+
+/* ─── HERO ─── */
+.hero-pro{
+  background:linear-gradient(148deg, var(--c-pro-navy-3) 0%, var(--c-pro-navy) 55%, var(--c-pro-navy-2) 100%);
+  color:#fff; padding:108px 0 96px; position:relative; overflow:hidden;
+}
+.hero-pro::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(46,204,113,.07), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 5% 90%, rgba(0,0,0,.3), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,.01) 0px, rgba(255,255,255,.01) 1px, transparent 1px, transparent 80px);
+  pointer-events:none;
+}
+.container{max-width:1280px; margin:0 auto; padding:0 32px; position:relative; z-index:1}
+
+.launch-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(46,204,113,.12); border:1px solid rgba(46,204,113,.25);
+  padding:7px 14px; border-radius:999px;
+  font-size:13px; font-weight:500; color:rgba(255,255,255,.9);
+  margin-bottom:32px;
+}
+.launch-dot{width:8px; height:8px; border-radius:50%; background:var(--c-vert-accent); box-shadow:0 0 0 3px rgba(46,204,113,.25); flex-shrink:0}
+
+.hero-pro h1{font-size:64px; line-height:1.03; letter-spacing:-.035em; font-weight:800; margin:0 0 20px}
+.hero-pro h1 .accent{color:var(--c-vert-accent)}
+.hero-pro .lede{font-size:17px; color:rgba(255,255,255,.65); line-height:1.65; max-width:520px; margin:0 0 40px}
+
+.hero-pills{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:48px}
+.pill{display:inline-flex; align-items:center; gap:8px; padding:8px 16px; border-radius:999px; border:1px solid rgba(255,255,255,.12); font-size:13.5px; color:rgba(255,255,255,.7)}
+.pill svg{color:var(--c-vert-accent); flex-shrink:0}
+
+/* Email form */
+.signup-form{display:flex; gap:10px; max-width:480px; flex-wrap:wrap}
+.signup-input{
+  flex:1; min-width:220px; padding:13px 18px; border-radius:12px;
+  border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.08);
+  color:#fff; font-family:var(--ff-sans); font-size:14.5px; outline:none;
+  transition:border-color .15s;
+}
+.signup-input::placeholder{color:rgba(255,255,255,.35)}
+.signup-input:focus{border-color:rgba(46,204,113,.5)}
+.signup-btn{
+  padding:13px 24px; border-radius:12px; border:none; cursor:pointer;
+  background:var(--c-vert-accent); color:var(--c-vert-nuit);
+  font-family:var(--ff-sans); font-size:14.5px; font-weight:700;
+  transition:background .15s; white-space:nowrap;
+}
+.signup-btn:hover{background:#27AE60; color:#fff}
+.signup-note{font-size:12.5px; color:rgba(255,255,255,.35); margin-top:10px}
+
+/* ─── BLURRED PREVIEW ─── */
+.preview-section{position:relative; padding:80px 0; background:#fff; overflow:hidden}
+.preview-label{
+  text-align:center; margin-bottom:40px;
+  font-family:var(--ff-mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--c-gris-400);
+}
+.preview-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; filter:blur(5px); opacity:.55; pointer-events:none; user-select:none}
+.fake-card{border:1px solid var(--c-gris-200); border-radius:16px; overflow:hidden; background:#fff}
+.fake-card-img{height:160px; background:linear-gradient(135deg,#e8e8e0 0%,#d0d0c8 100%); display:flex; align-items:center; justify-content:center}
+.fake-card-img svg{opacity:.18}
+.fake-card-body{padding:18px}
+.fake-bar{height:13px; border-radius:4px; background:var(--c-gris-100); margin-bottom:10px}
+.fake-bar.w80{width:80%}
+.fake-bar.w60{width:60%}
+.fake-bar.w40{width:40%}
+.fake-bar.h8{height:8px}
+.fake-tags{display:flex; gap:6px; margin-top:14px}
+.fake-tag{height:22px; width:60px; border-radius:20px; background:var(--c-gris-100)}
+
+/* Overlay */
+.preview-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(255,255,255,.3) 0%, rgba(255,255,255,.85) 40%, rgba(255,255,255,.97) 80%);
+  display:flex; align-items:center; justify-content:center;
+  padding:0 32px;
+}
+.overlay-card{
+  background:#fff; border:1px solid var(--c-gris-200);
+  border-radius:24px; padding:48px 40px;
+  max-width:520px; width:100%; text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+.overlay-badge{
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(46,204,113,.1); border:1px solid rgba(46,204,113,.2);
+  padding:5px 14px; border-radius:999px;
+  font-size:12px; font-weight:600; color:var(--c-vert-foret);
+  margin-bottom:20px;
+}
+.overlay-card h2{font-size:28px; font-weight:800; letter-spacing:-.02em; margin:0 0 12px; color:var(--c-noir-doux)}
+.overlay-card p{font-size:15px; color:var(--c-gris-500); margin:0 0 28px; line-height:1.6}
+.overlay-form{display:flex; flex-direction:column; gap:10px}
+.overlay-input{
+  padding:13px 16px; border-radius:10px; border:1.5px solid var(--c-gris-200);
+  font-family:var(--ff-sans); font-size:14.5px; color:var(--c-noir-doux);
+  outline:none; transition:border-color .15s;
+}
+.overlay-input:focus{border-color:var(--c-vert-foret)}
+.overlay-btn{
+  padding:14px; border-radius:10px; border:none; cursor:pointer;
+  background:var(--c-vert-nuit); color:#fff;
+  font-family:var(--ff-sans); font-size:15px; font-weight:600;
+  transition:background .15s;
+}
+.overlay-btn:hover{background:var(--c-vert-foret)}
+.overlay-note{font-size:12px; color:var(--c-gris-400); margin-top:4px}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--c-vert-nuit); color:rgba(255,255,255,.65); padding:72px 0 28px}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.09)}
+.footer-brand{display:inline-flex; align-items:center; gap:10px; margin-bottom:16px}
+.footer-brand .glyph{width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,var(--c-vert-accent) 0%,var(--c-vert-foret) 100%); display:grid; place-items:center; color:#fff; font-weight:800; font-size:13px}
+.footer-brand span{font-weight:700; font-size:17px; color:#fff; letter-spacing:-.015em}
+.footer-tagline{font-size:13.5px; color:rgba(255,255,255,.45); line-height:1.55; max-width:270px; margin-bottom:22px}
+.footer-contact{font-size:13.5px; color:rgba(255,255,255,.7); display:flex; flex-direction:column; gap:5px}
+.footer-contact strong{color:#fff; font-weight:600; display:block}
+.footer-col h6{font-family:var(--ff-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.38); margin:0 0 16px; font-weight:600}
+.footer-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px; font-size:13.5px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:12.5px; color:rgba(255,255,255,.35)}
+.footer-legal{display:flex; gap:22px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:980px){
+  .hero-pro h1{font-size:42px}
+  .preview-grid{grid-template-columns:1fr 1fr}
+  .preview-grid .fake-card:last-child{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr; gap:28px}
+  .nav-universe-links{display:none}
+  .nav-right > a.btn{display:none !important}
+  .nav-mobile-group{display:flex}
+}
+@media(max-width:600px){
+  .hero-pro h1{font-size:34px}
+  .preview-grid{grid-template-columns:1fr}
+  .preview-grid .fake-card:nth-child(2){display:none}
+  .overlay-card{padding:32px 24px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column; gap:8px; text-align:center}
+  .footer-legal{flex-wrap:wrap; justify-content:center; gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const Ico = {
+  Phone: ({size=18}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>,
+  Check: ({size=14}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5"/></svg>,
+  Car: ({size=48}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 11h18l-2-5a2 2 0 0 0-2-1H7a2 2 0 0 0-2 1l-2 5zM3 11v6h2v-2h14v2h2v-6M7 14h.01M17 14h.01"/></svg>,
+  Clock: ({size=14}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>,
+  Bell: ({size=14}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>,
+  Shield: ({size=14}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+};
+
+function Nav(){
+  const [menuOpen, setMenuOpen] = useState(false);
+  return (
+    <>
+      <nav className="topnav">
+        <div className="inner">
+          <a href="index.html" className="nav-brand">
+            <div className="glyph">C</div>
+            <span>Clinic<span className="accent">Auto</span></span>
+          </a>
+          <div className="nav-right">
+            <div className="nav-universe-links">
+              <a className="nav-uni-link" href="index.html"><span className="swatch" style={{background:'#0D5C3A'}}></span>Accueil</a>
+              <a className="nav-uni-link mec" href="mecanique.html"><span className="swatch"></span>Entretien & réparation</a>
+              <a className="nav-uni-link dep" href="depannage.html"><span className="swatch"></span>Dépannage & Transfert</a>
+              <a className="nav-uni-link car" href="carrosserie.html"><span className="swatch"></span>Carrosserie</a>
+              <a className="nav-uni-link pro active" href="pro.html"><span className="swatch"></span>Pro</a>
+            </div>
+            <a className="btn" href="tel:+33613638747"
+              style={{background:'var(--c-vert-accent)', color:'var(--c-vert-nuit)', fontWeight:700, fontSize:14, padding:'10px 18px', borderRadius:10, display:'flex', alignItems:'center', gap:8}}>
+              <Ico.Phone size={16}/> 06 13 63 87 47
+            </a>
+            <div className="nav-mobile-group">
+              <a className="nav-mobile-call" href="tel:+33613638747" aria-label="Appeler"><Ico.Phone size={18}/></a>
+              <button className={`nav-burger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+                <span/><span/><span/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
+        <div className="mobile-drawer-backdrop" onClick={() => setMenuOpen(false)} />
+        <div className="mobile-drawer-panel">
+          <nav className="mobile-nav-links">
+            <a className="mobile-nav-link" href="index.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch" style={{background:'#0D5C3A'}}></span> Accueil
+            </a>
+            <a className="mobile-nav-link mec" href="mecanique.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Entretien & réparation
+            </a>
+            <a className="mobile-nav-link dep" href="depannage.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Dépannage & Transfert
+            </a>
+            <a className="mobile-nav-link car" href="carrosserie.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> Carrosserie
+            </a>
+            <a className="mobile-nav-link pro active" href="pro.html" onClick={() => setMenuOpen(false)}>
+              <span className="swatch"></span> ClinicAuto Pro
+            </a>
+          </nav>
+          <a className="mobile-drawer-cta" href="tel:+33613638747">
+            <Ico.Phone size={18}/> 06 13 63 87 47
+          </a>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Hero(){
+  const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  function handleSubmit(e){
+    e.preventDefault();
+    if(email) setSent(true);
+  }
+  return (
+    <section className="hero-pro">
+      <div className="container">
+        <div className="launch-badge">
+          <span className="launch-dot"></span>
+          Lancement prévu prochainement
+        </div>
+        <h1>Le marché des<br/>véhicules<br/><span className="accent">professionnels.</span></h1>
+        <p className="lede">
+          Achat-vente entre professionnels agréés : VEI, sinistres, épaves roulantes.
+          Catalogue mis à jour chaque semaine. Carte grise et historique disponibles.
+        </p>
+        <div className="hero-pills">
+          <span className="pill"><Ico.Shield size={13}/>Réservé aux pros agréés</span>
+          <span className="pill"><Ico.Car size={13}/>VEI · sinistres · épaves roulantes</span>
+          <span className="pill"><Ico.Clock size={13}/>Catalogue mis à jour chaque semaine</span>
+        </div>
+        {!sent ? (
+          <form className="signup-form" onSubmit={handleSubmit}>
+            <input
+              className="signup-input"
+              type="email"
+              placeholder="votre@email.fr"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+            <button className="signup-btn" type="submit">
+              <Ico.Bell size={15}/> Être notifié au lancement
+            </button>
+            <p className="signup-note">Aucun spam. Juste un email quand c'est prêt.</p>
+          </form>
+        ) : (
+          <div style={{display:'flex', alignItems:'center', gap:10, background:'rgba(46,204,113,.12)', border:'1px solid rgba(46,204,113,.25)', padding:'14px 20px', borderRadius:12, maxWidth:440}}>
+            <Ico.Check size={18}/>
+            <span style={{fontSize:14.5, color:'rgba(255,255,255,.9)'}}>Enregistré — on vous prévient dès l'ouverture.</span>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function BlurredPreview(){
+  const cards = [0,1,2];
+  return (
+    <section className="preview-section">
+      <p className="preview-label">Aperçu du catalogue</p>
+      <div className="container" style={{position:'relative'}}>
+        <div className="preview-grid">
+          {cards.map(i => (
+            <div className="fake-card" key={i}>
+              <div className="fake-card-img"><Ico.Car size={52}/></div>
+              <div className="fake-card-body">
+                <div className="fake-bar w80"></div>
+                <div className="fake-bar w60 h8"></div>
+                <div className="fake-bar w40 h8"></div>
+                <div className="fake-tags">
+                  <div className="fake-tag"></div>
+                  <div className="fake-tag"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="preview-overlay">
+        <SignupCard />
+      </div>
+    </section>
+  );
+}
+
+function SignupCard(){
+  const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  function handleSubmit(e){
+    e.preventDefault();
+    if(email) setSent(true);
+  }
+  return (
+    <div className="overlay-card">
+      <div className="overlay-badge">
+        <Ico.Clock size={12}/> Bientôt disponible
+      </div>
+      <h2>Le catalogue arrive bientôt</h2>
+      <p>Inscrivez-vous pour être parmi les premiers professionnels à accéder à la plateforme dès son ouverture.</p>
+      {!sent ? (
+        <form className="overlay-form" onSubmit={handleSubmit}>
+          <input
+            className="overlay-input"
+            type="email"
+            placeholder="votre@email.fr"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+          <button className="overlay-btn" type="submit">M'inscrire en avant-première</button>
+          <p className="overlay-note">Réservé aux professionnels agréés. Aucun spam.</p>
+        </form>
+      ) : (
+        <div style={{background:'#f0fdf4', border:'1px solid #bbf7d0', borderRadius:10, padding:'14px 18px', display:'flex', alignItems:'center', gap:10}}>
+          <Ico.Check size={16}/>
+          <span style={{fontSize:14, color:'#166534', fontWeight:500}}>Enregistré — on vous contacte à l'ouverture.</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Footer(){
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <div className="footer-brand">
+              <div className="glyph">C</div>
+              <span>ClinicAuto</span>
+            </div>
+            <p className="footer-tagline">Garage, vente Pro, mécanique et carrosserie.</p>
+            <div className="footer-contact">
+              <strong>ClinicAuto SAS</strong>
+              <span>Garage ZA Bel Air, 33360 Cénac</span>
+              <span>ou<br/>Garage 142 rue Émile Combe, 33270 Floirac</span>
+              <span>06 13 63 87 47 · contact@clinicauto.fr</span>
+            </div>
+          </div>
+          <div className="footer-col">
+            <h6>Activités</h6>
+            <ul>
+              <li><a href="mecanique.html">Clinic Entretien &amp; réparation</a></li>
+              <li><a href="depannage.html">Clinic Dépannage & Transfert</a></li>
+              <li><a href="carrosserie.html">Clinic Carrosserie</a></li>
+              <li><a href="pro.html">ClinicAuto Pro</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h6>Société</h6>
+            <ul>
+              <li><a href="a-propos.html">À propos</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h6>Légal</h6>
+            <ul>
+              <li><a href="mentions-legales.html">Mentions légales</a></li>
+              <li><a href="#">CGV / CGU</a></li>
+              <li><a href="#">Politique RGPD</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2026 ClinicAuto SAS</span>
+          <div className="footer-legal">
+            <span>Capital 5 000 €</span>
+            <span>TVA FR61939632873</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function App(){
+  return (
+    <>
+      <Nav/>
+      <Hero/>
+      <BlurredPreview/>
+      <Footer/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
